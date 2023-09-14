@@ -45,6 +45,35 @@ class Pessoa {
         $this->CPF = $CPF;
     }
 
+    public function validaCPF($CPF) {
+ 
+        // Extrai somente os números
+        $CPF = preg_replace( '/[^0-9]/is', '', $CPF );
+         
+        // Verifica se foi informado todos os digitos corretamente
+        if (strlen($CPF) != 11) {
+            return false;
+        }
+    
+        // Verifica se foi informada uma sequência de digitos repetidos. Ex: 111.111.111-11
+        if (preg_match('/(\d)\1{10}/', $CPF)) {
+            return false;
+        }
+    
+        // Faz o calculo para validar o CPF
+        for ($t = 9; $t < 11; $t++) {
+            for ($d = 0, $c = 0; $c < $t; $c++) {
+                $d += $CPF[$c] * (($t + 1) - $c);
+            }
+            $d = ((10 * $d) % 11) % 10;
+            if ($CPF[$c] != $d) {
+                return false;
+            }
+        }
+        return true;
+    
+    }
+
     public function cadastrarPessoa() {
         echo "Nome: ";
         $this->nome = trim(fgets(STDIN));
@@ -60,19 +89,19 @@ class Pessoa {
                 echo "Por favor, insira apenas números para o telefone.\n";
             }
         }
-        
-        while (true) {
-            echo "CPF (apenas números): ";
+
+        while (true) { 
+            echo "CPF: ";
             $CPF = trim(fgets(STDIN));
-            
-            if (is_numeric($CPF)) {
+
+            if ($this->validaCPF($CPF)) {
                 $this->CPF = $CPF;
-                break; // Sai do loop se a entrada for um número válido
+                break;
             } else {
-                echo "Por favor, insira apenas números para o CPF.\n";
+                echo "CPF inválido.\n";
             }
         }
-        
+
         echo "e-mail: ";
         $this->email = trim(fgets(STDIN));
     }    
