@@ -1,10 +1,10 @@
 <?php
 
 class Pessoa {
-    private $nome;
-    private $telefone;
-    private $email;
-    private $CPF;
+    protected $nome;
+    protected $telefone;
+    protected $email;
+    protected $CPF;
 
     public function __construct($nome, $telefone, $email, $CPF) {
         $this->nome = $nome;
