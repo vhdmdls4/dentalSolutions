@@ -4,13 +4,12 @@ require_once("class.Funcionario.php");
 
 class Dentista extends Funcionario
 {
-  private $cro;
+  private string $cro;
   private array $especialidade;
 
-  public function __construct($salario, $cro, array $especialidade)
+  public function __construct(float $salario, string $cro, array $especialidade, string $nome, string $telefone, string $email, string $CPF, Endereco $endereco)
   {
-    parent::__construct($salario);
-
+    parent::__construct($salario, $nome, $telefone, $email, $CPF, $endereco);
     $this->cro = $cro;
     $this->especialidade = $especialidade;
   }

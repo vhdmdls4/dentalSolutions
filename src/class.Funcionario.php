@@ -6,8 +6,9 @@ class Funcionario extends Profissional
 {
   private float $salario;
 
-  public function __construct(float $salario)
+  public function __construct(float $salario, string $nome, string $telefone, string $email, string $CPF, Endereco $endereco)
   {
+    parent::__construct($nome, $telefone, $email, $CPF, $endereco);
     $this->salario = $salario;
   }
 
