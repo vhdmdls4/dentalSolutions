@@ -1,26 +1,27 @@
 <?php
 
-require_once ("class.Pessoa.php");
-require_once ("class.Endereco.php");
+require_once("class.Pessoa.php");
+require_once("class.Endereco.php");
 
-  
-abstract class Profissional extends Pessoa 
+
+abstract class Profissional extends Pessoa
 {
+  private $endereco;
 
-  public function __construct ($nome, $telefone, $email, $CPF, Endereco $endereco) {}
- 
-  public function exibeEndereco(){
-    echo "Rua: " . $this-> rua . "\n";
-    echo "Bairro: " . $this-> bairro . "\n";
-    echo "CEP: " . $this-> cep . "\n";
-    echo "Complemento: " . $this-> complemento . "\n";
-    echo "Numero: " . $this-> numero . "\n";
-    echo "Cidade: " . $this-> cidade . "\n";
-    echo "Estado: " . $this-> estado . "\n";
+  public function __construct($nome, $telefone, $email, $CPF, Endereco $endereco)
+  {
+    parent::__construct($nome, $telefone, $email, $CPF);
+    $this->endereco = $endereco;
   }
 
-
+  public function exibeEndereco()
+  {
+    echo "Rua: " . $this->endereco->getRua() . "\n";
+    echo "Bairro: " . $this->endereco->getBairro() . "\n";
+    echo "CEP: " . $this->endereco->getCep() . "\n";
+    echo "Complemento: " . $this->endereco->getComplemento() . "\n";
+    echo "Numero: " . $this->endereco->getNumero() . "\n";
+    echo "Cidade: " . $this->endereco->getCidade() . "\n";
+    echo "Estado: " . $this->endereco->getEstado() . "\n";
+  }
 }
- 
-
-?>
