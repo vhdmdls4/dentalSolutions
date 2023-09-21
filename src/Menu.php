@@ -5,7 +5,9 @@ class Menu {
         echo "Menu:\n";
         echo "1. Consultar Pessoas\n";
         echo "2. Cadastrar Pessoa\n";
-        echo "3. Sair\n";
+        echo "3. Consultar Procedimentos\n";
+        echo "4. Cadastrar Procedimento\n";
+        echo "0. Sair\n";
     }
     
     public function lerOpcao() {
@@ -36,13 +38,33 @@ while (true) {
         // Limpe o buffer de saída e force a exibição imediata
         flush();
     } else if ($opcao == 2) {
-        include_once("Pessoa.php");
+        include_once("class.Pessoa.php");
         $pessoa = new Pessoa("", "", "", "");
         $pessoa->cadastrarPessoa();
         $pessoa->salvarPessoa("dataFiles/pessoa.txt");
-    } else if ($opcao == 3) {
+    } else if ($opcao == 0) {
         break;
-    } else {
+    } else if ($opcao == 3) {
+        $filename = "dataFiles/procedimento.txt";
+        $procedimentos = file_get_contents($filename);
+    
+        if (empty($procedimentos)) {
+            echo "Não há cadastros.\n";
+        } else {
+            echo "Lista de Procedimentos:\n";
+            echo "\n";
+            echo $procedimentos;
+        }
+    
+        // Limpe o buffer de saída e force a exibição imediata
+        flush();
+    } else if ($opcao == 4) {
+        include_once("class.Procedimentos.php");
+        $procedimento = new Procedimentos("", "", "");
+        $procedimento->cadastrarProcedimento();
+        $procedimento->salvarProcedimento("dataFiles/procedimento.txt");
+    }
+    else {
         echo "Opção inválida.\n";
     }
 }
