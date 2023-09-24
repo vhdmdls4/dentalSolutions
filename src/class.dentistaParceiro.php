@@ -1,40 +1,17 @@
 <?php
 
-require_once ("class.Pessoa.php");
-require_once ("class.Profissional.php");
 
-class dentistaParceiro extends Profissional {
-  private $cro;
-  private $especialidade;
+require_once ("class.Pessoa.php");
+require_once ("class.Dentista.php");
+
+class dentistaParceiro extends Dentista {
   private $comissao;
   
-  public function __construct ($cro, $especialidade, $comissao, $nome, $telefone, $email, $CPF) {
-    $this-> cro = $cro;
-    $this-> especialidade = $especialidade;
-    $this-> comissao = $comissao;
-    $this->nome = $nome;
-    $this->telefone = $telefone;
-    $this->email = $email;
-    $this->CPF = $CPF;
+  public function __construct ($cro, $especialidade, $nome, $telefone, $email, $CPF, $endereco, $comissao) {
+    parent::__construct($cro, $especialidade, $nome, $telefone, $email, $CPF, $endereco);
+    $this->comissao = $comissao;
   }
   
-  
-  public function getCro() {
-    return $this-> cro;
-  }
-
-  public function setCro($cro) {
-    $this-> cro = $cro;
-  }
-  
-  public function getEspecialidade() {
-    return $this-> especialidade;
-  }
-
-  public function setEspecialidade($especialidade) {
-    $this-> especialidade = $especialidade;
-  }
-
   public function getComissao() {
     return $this-> comissao;
   }

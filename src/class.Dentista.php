@@ -1,15 +1,15 @@
 <?php
 
-require_once("class.Funcionario.php");
+require_once("class.Profissional.php");
 
-class Dentista extends Funcionario
+class Dentista extends Profissional
 {
-  private string $cro;
-  private array $especialidade;
+  protected string $cro;
+  protected array $especialidade;
 
-  public function __construct(float $salario, string $cro, array $especialidade, string $nome, string $telefone, string $email, string $CPF, Endereco $endereco)
+  public function __construct(string $cro, array $especialidade, string $nome, string $telefone, string $email, string $CPF, Endereco $endereco)
   {
-    parent::__construct($salario, $nome, $telefone, $email, $CPF, $endereco);
+    parent::__construct($nome, $telefone, $email, $CPF, $endereco);
     $this->cro = $cro;
     $this->especialidade = $especialidade;
   }
