@@ -7,7 +7,7 @@ class Paciente extends Pessoa
 {
   private DateTime $dataNascimento;
   private Cliente $responsavelFinanceiro;
-  private array $tratamentos;
+  private array $tratamentos = array();
 
   public function __construct($nome, $telefone, $email, $CPF, $dataNascimento, Cliente $responsavelFinanceiro)
   {
@@ -26,7 +26,7 @@ class Paciente extends Pessoa
     $this->dataNascimento = $dataNascimento;
   }
 
-  public function getResponsavelFinanceiro(): CLiente
+  public function getResponsavelFinanceiro(): Cliente
   {
     return $this->responsavelFinanceiro;
   }
@@ -41,15 +41,20 @@ class Paciente extends Pessoa
     return $this->tratamentos;
   }
 
-  public function adicionarTratamento($tratamento)
+  public function adicionarOrcamento(Orcamento $orcamento)
   {
-    $this->tratamentos[] = $tratamento;
+    $this->tratamentos[$orcamento->getId()] = $orcamento;
   }
 
-  public function removerTratamento($indice)
+  public function aprovaOrcamento(string $id, FormaPagamento $forma)
   {
-    if (isset($this->tratamentos[$indice])) {
-      unset($this->tratamentos[$indice]);
+    $this->tratamentos[$id]->aprovaTratamento($forma);
+  }
+
+  public function removerTratamento(string $id)
+  {
+    if (isset($this->tratamentos[$id])) {
+      unset($this->tratamentos[$id]);
     }
   }
 }
