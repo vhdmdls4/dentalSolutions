@@ -1,60 +1,82 @@
 <?php
-    class Orcamento{
-        private Paciente $paciente;
-        private Dentista $dentistaResponsavel;
-        private DateTime $dataOrcamento;
-        private $procedimentos = array();
-        private float $valorTotal = 0;
-        private bool $tratamentoAprovado = false;
 
-        public function __construct(Paciente $p_paciente, Dentista $p_dentistaResponsavel, DateTime $p_dataOrcamento)
-        {
-            $this->$paciente = $p_paciente;
-            $this->$dentistaResponsavel = $p_dentistaResponsavel;
-            $this->$dataOrcamento = $p_dataOrcamento;
+class Orcamento
+{
+    private string $id;
+    private Paciente $paciente;
+    private Dentista $dentistaResponsavel;
+    private DateTime $dataOrcamento;
+    private array $procedimentos = array();
+    private float $valorTotal = 0;
+    private bool $tratamentoAprovado = false;
+    private Pagamento $pagamento;
 
-        }
-
-        public function changeTratamentoAprovado()
-        {
-            $this->$tratamentoAprovado = true;
-        }
-
-        public function addProcedimentos(Procedimentos $p_procedimentos, int $n_vezes)
-        {
-            $this->$valorTotal = $valorTotal + ($p_procedimentos->getValorUnitario * $n_vezes)    
-            for ($i = 1; ; $i++) {
-                if ($i > $n_vezes) {
-                    break;
-                }
-                array_push($this->$procedimentos, $p_procedimentos);
-            }
-        }
-        
-        public function getValorTotal()
-        {
-            return $this->$valorTotal;
-        }
-
-        public function getPaciente()
-        {
-            return $this->$paciente;
-        }
-        public function getDentistaResponsavel()
-        {
-            return $this->$dentistaResponsavel;
-        }
-        public function getDataOrcamento()
-        {
-            return $this->$dataOrcamento;
-        }
-        public function getTratamentoAprovado()
-        {
-            return $this->$tratamentoAprovado;
-        }
-
-        public function getProcedimentos()
-        {
-            return $this->$procedimentos;
-        }
+    public function __construct(string $id, Paciente $p_paciente, Dentista $p_dentistaResponsavel, DateTime $p_dataOrcamento)
+    {
+        $this->id = $id;
+        $this->paciente = $p_paciente;
+        $this->dentistaResponsavel = $p_dentistaResponsavel;
+        $this->dataOrcamento = $p_dataOrcamento;
     }
+
+    public function aprovaTratamento(Pagamento $pagamento)
+    {
+        $this->tratamentoAprovado = true;
+        $this->pagamento = $pagamento;
+    }
+
+    public function addProcedimentos(Procedimentos $p_procedimentos, int $n_vezes)
+    {
+        $this->valorTotal = $this->valorTotal + ($p_procedimentos->getValorUnitario() * $n_vezes);
+        array_push($this->procedimentos, $p_procedimentos);
+    }
+
+    public function valorParcelas(): float
+    {
+        return $this->valorTotal / $this->pagamento->getParcelas();
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    public function getValorTotal(): float
+    {
+        return $this->valorTotal;
+    }
+
+    public function getPaciente(): Paciente
+    {
+        return $this->paciente;
+    }
+    public function getDentistaResponsavel(): Dentista
+    {
+        return $this->dentistaResponsavel;
+    }
+    public function getDataOrcamento(): DateTime
+    {
+        return $this->dataOrcamento;
+    }
+    public function getTratamentoAprovado(): bool
+    {
+        return $this->tratamentoAprovado;
+    }
+
+    public function getProcedimentos(): array
+    {
+        return $this->procedimentos;
+    }
+
+    public function getPagamento(): Pagamento
+    {
+        return $this->pagamento;
+    }
+
+    public function setPagamento(Pagamento $pagamento)
+    {
+        $this->pagamento = $pagamento;
+    }
+}
+
+?>
