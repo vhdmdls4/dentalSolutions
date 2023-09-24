@@ -32,7 +32,7 @@ class Cliente extends Pessoa
 
     public function adicionaPaciente(Paciente $paciente)
     {
-        $this->pacientes[$paciente->$nome] = $paciente;
+        $this->pacientes[$paciente->getNome()] = $paciente;
     }
 
     public function removePaciente(string $nome)
