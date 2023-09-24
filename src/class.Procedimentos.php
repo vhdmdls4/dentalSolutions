@@ -1,17 +1,20 @@
 <?php
 
-class Procedimentos {
+class Procedimentos
+{
     protected $procedimento;
     protected $descricao;
-    protected $valorUnitario;
+    protected float $valorUnitario;
 
-    public function __construct($procedimento, $descricao, $valorUnitario) {
+    public function __construct($procedimento, $descricao, $valorUnitario)
+    {
         $this->procedimento = $procedimento;
         $this->descricao = $descricao;
         $this->valorUnitario = $valorUnitario;
     }
 
-    public function cadastrarProcedimento(){
+    public function cadastrarProcedimento()
+    {
         echo "Procedimento: ";
         $this->procedimento = trim(fgets(STDIN));
 
@@ -31,14 +34,15 @@ class Procedimentos {
         }
     }
 
-    public function salvarProcedimento($filename){
+    public function salvarProcedimento($filename)
+    {
         $data = "Procedimento: " . $this->procedimento . "\n";
         $data .= "Descrição: " . $this->descricao . "\n";
         $data .= "Valor Unitário: " . $this->valorUnitario . "\n";
         $data .= "\n";
 
-        $file = fopen($filename, "a"); 
-        if  ($file === false) {
+        $file = fopen($filename, "a");
+        if ($file === false) {
             echo "Não foi possível abrir o arquivo";
             return;
         }
@@ -50,13 +54,19 @@ class Procedimentos {
         }
 
         fclose($file);
-        
+
     }
 
-    public function exibeProcedimentos(){
+    public function exibeProcedimentos()
+    {
         echo "Procedimento: " . $this->procedimento . "\n";
         echo "Descrição: " . $this->descricao . "\n";
         echo "Valor Unitário: " . $this->valorUnitario . "\n";
+    }
+
+    public function getValorUnitario(): float
+    {
+        return $this->valorUnitario;
     }
 }
 
