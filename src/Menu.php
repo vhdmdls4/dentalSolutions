@@ -60,7 +60,7 @@ while (true) {
         flush();
     } else if ($opcao == 4) {
         include_once("class.Procedimentos.php");
-        $procedimento = new Procedimentos("", "", "");
+        $procedimento = new Procedimentos("", "", "", "");
         $procedimento->cadastrarProcedimento();
         $procedimento->salvarProcedimento("dataFiles/procedimento.txt");
     }
