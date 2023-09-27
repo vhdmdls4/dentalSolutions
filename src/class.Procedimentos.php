@@ -1,20 +1,19 @@
 <?php
 
-class Procedimentos
-{
+class Procedimentos {
     protected $procedimento;
     protected $descricao;
-    protected float $valorUnitario;
+    protected $valorUnitario;
+    protected $tempoEstimado;
 
-    public function __construct($procedimento, $descricao, $valorUnitario)
-    {
+    public function __construct($procedimento, $descricao, $valorUnitario, $tempoEstimado) {
         $this->procedimento = $procedimento;
         $this->descricao = $descricao;
         $this->valorUnitario = $valorUnitario;
+        $this->tempoEstimado = $tempoEstimado;
     }
 
-    public function cadastrarProcedimento()
-    {
+    public function cadastrarProcedimento(){
         echo "Procedimento: ";
         $this->procedimento = trim(fgets(STDIN));
 
@@ -32,17 +31,29 @@ class Procedimentos
                 echo "Por favor, insira apenas números para o valor unitário.\n";
             }
         }
+
+        while (true) {
+            echo "Tempo Estimado (em minutos): ";
+            $tempoEstimado = trim(fgets(STDIN));
+
+            if (is_numeric($tempoEstimado)) {
+                $this->tempoEstimado = $tempoEstimado;
+                break;
+            } else {
+                echo "Por favor, insira apenas números para o tempo estimado.\n";
+            }
+        }
     }
 
-    public function salvarProcedimento($filename)
-    {
+    public function salvarProcedimento($filename){
         $data = "Procedimento: " . $this->procedimento . "\n";
         $data .= "Descrição: " . $this->descricao . "\n";
         $data .= "Valor Unitário: " . $this->valorUnitario . "\n";
+        $data .= "Tempo Estimado: " . $this->tempoEstimado . "\n";
         $data .= "\n";
 
-        $file = fopen($filename, "a");
-        if ($file === false) {
+        $file = fopen($filename, "a"); 
+        if  ($file === false) {
             echo "Não foi possível abrir o arquivo";
             return;
         }
@@ -54,19 +65,14 @@ class Procedimentos
         }
 
         fclose($file);
-
+        
     }
 
-    public function exibeProcedimentos()
-    {
+    public function exibeProcedimentos(){
         echo "Procedimento: " . $this->procedimento . "\n";
         echo "Descrição: " . $this->descricao . "\n";
-        echo "Valor Unitário: " . $this->valorUnitario . "\n";
-    }
-
-    public function getValorUnitario(): float
-    {
-        return $this->valorUnitario;
+        echo "Valor Unitário: R$" . $this->valorUnitario . "\n";
+        echo "Tempo Estimado: " . $this->tempoEstimado . "min.\n";
     }
 }
 
