@@ -78,9 +78,3 @@ class Orcamento
         $this->pagamento = $pagamento;
     }
 }
-
-<<<<<<< HEAD
-?>
-=======
-?>
->>>>>>> 1707faaa7c34c7cfa2dc1a92493e4fd0df08f2b6
