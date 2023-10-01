@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Consulta
 {
@@ -7,9 +7,9 @@ class Consulta
     private Dentista $dentistaExecutor;
     private DateTime $data;
     private DateTime $horario;
-    private Int $duracao;
+    private int $duracao;
 
-    public function __construct(Procedimentos $procedimento, Paciente $paciente, Dentista $dentistaExecutor, DateTime $data, DateTime $horario, Int $duracao)
+    public function __construct(Procedimentos $procedimento, Paciente $paciente, Dentista $dentistaExecutor, DateTime $data, DateTime $horario, int $duracao)
     {
         $this->procedimento = $procedimento;
         $this->paciente = $paciente;
@@ -19,32 +19,32 @@ class Consulta
         $this->duracao = $duracao;
     }
 
-    public function getProcedimento() : Procedimentos
+    public function getProcedimento(): Procedimentos
     {
         return $this->procedimento;
     }
 
-    public function getPaciente() : Paciente
+    public function getPaciente(): Paciente
     {
         return $this->paciente;
     }
 
-    public function getDentistaExecutor() : Dentista
+    public function getDentistaExecutor(): Dentista
     {
         return $this->dentistaExecutor;
     }
 
-    public function getData() : DateTime
+    public function getData(): DateTime
     {
         return $this->data;
     }
 
-    public function getHorario() : DateTime
+    public function getHorario(): DateTime
     {
         return $this->horario;
     }
 
-    public function getDuracao() : Int
+    public function getDuracao(): int
     {
         return $this->duracao;
     }
@@ -74,7 +74,7 @@ class Consulta
         $this->horario = $horario;
     }
 
-    public function setDuracao(Int $duracao)
+    public function setDuracao(int $duracao)
     {
         $this->duracao = $duracao;
     }
