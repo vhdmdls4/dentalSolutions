@@ -1,5 +1,7 @@
 <?php
 
+require_once("class.Procedimentos.php");
+
 class Orcamento
 {
     private string $id;
@@ -10,13 +12,21 @@ class Orcamento
     private float $valorTotal = 0;
     private bool $tratamentoAprovado = false;
     private Pagamento $pagamento;
+    private string $descricao;
+    private array $consultas = array();
 
-    public function __construct(string $id, Paciente $p_paciente, Dentista $p_dentistaResponsavel, DateTime $p_dataOrcamento)
+    public function __construct(string $id, Paciente $paciente, Dentista $dentistaResponsavel, DateTime $dataOrcamento, array $procedimentos, float $valorTotal, Pagamento $pagamento, string $descricao, array $consultas)
     {
         $this->id = $id;
-        $this->paciente = $p_paciente;
-        $this->dentistaResponsavel = $p_dentistaResponsavel;
-        $this->dataOrcamento = $p_dataOrcamento;
+        $this->paciente = $paciente;
+        $this->dentistaResponsavel = $dentistaResponsavel;
+        $this->dataOrcamento = $dataOrcamento;
+        $this->procedimentos = $procedimentos;
+        $this->valorTotal = $valorTotal;
+        $this->pagamento = $pagamento;
+        $this->descricao = $descricao;
+        $this->consultas = $consultas;
+        
     }
 
     public function aprovaTratamento(Pagamento $pagamento)
@@ -25,10 +35,16 @@ class Orcamento
         $this->pagamento = $pagamento;
     }
 
-    public function addProcedimentos(Procedimentos $p_procedimentos, int $n_vezes)
+    public function addProcedimentos(Procedimentos $procedimentos, int $n_vezes)
     {
-        $this->valorTotal = $this->valorTotal + ($p_procedimentos->getValorUnitario() * $n_vezes);
-        array_push($this->procedimentos, $p_procedimentos);
+        $this->valorTotal += ($procedimentos->getValorUnitario() * $n_vezes);
+        array_push($this->procedimentos, $procedimentos);
+    }
+
+    public function delProcedimento(Procedimentos $procedimento)
+    {
+        $this->valorTotal -= $procedimento->getValorUnitario();
+        array_diff($this->procedimentos, $procedimento);
     }
 
     public function valorParcelas(): float
@@ -76,5 +92,30 @@ class Orcamento
     public function setPagamento(Pagamento $pagamento)
     {
         $this->pagamento = $pagamento;
+    }
+
+    public function getDescricao(): string
+    {
+        return $this->descricao;
+    }
+
+    public function setDescricao(string $descricao)
+    {
+        $this->descricao = $descricao;
+    }
+
+    public function getConsultas(): array
+    {
+        return $this->consultas;
+    }
+
+    public function addConsulta(Consulta $consulta)
+    {
+        array_push($this->consultas, $consulta);
+    }
+
+    public function delConsulta(Consulta $consulta)
+    {
+        array_diff($this->consultas, $consulta);
     }
 }
