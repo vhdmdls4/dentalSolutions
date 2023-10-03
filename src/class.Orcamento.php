@@ -26,7 +26,7 @@ class Orcamento
         $this->pagamento = $pagamento;
         $this->descricao = $descricao;
         $this->consultas = $consultas;
-        
+
     }
 
     public function aprovaTratamento(Pagamento $pagamento)
@@ -35,9 +35,9 @@ class Orcamento
         $this->pagamento = $pagamento;
     }
 
-    public function addProcedimentos(Procedimentos $procedimentos, int $n_vezes)
+    public function addProcedimentos(Procedimentos $procedimentos)
     {
-        $this->valorTotal += ($procedimentos->getValorUnitario() * $n_vezes);
+        $this->valorTotal += ($procedimentos->getValorUnitario());
         array_push($this->procedimentos, $procedimentos);
     }
 
