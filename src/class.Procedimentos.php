@@ -6,6 +6,38 @@ class Procedimentos {
     protected $valorUnitario;
     protected $tempoEstimado;
 
+    public function getProcedimento(){
+        return $this->procedimento;
+    }
+
+    public function setProcedimento($procedimento){
+        $this->procedimento = $procedimento;
+    }
+
+    public function getDescricao(){
+        return $this->descricao;
+    }
+
+    public function setDescricao($descricao){
+        $this->descricao = $descricao;
+    }
+
+    public function getValorUnitario(){
+        return $this->valorUnitario;
+    }
+
+    public function setValorUnitario($valorUnitario){
+        $this->valorUnitario = $valorUnitario;
+    }
+
+    public function getTempoEstimado(){
+        return $this->tempoEstimado;
+    }
+
+    public function setTempoEstimado($tempoEstimado){
+        $this->tempoEstimado = $tempoEstimado;
+    }
+
     public function __construct($procedimento, $descricao, $valorUnitario, $tempoEstimado) {
         $this->procedimento = $procedimento;
         $this->descricao = $descricao;
