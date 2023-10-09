@@ -16,6 +16,9 @@ class Pagamento
         if ($forma == FormaPagamento::Dinheiro && $parcelas != 1) {
             $parcelas = 1;
         }
+        if ($parcelas > 6) {
+            $parcelas = 6;
+        }
         $this->forma = $forma;
         $this->parcelas = $parcelas;
     }

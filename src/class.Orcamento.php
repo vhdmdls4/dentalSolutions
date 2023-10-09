@@ -35,16 +35,16 @@ class Orcamento
         $this->pagamento = $pagamento;
     }
 
-    public function addProcedimentos(Procedimentos $procedimentos)
+    public function addProcedimento(Procedimentos $procedimento)
     {
-        $this->valorTotal += ($procedimentos->getValorUnitario());
-        array_push($this->procedimentos, $procedimentos);
+        $this->valorTotal += ($procedimento->getValorUnitario());
+        array_push($this->procedimentos, $procedimento);
     }
 
     public function delProcedimento(Procedimentos $procedimento)
     {
         $this->valorTotal -= $procedimento->getValorUnitario();
-        array_diff($this->procedimentos, $procedimento);
+        array_diff($this->procedimentos, $procedimento); // Confirmar se funciona assim mesmo.
     }
 
     public function valorParcelas(): float
@@ -116,6 +116,6 @@ class Orcamento
 
     public function delConsulta(Consulta $consulta)
     {
-        array_diff($this->consultas, $consulta);
+        array_diff($this->consultas, $consulta); // Confirmar se funciona assim mesmo.
     }
 }
