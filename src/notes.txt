@@ -1,0 +1,21 @@
+Design patterns
+
+- Atualização do valor do orçamento (diariamente ou com determinada frequência) com utilização do observer, subject e etc;
+- Facade: criar uma interface mais simples para criar orçamentos ou outros métodos com algumas dependências múltiplas, de forma a facilitar o acesso de outras camadas;
+    - vamos usar para controlar acesso do cliente aos métodos e classes;
+    - talvez cadastrar consulta;
+    - façade para todos os serviços para o front-end;
+    -
+
+- Singleton: só pode ter um usuário logado por vez;
+- Log: a classe de log está pronto;
+- 3.1 do Design patterns;
+
+- factory: regra de negócio complexa, dentro da classe fábrica ela terá as regras de negócio para gerar um determinado objeto para o
+-
+
+- próxima semana usar o singleton para a classe de usuário;
+
+- controller/services/model/view;
+
+www.refactoring.guru
