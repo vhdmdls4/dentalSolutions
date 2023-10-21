@@ -1,53 +1,74 @@
 <?php
 
-class Procedimentos {
-    protected $procedimento;
-    protected $descricao;
-    protected $valorUnitario;
-    protected $tempoEstimado;
+class Procedimentos
+{
+    private string $nome;
+    private string $descricao;
+    private float $valorUnitario;
+    private int $tempoEstimado;
+    private Especialidade $especialidade;
 
-    public function getProcedimento(){
-        return $this->procedimento;
+    public function __construct(string $procedimento, string $descricao, float $valorUnitario, int $tempoEstimado, Especialidade $especialidade)
+    {
+        $this->nome = $procedimento;
+        $this->descricao = $descricao;
+        $this->valorUnitario = $valorUnitario;
+        $this->tempoEstimado = $tempoEstimado;
+        $this->especialidade = $especialidade;
     }
 
-    public function setProcedimento($procedimento){
-        $this->procedimento = $procedimento;
+    public function getNome()
+    {
+        return $this->nome;
     }
 
-    public function getDescricao(){
+    public function setNome(string $procedimento)
+    {
+        $this->nome = $procedimento;
+    }
+
+    public function getDescricao(): string
+    {
         return $this->descricao;
     }
 
-    public function setDescricao($descricao){
+    public function setDescricao(string $descricao)
+    {
         $this->descricao = $descricao;
     }
 
-    public function getValorUnitario(){
+    public function getValorUnitario(): float
+    {
         return $this->valorUnitario;
     }
 
-    public function setValorUnitario($valorUnitario){
+    public function setValorUnitario(float $valorUnitario)
+    {
         $this->valorUnitario = $valorUnitario;
     }
 
-    public function getTempoEstimado(){
+    public function getTempoEstimado(): int
+    {
         return $this->tempoEstimado;
     }
 
-    public function setTempoEstimado($tempoEstimado){
+    public function setTempoEstimado(int $tempoEstimado)
+    {
         $this->tempoEstimado = $tempoEstimado;
     }
-
-    public function __construct($procedimento, $descricao, $valorUnitario, $tempoEstimado) {
-        $this->procedimento = $procedimento;
-        $this->descricao = $descricao;
-        $this->valorUnitario = $valorUnitario;
-        $this->tempoEstimado = $tempoEstimado;
+    public function getEspecialidade(): Especialidade
+    {
+        return $this->especialidade;
+    }
+    public function setEspecialidade(Especialidade $especialidade)
+    {
+        $this->especialidade = $especialidade;
     }
 
-    public function cadastrarProcedimento(){
+    public function cadastrarProcedimento()
+    {
         echo "Procedimento: ";
-        $this->procedimento = trim(fgets(STDIN));
+        $this->nome = trim(fgets(STDIN));
 
         echo "Descrição: ";
         $this->descricao = trim(fgets(STDIN));
@@ -77,15 +98,16 @@ class Procedimentos {
         }
     }
 
-    public function salvarProcedimento($filename){
-        $data = "Procedimento: " . $this->procedimento . "\n";
+    public function salvarProcedimento($filename)
+    {
+        $data = "Procedimento: " . $this->nome . "\n";
         $data .= "Descrição: " . $this->descricao . "\n";
         $data .= "Valor Unitário: " . $this->valorUnitario . "\n";
         $data .= "Tempo Estimado: " . $this->tempoEstimado . "\n";
         $data .= "\n";
 
-        $file = fopen($filename, "a"); 
-        if  ($file === false) {
+        $file = fopen($filename, "a");
+        if ($file === false) {
             echo "Não foi possível abrir o arquivo";
             return;
         }
@@ -97,15 +119,13 @@ class Procedimentos {
         }
 
         fclose($file);
-        
     }
 
-    public function exibeProcedimentos(){
-        echo "Procedimento: " . $this->procedimento . "\n";
+    public function exibeProcedimentos()
+    {
+        echo "Procedimento: " . $this->nome . "\n";
         echo "Descrição: " . $this->descricao . "\n";
         echo "Valor Unitário: R$" . $this->valorUnitario . "\n";
         echo "Tempo Estimado: " . $this->tempoEstimado . "min.\n";
     }
 }
-
-?>

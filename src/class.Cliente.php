@@ -15,7 +15,7 @@ class Cliente extends Pessoa
         $this->rg = $rg;
     }
 
-    public function getRg()
+    public function getRg(): string
     {
         return $this->rg;
     }
@@ -25,7 +25,7 @@ class Cliente extends Pessoa
         $this->rg = $novoRg;
     }
 
-    public function getPacientes()
+    public function getPacientes(): array
     {
         return $this->pacientes;
     }
@@ -40,5 +40,3 @@ class Cliente extends Pessoa
         unset($this->pacientes[$nome]);
     }
 }
-
-?>

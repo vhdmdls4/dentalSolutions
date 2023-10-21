@@ -8,12 +8,14 @@ class Paciente extends Pessoa
   private DateTime $dataNascimento;
   private Cliente $responsavelFinanceiro;
   private array $tratamentos = array();
+  private string $rg;
 
-  public function __construct($nome, $telefone, $email, $CPF, $dataNascimento, Cliente $responsavelFinanceiro)
+  public function __construct($nome, $telefone, $email, $CPF, $dataNascimento, Cliente $responsavelFinanceiro, string $rg)
   {
     parent::__construct($nome, $telefone, $email, $CPF);
     $this->dataNascimento = new DateTime($dataNascimento);
     $this->responsavelFinanceiro = $responsavelFinanceiro;
+    $this->rg = $rg;
   }
 
   public function getDataNascimento(): DateTime
@@ -39,6 +41,16 @@ class Paciente extends Pessoa
   public function getTratamentos(): array
   {
     return $this->tratamentos;
+  }
+
+  public function getRg(): string
+  {
+    return $this->rg;
+  }
+
+  public function setRg(string $rg)
+  {
+    $this->rg = $rg;
   }
 
   public function adicionarOrcamento(Orcamento $orcamento)

@@ -14,12 +14,12 @@ class Dentista extends Profissional
     $this->especialidade = $especialidade;
   }
 
-  public function setCro($cro)
+  public function setCro(string $cro)
   {
     $this->cro = $cro;
   }
 
-  public function getCro()
+  public function getCro(): string
   {
     return $this->cro;
   }

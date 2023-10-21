@@ -26,7 +26,6 @@ class Orcamento
         $this->pagamento = $pagamento;
         $this->descricao = $descricao;
         $this->consultas = $consultas;
-
     }
 
     public function aprovaTratamento(Pagamento $pagamento)
@@ -43,8 +42,12 @@ class Orcamento
 
     public function delProcedimento(Procedimentos $procedimento)
     {
+        $key = array_search($procedimento, $this->procedimentos);
+        if ($key === false) {
+            return;
+        }
         $this->valorTotal -= $procedimento->getValorUnitario();
-        array_diff($this->procedimentos, $procedimento); // Confirmar se funciona assim mesmo.
+        unset($this->procedimentos[$key]);
     }
 
     public function valorParcelas(): float
@@ -116,6 +119,10 @@ class Orcamento
 
     public function delConsulta(Consulta $consulta)
     {
-        array_diff($this->consultas, $consulta); // Confirmar se funciona assim mesmo.
+        $key = array_search($consulta, $this->consultas);
+        if ($key === false) {
+            return;
+        }
+        unset($this->consultas[$key]);
     }
 }
