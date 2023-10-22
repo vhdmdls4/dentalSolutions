@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class Endereco {
+class Endereco extends persist
+{
     private $rua;
     private $bairro;
     private $cep;
@@ -18,6 +19,11 @@ class Endereco {
         $this->numero = $numero;
         $this->cidade = $cidade;
         $this->estado = $estado;
+    }
+
+    static public function getFilename()
+    {
+        return 'enderecos.txt';
     }
 
     public function getRua()
@@ -79,7 +85,4 @@ class Endereco {
         echo "Estado: ";
         $this->estado = trim(fgets(STDIN));
     }
-    
 }
-
-?>

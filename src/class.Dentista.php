@@ -14,6 +14,11 @@ class Dentista extends Profissional
     $this->especialidade = $especialidade;
   }
 
+  static public function getFilename()
+  {
+    return 'dentistas.txt';
+  }
+
   public function setCro(string $cro)
   {
     $this->cro = $cro;

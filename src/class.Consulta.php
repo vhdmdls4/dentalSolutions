@@ -1,6 +1,6 @@
 <?php
 
-class Consulta
+class Consulta extends persist
 {
     private Procedimentos $procedimento;
     private Paciente $paciente;
@@ -17,6 +17,11 @@ class Consulta
         $this->data = $data;
         $this->horario = $horario;
         $this->duracao = $duracao;
+    }
+
+    static public function getFilename()
+    {
+        return 'consultas.txt';
     }
 
     public function getProcedimento(): Procedimentos
@@ -79,5 +84,3 @@ class Consulta
         $this->duracao = $duracao;
     }
 }
-
-?>

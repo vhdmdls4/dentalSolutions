@@ -10,6 +10,11 @@ class Paciente extends Pessoa
   private array $tratamentos = array();
   private string $rg;
 
+  static public function getFilename()
+  {
+    return 'pacientes.txt';
+  }
+
   public function __construct($nome, $telefone, $email, $CPF, $dataNascimento, Cliente $responsavelFinanceiro, string $rg)
   {
     parent::__construct($nome, $telefone, $email, $CPF);

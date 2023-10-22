@@ -14,6 +14,11 @@ abstract class Profissional extends Pessoa
     $this->endereco = $endereco;
   }
 
+  static public function getFilename()
+  {
+    return 'profissionais.txt';
+  }
+
   public function exibeEndereco()
   {
     echo "Rua: " . $this->endereco->getRua() . "\n";

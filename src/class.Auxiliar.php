@@ -4,7 +4,7 @@ require_once("class.Funcionario.php");
 
 class Auxiliar extends Funcionario
 {
-    
+
     // Sem atributos especificos para a classe no Sprint 1.
 
     /* Codigo desnecessario por enquanto ja que a classe nao possui atributos proprios e herda o construtor do pai.
@@ -22,9 +22,12 @@ class Auxiliar extends Funcionario
     ) {
         parent::__construct($nome, $telefone, $email, $cpf, $endereco, $salario);
     }
+
+    static public function getFilename()
+    {
+        return 'auxiliares.txt';
+    }
     
 
     }*/
 }
-
-?>

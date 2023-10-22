@@ -1,6 +1,6 @@
 <?php
 
-class Procedimentos
+class Procedimentos extends persist
 {
     private string $nome;
     private string $descricao;
@@ -15,6 +15,11 @@ class Procedimentos
         $this->valorUnitario = $valorUnitario;
         $this->tempoEstimado = $tempoEstimado;
         $this->especialidade = $especialidade;
+    }
+
+    static public function getFilename()
+    {
+        return 'procedimentos.txt';
     }
 
     public function getNome()

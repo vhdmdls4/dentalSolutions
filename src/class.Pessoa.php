@@ -1,53 +1,66 @@
 <?php
 
-class Pessoa {
+abstract class Pessoa extends persist
+{
     protected $nome;
     protected $telefone;
     protected $email;
     protected $CPF;
 
-    public function __construct($nome, $telefone, $email, $CPF) {
+    public function __construct($nome, $telefone, $email, $CPF)
+    {
         $this->nome = $nome;
         $this->telefone = $telefone;
         $this->email = $email;
         $this->CPF = $CPF;
     }
 
-    public function getNome() {
+    abstract static public function getFilename();
+
+    public function getNome()
+    {
         return $this->nome;
     }
 
-    public function setNome($nome) {
+    public function setNome($nome)
+    {
         $this->nome = $nome;
     }
 
-    public function getTelefone() {
+    public function getTelefone()
+    {
         return $this->telefone;
     }
 
-    public function setTelefone($telefone) {
+    public function setTelefone($telefone)
+    {
         $this->telefone = $telefone;
     }
 
-    public function getEmail() {
+    public function getEmail()
+    {
         return $this->email;
     }
 
-    public function setEmail($email) {
+    public function setEmail($email)
+    {
         $this->email = $email;
     }
 
-    public function getCPF() {
+    public function getCPF()
+    {
         return $this->CPF;
     }
 
-    public function setCPF($CPF) {
+    public function setCPF($CPF)
+    {
         $this->CPF = $CPF;
     }
 
-    public function validaCPF($CPF) {
+    public function validaCPF($CPF)
+    {
 
-        $CPF = preg_replace( '/[^0-9]/is', '', $CPF );
+        $CPF = preg_replace('/[^0-9]/is', '', $CPF);
 
         if (strlen($CPF) != 11) {
             return false;
@@ -67,17 +80,17 @@ class Pessoa {
             }
         }
         return true;
-    
     }
 
-    public function cadastrarPessoa() {
+    public function cadastrarPessoa()
+    {
         echo "Nome: ";
         $this->nome = trim(fgets(STDIN));
-        
+
         while (true) {
             echo "Telefone (apenas números): ";
             $telefone = trim(fgets(STDIN));
-            
+
             if (is_numeric($telefone)) {
                 $this->telefone = $telefone;
                 break;
@@ -86,7 +99,7 @@ class Pessoa {
             }
         }
 
-        while (true) { 
+        while (true) {
             echo "CPF (apenas números): ";
             $CPF = trim(fgets(STDIN));
 
@@ -100,9 +113,10 @@ class Pessoa {
 
         echo "e-mail: ";
         $this->email = trim(fgets(STDIN));
-    }    
+    }
 
-    public function exibirPessoa() {
+    public function exibirPessoa()
+    {
         $cpfFormatado = substr($this->CPF, 0, 3) . '.' . substr($this->CPF, 3, 3) . '.' . substr($this->CPF, 6, 3) . '-' . substr($this->CPF, 9, 2);
 
         echo "Nome: " . $this->nome . "\n";
@@ -111,7 +125,8 @@ class Pessoa {
         echo "e-mail: " . $this->email . "\n";
     }
 
-    public function salvarPessoa($filename) {
+    public function salvarPessoa($filename)
+    {
         $data = "Nome: " . $this->nome . "\n";
         $data .= "Telefone: " . $this->telefone . "\n";
         $data .= "CPF: " . $this->CPF . "\n";
@@ -123,16 +138,13 @@ class Pessoa {
             echo "Erro ao abrir o arquivo para escrita.";
             return;
         }
-    
+
         if (fwrite($file, $data) === false) {
             echo "Erro ao escrever no arquivo.";
         } else {
             echo "Cadastro concluído com sucesso.\n";
         }
-    
+
         fclose($file);
-    }    
-
+    }
 }
-
-?>

@@ -15,6 +15,11 @@ class Cliente extends Pessoa
         $this->rg = $rg;
     }
 
+    static public function getFilename()
+    {
+        return 'clientes.txt';
+    }
+
     public function getRg(): string
     {
         return $this->rg;

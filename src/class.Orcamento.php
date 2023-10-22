@@ -2,7 +2,7 @@
 
 require_once("class.Procedimentos.php");
 
-class Orcamento
+class Orcamento extends persist
 {
     private string $id;
     private Paciente $paciente;
@@ -26,6 +26,11 @@ class Orcamento
         $this->pagamento = $pagamento;
         $this->descricao = $descricao;
         $this->consultas = $consultas;
+    }
+
+    static public function getFilename()
+    {
+        return 'orcamentos.txt';
     }
 
     public function aprovaTratamento(Pagamento $pagamento)

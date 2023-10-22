@@ -6,7 +6,7 @@ enum FormaPagamento
     case Credito;
 }
 
-class Pagamento
+class Pagamento extends persist
 {
     private FormaPagamento $forma;
     private int $parcelas;
@@ -21,6 +21,11 @@ class Pagamento
         }
         $this->forma = $forma;
         $this->parcelas = $parcelas;
+    }
+
+    static public function getFilename()
+    {
+      return 'pagamentos.txt';
     }
 
     public function getForma(): FormaPagamento
@@ -49,5 +54,3 @@ class Pagamento
         $this->parcelas = $parcelas;
     }
 }
-
-?>

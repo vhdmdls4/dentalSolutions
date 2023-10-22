@@ -12,6 +12,11 @@ class Funcionario extends Profissional
     $this->salario = $salario;
   }
 
+  static public function getFilename()
+  {
+    return 'funcionarios.txt';
+  }
+
   public function setSalario(float $salario)
   {
     $this->salario = $salario;

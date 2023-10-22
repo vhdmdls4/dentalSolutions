@@ -14,6 +14,12 @@ class dentistaFuncionario extends Dentista
     $this->salario = $salario;
   }
 
+  //ver se é necessário
+  // static public function getFilename()
+  // {
+  //   return 'dentistas.txt';
+  // }
+
   public function getSalario(): float
   {
     return $this->salario;
