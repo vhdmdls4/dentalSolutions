@@ -53,7 +53,7 @@ class Paciente extends Pessoa
     $this->rg = $rg;
   }
 
-  public function adicionarOrcamento(Orcamento $orcamento)
+  public function addOrcamento(Orcamento $orcamento)
   {
     $this->tratamentos[$orcamento->getId()] = $orcamento;
   }
@@ -63,7 +63,7 @@ class Paciente extends Pessoa
     $this->tratamentos[$id]->aprovaTratamento($forma);
   }
 
-  public function removerTratamento(string $id)
+  public function delOrcamento(string $id)
   {
     if (isset($this->tratamentos[$id])) {
       unset($this->tratamentos[$id]);
