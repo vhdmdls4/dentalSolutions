@@ -15,12 +15,12 @@ class Paciente extends Pessoa
     return 'pacientes.txt';
   }
 
-  public function __construct($nome, $telefone, $email, $CPF, $dataNascimento, Cliente $responsavelFinanceiro, string $rg)
+  public function __construct($nome, $telefone, $email, $CPF, $dataNascimento, Cliente $responsavelFinanceiro)
   {
     parent::__construct($nome, $telefone, $email, $CPF);
     $this->dataNascimento = new DateTime($dataNascimento);
     $this->responsavelFinanceiro = $responsavelFinanceiro;
-    $this->rg = $rg;
+    // $this->rg = $rg;
   }
 
   public function getDataNascimento(): DateTime
@@ -48,15 +48,15 @@ class Paciente extends Pessoa
     return $this->tratamentos;
   }
 
-  public function getRg(): string
-  {
-    return $this->rg;
-  }
+  // public function getRg(): string
+  // {
+  //   return $this->rg;
+  // }
 
-  public function setRg(string $rg)
-  {
-    $this->rg = $rg;
-  }
+  // public function setRg(string $rg)
+  // {
+  //   $this->rg = $rg;
+  // }
 
   public function addOrcamento(Orcamento $orcamento)
   {
