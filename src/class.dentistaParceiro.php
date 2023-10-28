@@ -6,12 +6,9 @@ require_once("class.Dentista.php");
 
 class dentistaParceiro extends Dentista
 {
-  private $comissao;
-
   public function __construct($cro, $especialidade, $nome, $telefone, $email, $CPF, $endereco, $comissao)
   {
     parent::__construct($cro, $especialidade, $nome, $telefone, $email, $CPF, $endereco);
-    $this->comissao = $comissao;
   }
 
   //ver se é necessário
@@ -20,14 +17,10 @@ class dentistaParceiro extends Dentista
   //   return 'dentistas.txt';
   // }
 
-  public function getComissao()
+  public function getComissao(Especialidade $especialidade): float
   {
-    return $this->comissao;
-  }
-
-  public function setComissao($comissao)
-  {
-    $this->comissao = $comissao;
+    $habilitacao = $this->habilitacoes[$especialidade->getNome()] ?? null;
+    return $habilitacao ? $habilitacao->getComissao() : 0.0;
   }
 
   public function exibirPessoa()
@@ -40,7 +33,6 @@ class dentistaParceiro extends Dentista
     echo "CPF: " . $cpfFormatado . "\n";
     echo "e-mail: " . $this->email . "\n";
     echo "Cro: " . $this->cro . "\n";
-    echo "Especialidade: " . $this->especialidade . "\n";
-    echo "Comissao: " . $this->comissao . "\n";
+    echo "Especialidades: " . $this->getEspecialidades() . "\n";
   }
 }

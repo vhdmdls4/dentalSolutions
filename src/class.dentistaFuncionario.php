@@ -40,7 +40,7 @@ class dentistaFuncionario extends Dentista
     echo "CPF: " . $cpfFormatado . "\n";
     echo "e-mail: " . $this->email . "\n";
     echo "Cro: " . $this->cro . "\n";
-    echo "Especialidade: " . $this->especialidade . "\n";
+    echo "Habilitacoes: " . $this->habilitacoes . "\n";
     echo "salario: " . $this->salario . "\n";
   }
 }
