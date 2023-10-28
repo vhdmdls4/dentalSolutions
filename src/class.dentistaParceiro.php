@@ -6,9 +6,9 @@ require_once("class.Dentista.php");
 
 class dentistaParceiro extends Dentista
 {
-  public function __construct($cro, $especialidade, $nome, $telefone, $email, $CPF, $endereco, $comissao)
+  public function __construct($cro, $nome, $telefone, $email, $CPF, $endereco)
   {
-    parent::__construct($cro, $especialidade, $nome, $telefone, $email, $CPF, $endereco);
+    parent::__construct($cro, $nome, $telefone, $email, $CPF, $endereco);
   }
 
   //ver se é necessário

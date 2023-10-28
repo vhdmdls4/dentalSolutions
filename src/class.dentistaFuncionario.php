@@ -8,9 +8,9 @@ class dentistaFuncionario extends Dentista
 {
   protected float $salario;
 
-  public function __construct($cro, $especialidade, $nome, $telefone, $email, $CPF, $endereco, $salario)
+  public function __construct($cro, $nome, $telefone, $email, $CPF, $endereco, $salario)
   {
-    parent::__construct($cro, $especialidade, $nome, $telefone, $email, $CPF, $endereco);
+    parent::__construct($cro, $nome, $telefone, $email, $CPF, $endereco);
     $this->salario = $salario;
   }
 
@@ -41,6 +41,6 @@ class dentistaFuncionario extends Dentista
     echo "e-mail: " . $this->email . "\n";
     echo "Cro: " . $this->cro . "\n";
     echo "Habilitacoes: " . $this->habilitacoes . "\n";
-    echo "salario: " . $this->salario . "\n";
+    echo "Salario: " . $this->salario . "\n";
   }
 }
