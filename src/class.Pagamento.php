@@ -4,6 +4,8 @@ enum FormaPagamento
 {
     case Dinheiro;
     case Credito;
+    case Debito;
+    case Pix;
 }
 
 class Pagamento extends persist
@@ -13,9 +15,10 @@ class Pagamento extends persist
 
     public function __construct(FormaPagamento $forma, int $parcelas = 1)
     {
-        if ($forma == FormaPagamento::Dinheiro && $parcelas != 1) {
+        if ($forma != FormaPagamento::Credito && $parcelas != 1) {
             $parcelas = 1;
         }
+        
         if ($parcelas > 6) {
             $parcelas = 6;
         }
@@ -40,7 +43,7 @@ class Pagamento extends persist
 
     public function setForma(FormaPagamento $forma)
     {
-        if ($forma == FormaPagamento::Dinheiro && $this->parcelas != 1) {
+        if ($forma != FormaPagamento::Credito && $this->parcelas != 1) {
             $this->parcelas = 1;
         }
         $this->forma = $forma;
@@ -48,7 +51,7 @@ class Pagamento extends persist
 
     public function setParcelas(int $parcelas)
     {
-        if ($this->forma == FormaPagamento::Dinheiro && $parcelas != 1) {
+        if ($this->forma != FormaPagamento::Credito && $parcelas != 1) {
             $parcelas = 1;
         }
         $this->parcelas = $parcelas;
