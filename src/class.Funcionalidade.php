@@ -1,6 +1,6 @@
 <?php
 
-class Funcionalidades {
+class Funcionalidade {
 
     protected string $nome;
     protected string $descricao;

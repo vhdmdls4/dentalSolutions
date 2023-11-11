@@ -23,12 +23,16 @@ class Perfil {
         $this->nomePerfil = $nomePerfil;
     }
 
-    public function addFuncionalidade(Funcionalidades $funcionalidade)
+    public function getFuncionalidades(){
+        return $this -> funcionalidades;
+    }
+
+    public function addFuncionalidade(Funcionalidade $funcionalidade)
     {
         array_push($this->funcionalidades, $funcionalidade);
     }
 
-    public function delFuncionalidade(Funcionalidades $funcionalidade)
+    public function delFuncionalidade(Funcionalidade $funcionalidade)
     {
     $key = array_search($funcionalidade, $this->funcionalidades);
         if ($key === false) {

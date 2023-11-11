@@ -35,12 +35,30 @@ $secretario = new Secretario("Henrique", "31999999999", "secrt@dentalsolutions.c
 
 */
 
+$funcionalidade1 = new Funcionalidade("Alterar Orcamento","Possivel de alterar o orcamento");
+$Dentista_teste = new Perfil("Dentista", []);
+var_dump($Dentista_teste);
+echo "  ||||||||||||||||||||||||||||||||||  ";
+
+$funcionalidade2 = new Funcionalidade("Agendar consulta","Permite agendar consultas no sistema");
+$Secretario_teste = new Perfil("Secretario", []);
+var_dump($Secretario_teste);
+echo "  ||||||||||||||||||||||||||||||||||  ";
+
+$Dentista_teste->addFuncionalidade($funcionalidade1);
+var_dump($Dentista_teste);
+echo "  ||||||||||||||||||||||||||||||||||  ";
+
+$Secretario_teste->addFuncionalidade($funcionalidade2);
+var_dump($Secretario_teste);
+echo "  ||||||||||||||||||||||||||||||||||  ";
+
 
 
 //Teste do login de um único Usuario
-$usuario = new Usuario("Henrique");
+$usuario = new Usuario("Henrique","123", "henrique@dentalsoutions.com", $Dentista_teste);
 
-$usuario2 = new Usuario("Ramon");
+$usuario2 = new Usuario("Ramon", "321", "ramon@dentalsolutions.com", $Secretario_teste);
 
 $login = Login::getInstance();
 $login->logar($usuario);
