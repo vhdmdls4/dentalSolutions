@@ -1,6 +1,6 @@
 <?php
 
-require_once("class.Funcionalidades.php");
+require_once("class.Funcionalidade.php");
 
 class Perfil {
 

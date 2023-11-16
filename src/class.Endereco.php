@@ -1,4 +1,5 @@
 <?php
+require_once("persist.php");
 
 class Endereco extends persist
 {

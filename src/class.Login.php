@@ -1,6 +1,6 @@
 <?php
 
-require_once "Usuario.php";
+require_once "class.Usuario.php";
 
 class Login {
 

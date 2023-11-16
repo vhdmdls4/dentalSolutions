@@ -1,14 +1,16 @@
 <?php
 
-require_once('../global.php');
-
+//require_once('../global.php');
+require_once("class.Endereco.php");
 // Criação das classes
 
 $end = new Endereco("Antonio Carlos", "Sao Luiz", "12312123", "Portaria 1", 123, "BH", "MG");
 
-$auxiliar = new Auxiliar("Ramon", "31912341234", "aux@dentalsolutions.com.br", "12312312312", "123123", $end);
+echo($end->getRua());
+ 
+$auxiliar = new Auxiliar("Jordan", "31912341234", "aux@dentalsolutions.com.br", "12312312312", "123123", $end);
 
-$cliente = new Cliente("Pedro", "31900000000", "cliente@gmail.com", "11111111111", "MG11111111");
+$cliente = new Cliente("KAJ", "31900000000", "cliente@gmail.com", "11111111111", "MG11111111");
 
 /*
 $consulta = new Consulta();
@@ -84,3 +86,4 @@ $login2->deslogar();
 
 var_dump($login); // necessário retornar Null, após $login2 ter sido deslogado
 
+?>
