@@ -1,14 +1,13 @@
 <?php
 
-
-require_once("class.Pessoa.php");
-require_once("class.Dentista.php");
-
 class dentistaParceiro extends Dentista
 {
+  private array $renda;
+
   public function __construct($cro, $nome, $telefone, $email, $CPF, $endereco)
   {
     parent::__construct($cro, $nome, $telefone, $email, $CPF, $endereco);
+    $this->renda = array();
   }
 
   //ver se é necessário
@@ -16,6 +15,39 @@ class dentistaParceiro extends Dentista
   // {
   //   return 'dentistas.txt';
   // }
+
+  public function addRenda(Procedimentos $procedimento, DateTime $data): void
+  {
+    $participacao = $this->getComissao($procedimento->getEspecialidade());
+    if (!isset($this->renda[$data->format('d/m/Y')])) {
+      $this->renda[$data->format('d/m/Y')] = $procedimento->getValorUnitario() * $participacao;
+    } else {
+      $this->renda[$data->format('d/m/Y')] += $procedimento->getValorUnitario() * $participacao;
+    }
+  }
+
+  public function getRenda(DateTime $dataInicial, DateTime $dataFinal = null): float
+  {
+    $renda = 0.0;
+    $data = clone $dataInicial;
+
+    if ($dataFinal) {
+      while ($data <= $dataFinal) {
+        $renda += $this->renda[$data->format('d/m/Y')] ?? 0.0;
+        $data->add(new DateInterval('P1D'));
+      }
+      return $renda;
+    }
+
+    $dataFinal = clone $dataInicial;
+    $dataFinal->add(new DateInterval('P1M'));
+
+    while ($data < $dataFinal) {
+      $renda += $this->renda[$data->format('d/m/Y')] ?? 0.0;
+      $data->add(new DateInterval('P1D'));
+    }
+    return $renda;
+  }
 
   public function getComissao(Especialidade $especialidade): float
   {

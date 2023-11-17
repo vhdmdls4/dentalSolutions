@@ -1,9 +1,5 @@
 <?php
 
-require_once("class.Pessoa.php");
-require_once("class.Paciente.php");
-
-
 class Cliente extends Pessoa
 {
     private string $rg;

@@ -1,7 +1,5 @@
 <?php
 
-require_once("class.Profissional.php");
-
 class Funcionario extends Profissional
 {
   private float $salario;

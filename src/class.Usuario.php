@@ -1,26 +1,25 @@
 <?php
 
-require_once("class.Perfil.php");
-
-class Usuario {
+class Usuario
+{
 
     protected string $login;
     protected string $senha;
     protected string $email;
-    protected Perfil $perfil; 
+    protected Perfil $perfil;
 
     public function __construct(string $login, string $senha, string $email, Perfil $perfil)
     {
-      $this-> login = $login;
-      $this-> senha = $senha;
-      $this-> email = $email;
-      $this-> perfil = $perfil;
+        $this->login = $login;
+        $this->senha = $senha;
+        $this->email = $email;
+        $this->perfil = $perfil;
     }
 
     public function getLogin(): string
     {
-        return $this-> login;
-    } 
+        return $this->login;
+    }
 
     public function setLogin(string $login)
     {
@@ -29,8 +28,8 @@ class Usuario {
 
     public function getSenha(): string
     {
-        return $this-> senha;
-    } 
+        return $this->senha;
+    }
 
     public function setSenha(string $senha)
     {
@@ -39,18 +38,11 @@ class Usuario {
 
     public function getEmail(): string
     {
-        return $this-> email;
-    } 
+        return $this->email;
+    }
 
     public function setEmail(string $email)
     {
         $this->email = $email;
     }
-
-
 }
-
-    
-
-
-?>

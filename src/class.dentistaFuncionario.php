@@ -1,9 +1,5 @@
 <?php
 
-
-require_once("class.Pessoa.php");
-require_once("class.Dentista.php");
-
 class dentistaFuncionario extends Dentista
 {
   protected float $salario;

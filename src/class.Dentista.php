@@ -1,7 +1,5 @@
 <?php
 
-require_once("class.Profissional.php");
-
 class Dentista extends Profissional
 {
   protected string $cro;

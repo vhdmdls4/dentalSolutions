@@ -1,14 +1,13 @@
 <?php
 
-//require_once('../global.php');
-require_once("class.Endereco.php");
+require_once('global.php');
 // Criação das classes
 
 $end = new Endereco("Antonio Carlos", "Sao Luiz", "12312123", "Portaria 1", 123, "BH", "MG");
 
-echo($end->getRua());
- 
-$auxiliar = new Auxiliar("Jordan", "31912341234", "aux@dentalsolutions.com.br", "12312312312", "123123", $end);
+echo ($end->getRua());
+
+$auxiliar = new Auxiliar(1.1, "31912341234", "aux@dentalsolutions.com.br", "12312312312", "123123", $end);
 
 $cliente = new Cliente("KAJ", "31900000000", "cliente@gmail.com", "11111111111", "MG11111111");
 
@@ -37,12 +36,12 @@ $secretario = new Secretario("Henrique", "31999999999", "secrt@dentalsolutions.c
 
 */
 
-$funcionalidade1 = new Funcionalidade("Alterar Orcamento","Possivel de alterar o orcamento");
+$funcionalidade1 = new Funcionalidade("Alterar Orcamento");
 $Dentista_teste = new Perfil("Dentista", []);
 var_dump($Dentista_teste);
 echo "  ||||||||||||||||||||||||||||||||||  ";
 
-$funcionalidade2 = new Funcionalidade("Agendar consulta","Permite agendar consultas no sistema");
+$funcionalidade2 = new Funcionalidade("Agendar consulta");
 $Secretario_teste = new Perfil("Secretario", []);
 var_dump($Secretario_teste);
 echo "  ||||||||||||||||||||||||||||||||||  ";
@@ -58,7 +57,7 @@ echo "  ||||||||||||||||||||||||||||||||||  ";
 
 
 //Teste do login de um único Usuario
-$usuario = new Usuario("Henrique","123", "henrique@dentalsoutions.com", $Dentista_teste);
+$usuario = new Usuario("Henrique", "123", "henrique@dentalsoutions.com", $Dentista_teste);
 
 $usuario2 = new Usuario("Ramon", "321", "ramon@dentalsolutions.com", $Secretario_teste);
 
@@ -76,7 +75,7 @@ var_dump($login2);
 
 echo "||||||||||||||||||||||||||||||||||"; // ^^
 
-if($login === $login2){ // se $login for EXATAMENTE igual a $login2 (isso inclui mesmo endereço)
+if ($login === $login2) { // se $login for EXATAMENTE igual a $login2 (isso inclui mesmo endereço)
 
     echo "São iguais!\n"; // se isso for impresso, o login unico funcionou 
 
@@ -85,5 +84,3 @@ if($login === $login2){ // se $login for EXATAMENTE igual a $login2 (isso inclui
 $login2->deslogar();
 
 var_dump($login); // necessário retornar Null, após $login2 ter sido deslogado
-
-?>

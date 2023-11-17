@@ -2,7 +2,7 @@
 function autoloader($pClassName)
 {
     //echo __NAMESPACE__;
-    $path = __DIR__ . $pClassName . '.php';
+    $path = __DIR__ . '/' . $pClassName . '.php';
     if (is_file($path)) {
         include_once $path;
     } else {
