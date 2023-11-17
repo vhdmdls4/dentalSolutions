@@ -1,34 +1,39 @@
 <?php
 
-enum FormaPagamento
-{
-    case Dinheiro;
-    case Credito;
-    case Debito;
-    case Pix;
-}
-
 class Pagamento extends persist
 {
     private FormaPagamento $forma;
-    private int $parcelas;
+    private bool $pago;
+    private DateTime $data;
+    private float $valorFaturado;
+    private static float $impostos = 0.1;
 
-    public function __construct(FormaPagamento $forma, int $parcelas = 1)
+    public function __construct(FormaPagamento $forma, bool $pago, DateTime $data, float $valorFaturado)
     {
-        if ($forma != FormaPagamento::Credito && $parcelas != 1) {
-            $parcelas = 1;
-        }
-        
-        if ($parcelas > 6) {
-            $parcelas = 6;
-        }
         $this->forma = $forma;
-        $this->parcelas = $parcelas;
+        $this->pago = $pago;
+        $this->data = $data;
+        $this->valorFaturado = $valorFaturado;
     }
 
     static public function getFilename()
     {
-      return 'pagamentos.txt';
+        return 'pagamentos.txt';
+    }
+
+    public function calculaImposto(): float
+    {
+        return $this->valorFaturado * self::$impostos;
+    }
+
+    public function calculaTaxa(): float
+    {
+        return $this->valorFaturado * $this->forma->getTaxa();
+    }
+
+    public function calculaReceita(): float
+    {
+        return $this->valorFaturado - $this->calculaImposto() - $this->calculaTaxa();
     }
 
     public function getForma(): FormaPagamento
@@ -36,24 +41,48 @@ class Pagamento extends persist
         return $this->forma;
     }
 
-    public function getParcelas(): int
+    public function getPago(): bool
     {
-        return $this->parcelas;
+        return $this->pago;
     }
 
-    public function setForma(FormaPagamento $forma)
+    public function getData(): DateTime
     {
-        if ($forma != FormaPagamento::Credito && $this->parcelas != 1) {
-            $this->parcelas = 1;
-        }
+        return $this->data;
+    }
+
+    public function getValorFaturado(): float
+    {
+        return $this->valorFaturado;
+    }
+
+    public function getImpostos(): float
+    {
+        return self::$impostos;
+    }
+
+    public function setForma(FormaPagamento $forma): void
+    {
         $this->forma = $forma;
     }
 
-    public function setParcelas(int $parcelas)
+    public function setPago(bool $pago): void
     {
-        if ($this->forma != FormaPagamento::Credito && $parcelas != 1) {
-            $parcelas = 1;
-        }
-        $this->parcelas = $parcelas;
+        $this->pago = $pago;
+    }
+
+    public function setData(DateTime $data): void
+    {
+        $this->data = $data;
+    }
+
+    public function setValorFaturado(float $valorFaturado): void
+    {
+        $this->valorFaturado = $valorFaturado;
+    }
+
+    public function setImpostos(float $novoImposto): void
+    {
+        self::$impostos = $novoImposto;
     }
 }

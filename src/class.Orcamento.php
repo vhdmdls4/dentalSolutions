@@ -55,7 +55,7 @@ class Orcamento extends persist
 
     public function valorParcelas(): float
     {
-        return $this->valorTotal / $this->pagamento->getParcelas();
+        return $this->valorTotal / $this->pagamento->getForma()->getParcelas();
     }
 
     public function getId(): string
