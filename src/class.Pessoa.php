@@ -2,12 +2,12 @@
 
 abstract class Pessoa extends persist
 {
-    protected $nome;
-    protected $telefone;
-    protected $email;
-    protected $CPF;
+    protected string $nome;
+    protected string $telefone;
+    protected string $email;
+    protected string $CPF;
 
-    public function __construct($nome, $telefone, $email, $CPF)
+    public function __construct(string $nome, string $telefone, string $email, string $CPF)
     {
         $this->nome = $nome;
         $this->telefone = $telefone;
@@ -17,47 +17,47 @@ abstract class Pessoa extends persist
 
     abstract static public function getFilename();
 
-    public function getNome()
+    public function getNome(): string
     {
         return $this->nome;
     }
 
-    public function setNome($nome)
+    public function setNome(string $nome)
     {
         $this->nome = $nome;
     }
 
-    public function getTelefone()
+    public function getTelefone(): string
     {
         return $this->telefone;
     }
 
-    public function setTelefone($telefone)
+    public function setTelefone(string $telefone)
     {
         $this->telefone = $telefone;
     }
 
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
 
-    public function setEmail($email)
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }
 
-    public function getCPF()
+    public function getCPF(): string
     {
         return $this->CPF;
     }
 
-    public function setCPF($CPF)
+    public function setCPF(string $CPF)
     {
         $this->CPF = $CPF;
     }
 
-    public function validaCPF($CPF)
+    public function validaCPF(string $CPF): bool
     {
 
         $CPF = preg_replace('/[^0-9]/is', '', $CPF);

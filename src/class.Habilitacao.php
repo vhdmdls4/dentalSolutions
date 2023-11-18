@@ -1,13 +1,13 @@
 <?php
 
-class Habilitacao extends persist
+class Habilitacao
 {
     private Especialidade $especialidade;
     private float $comissao;
 
-    public function __construct(Especialidade $especialidade, float $comissao = 1.0)
+    public function __construct(Especialidade $especialidade, float $comissao = 0.0)
     {
-        // Caso nao seja informada a comissao, como para o dentista funcionario, a comissão será 1.0.
+        // Caso nao seja informada a comissao, como para o dentista funcionario, a comissão será 0.0.
         $this->especialidade = $especialidade;
         $this->comissao = $comissao;
     }
@@ -26,9 +26,5 @@ class Habilitacao extends persist
     public function setComissao(float $comissao)
     {
         $this->comissao = $comissao;
-    }
-    static public function getFilename()
-    {
-        return 'habilitacoes.txt';
     }
 }

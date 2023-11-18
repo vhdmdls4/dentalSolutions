@@ -28,7 +28,7 @@ class Orcamento extends persist
 
     static public function getFilename()
     {
-        return 'orcamentos.txt';
+        return 'Orcamento.txt';
     }
 
     public function aprovaTratamento(Pagamento $pagamento)
@@ -37,13 +37,13 @@ class Orcamento extends persist
         $this->pagamento = $pagamento;
     }
 
-    public function addProcedimento(Procedimentos $procedimento)
+    public function addProcedimento(Procedimento $procedimento)
     {
         $this->valorTotal += ($procedimento->getValorUnitario());
         array_push($this->procedimentos, $procedimento);
     }
 
-    public function delProcedimento(Procedimentos $procedimento)
+    public function delProcedimento(Procedimento $procedimento)
     {
         $key = array_search($procedimento, $this->procedimentos);
         if ($key === false) {

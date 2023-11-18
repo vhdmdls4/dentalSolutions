@@ -2,17 +2,12 @@
 
 abstract class Profissional extends Pessoa
 {
-  private $endereco;
+  private Endereco $endereco;
 
-  public function __construct($nome, $telefone, $email, $CPF, Endereco $endereco)
+  public function __construct(string $nome, string $telefone, string $email, string $CPF, Endereco $endereco)
   {
     parent::__construct($nome, $telefone, $email, $CPF);
     $this->endereco = $endereco;
-  }
-
-  static public function getFilename()
-  {
-    return 'profissionais.txt';
   }
 
   public function exibeEndereco()

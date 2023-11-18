@@ -6,7 +6,7 @@ class Pagamento extends persist
     private bool $pago;
     private DateTime $data;
     private float $valorFaturado;
-    private static float $impostos = 0.1;
+    private static float $impostos = 0.2;
 
     public function __construct(FormaPagamento $forma, bool $pago, DateTime $data, float $valorFaturado)
     {
@@ -18,7 +18,7 @@ class Pagamento extends persist
 
     static public function getFilename()
     {
-        return 'pagamentos.txt';
+        return 'Pagamento.txt';
     }
 
     public function calculaImposto(): float
@@ -61,27 +61,27 @@ class Pagamento extends persist
         return self::$impostos;
     }
 
-    public function setForma(FormaPagamento $forma): void
+    public function setForma(FormaPagamento $forma)
     {
         $this->forma = $forma;
     }
 
-    public function setPago(bool $pago): void
+    public function setPago(bool $pago)
     {
         $this->pago = $pago;
     }
 
-    public function setData(DateTime $data): void
+    public function setData(DateTime $data)
     {
         $this->data = $data;
     }
 
-    public function setValorFaturado(float $valorFaturado): void
+    public function setValorFaturado(float $valorFaturado)
     {
         $this->valorFaturado = $valorFaturado;
     }
 
-    public function setImpostos(float $novoImposto): void
+    public function setImpostos(float $novoImposto)
     {
         self::$impostos = $novoImposto;
     }

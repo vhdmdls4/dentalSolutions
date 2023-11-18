@@ -1,20 +1,18 @@
 <?php
 
-class dentistaFuncionario extends Dentista
+class DentistaFuncionario extends Dentista
 {
   protected float $salario;
 
-  public function __construct($cro, $nome, $telefone, $email, $CPF, $endereco, $salario)
+  public function __construct(string $cro, string $nome, string $telefone, string $email, string $CPF, Endereco $endereco, float $salario)
   {
     parent::__construct($cro, $nome, $telefone, $email, $CPF, $endereco);
     $this->salario = $salario;
   }
-
-  //ver se é necessário
-  // static public function getFilename()
-  // {
-  //   return 'dentistas.txt';
-  // }
+  static public function getFilename()
+  {
+    return 'DentistaFuncionario.txt';
+  }
 
   public function getSalario(): float
   {

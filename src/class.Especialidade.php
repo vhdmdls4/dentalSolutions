@@ -12,7 +12,7 @@ class Especialidade extends persist
 
     static public function getFilename()
     {
-        return 'especialidades.txt';
+        return 'Especialidade.txt';
     }
 
     public function getNome(): string

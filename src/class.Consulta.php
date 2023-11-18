@@ -2,14 +2,14 @@
 
 class Consulta extends persist
 {
-    private Procedimentos $procedimento;
+    private Procedimento $procedimento;
     private Paciente $paciente;
     private Dentista $dentistaExecutor;
     private DateTime $data;
     private DateTime $horario;
     private int $duracao;
 
-    public function __construct(Procedimentos $procedimento, Paciente $paciente, Dentista $dentistaExecutor, DateTime $data, DateTime $horario, int $duracao)
+    public function __construct(Procedimento $procedimento, Paciente $paciente, Dentista $dentistaExecutor, DateTime $data, DateTime $horario, int $duracao)
     {
         $this->procedimento = $procedimento;
         $this->paciente = $paciente;
@@ -21,10 +21,10 @@ class Consulta extends persist
 
     static public function getFilename()
     {
-        return 'consultas.txt';
+        return 'Consulta.txt';
     }
 
-    public function getProcedimento(): Procedimentos
+    public function getProcedimento(): Procedimento
     {
         return $this->procedimento;
     }
@@ -54,7 +54,7 @@ class Consulta extends persist
         return $this->duracao;
     }
 
-    public function setProcedimento(Procedimentos $procedimento)
+    public function setProcedimento(Procedimento $procedimento)
     {
         $this->procedimento = $procedimento;
     }

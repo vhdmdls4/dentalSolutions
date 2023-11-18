@@ -1,6 +1,6 @@
 <?php
 
-class Dentista extends Profissional
+abstract class Dentista extends Profissional
 {
   protected string $cro;
   protected array $habilitacoes = array();
@@ -11,10 +11,7 @@ class Dentista extends Profissional
     $this->cro = $cro;
   }
 
-  static public function getFilename()
-  {
-    return 'dentistas.txt';
-  }
+  abstract static public function getFilename();
 
   public function setCro(string $cro)
   {

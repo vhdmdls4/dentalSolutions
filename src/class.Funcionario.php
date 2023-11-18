@@ -1,6 +1,6 @@
 <?php
 
-class Funcionario extends Profissional
+abstract class Funcionario extends Profissional
 {
   private float $salario;
 
@@ -8,11 +8,6 @@ class Funcionario extends Profissional
   {
     parent::__construct($nome, $telefone, $email, $CPF, $endereco);
     $this->salario = $salario;
-  }
-
-  static public function getFilename()
-  {
-    return 'funcionarios.txt';
   }
 
   public function setSalario(float $salario)

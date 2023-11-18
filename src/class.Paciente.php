@@ -1,8 +1,5 @@
 <?php
 
-require_once("class.Pessoa.php");
-require_once("class.Cliente.php");
-
 class Paciente extends Pessoa
 {
   private DateTime $dataNascimento;
@@ -12,10 +9,10 @@ class Paciente extends Pessoa
 
   static public function getFilename()
   {
-    return 'pacientes.txt';
+    return 'Paciente.txt';
   }
 
-  public function __construct($nome, $telefone, $email, $CPF, $dataNascimento, Cliente $responsavelFinanceiro, string $rg)
+  public function __construct(string $nome, string $telefone, string $email, string $CPF, string $dataNascimento, Cliente $responsavelFinanceiro, string $rg)
   {
     parent::__construct($nome, $telefone, $email, $CPF);
     $this->dataNascimento = new DateTime($dataNascimento);

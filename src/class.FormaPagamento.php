@@ -39,19 +39,19 @@ class FormaPagamento
     {
         return $this->taxa;
     }
-    public function setTipo(TipoPagamento $tipo): void
+    public function setTipo(TipoPagamento $tipo)
     {
         $this->tipo = $tipo;
     }
-    public function setParcelas(int $parcelas): void
+    public function setParcelas(int $parcelas)
     {
         $this->parcelas = $parcelas;
     }
-    public function setOperadora(string $operadora): void
+    public function setOperadora(string $operadora)
     {
         $this->operadora = $operadora;
     }
-    public function setTaxa(float $taxa): void
+    public function setTaxa(float $taxa)
     {
         $this->taxa = $taxa;
     }

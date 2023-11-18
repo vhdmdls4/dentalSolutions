@@ -1,30 +1,35 @@
 <?php
 
-require_once("class.Funcionalidade.php");
-
-class Perfil {
+class Perfil extends persist
+{
 
     private string $nomePerfil;
     private array $funcionalidades;
-    
+
     public function __construct(string $nomePerfil, array $funcionalidades)
     {
-      $this-> nomePerfil = $nomePerfil;
-      $this-> funcionalidades = $funcionalidades;
+        $this->nomePerfil = $nomePerfil;
+        $this->funcionalidades = $funcionalidades;
+    }
+
+    static public function getFilename()
+    {
+        return 'Perfil.txt';
     }
 
     public function getNomePerfil(): string
     {
-        return $this-> nomePerfil;
-    } 
+        return $this->nomePerfil;
+    }
 
     public function setNomePerfil(int $nomePerfil)
     {
         $this->nomePerfil = $nomePerfil;
     }
 
-    public function getFuncionalidades(){
-        return $this -> funcionalidades;
+    public function getFuncionalidades(): array
+    {
+        return $this->funcionalidades;
     }
 
     public function addFuncionalidade(Funcionalidade $funcionalidade)
@@ -34,13 +39,10 @@ class Perfil {
 
     public function delFuncionalidade(Funcionalidade $funcionalidade)
     {
-    $key = array_search($funcionalidade, $this->funcionalidades);
+        $key = array_search($funcionalidade, $this->funcionalidades);
         if ($key === false) {
             return;
         }
         unset($this->funcionalidades[$key]);
     }
 }
-
-
-?>

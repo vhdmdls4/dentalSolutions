@@ -1,6 +1,6 @@
 <?php
 
-class Usuario
+class Usuario extends persist
 {
 
     protected string $login;
@@ -14,6 +14,11 @@ class Usuario
         $this->senha = $senha;
         $this->email = $email;
         $this->perfil = $perfil;
+    }
+
+    static public function getFilename()
+    {
+        return 'Usuario.txt';
     }
 
     public function getLogin(): string

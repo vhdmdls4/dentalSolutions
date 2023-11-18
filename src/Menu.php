@@ -1,7 +1,9 @@
 <?php
 
-class Menu {
-    public function exibirMenu() {
+class Menu
+{
+    public function exibirMenu()
+    {
         echo "Menu:\n";
         echo "1. Consultar Pessoas\n";
         echo "2. Cadastrar Pessoa\n";
@@ -9,8 +11,9 @@ class Menu {
         echo "4. Cadastrar Procedimento\n";
         echo "0. Sair\n";
     }
-    
-    public function lerOpcao() {
+
+    public function lerOpcao()
+    {
         echo "Digite a opção desejada: ";
         $opcao = trim(fgets(STDIN));
         return $opcao;
@@ -26,7 +29,7 @@ while (true) {
     if ($opcao == 1) {
         $filename = "dataFiles/pessoa.txt";
         $pessoas = file_get_contents($filename);
-    
+
         if (empty($pessoas)) {
             echo "Não há cadastros.\n";
         } else {
@@ -34,7 +37,7 @@ while (true) {
             echo "\n";
             echo $pessoas;
         }
-    
+
         // Limpe o buffer de saída e force a exibição imediata
         flush();
     } else if ($opcao == 2) {
@@ -47,7 +50,7 @@ while (true) {
     } else if ($opcao == 3) {
         $filename = "dataFiles/procedimento.txt";
         $procedimentos = file_get_contents($filename);
-    
+
         if (empty($procedimentos)) {
             echo "Não há cadastros.\n";
         } else {
@@ -55,17 +58,16 @@ while (true) {
             echo "\n";
             echo $procedimentos;
         }
-    
+
         // Limpe o buffer de saída e force a exibição imediata
         flush();
     } else if ($opcao == 4) {
         include_once("class.Procedimentos.php");
         $especialidade = new Especialidade("");
-        $procedimento = new Procedimentos("", "", "", "", $especialidade);
+        $procedimento = new Procedimento("", "", "", "", $especialidade);
         $procedimento->cadastrarProcedimento();
         $procedimento->salvarProcedimento("dataFiles/procedimento.txt");
-    }
-    else {
+    } else {
         echo "Opção inválida.\n";
     }
 }

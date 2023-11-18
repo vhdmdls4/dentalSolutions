@@ -1,24 +1,24 @@
 <?php
 
-class Funcionalidade {
+class Funcionalidade
+{
 
-    protected string $nome;
+  protected string $nome;
 
-    public function __construct(string $nome)
+  public function __construct(string $nome)
   {
     $this->nome = $nome;
-
   }
 
   public function getNome(): string
-    {
-        return $this-> nome;
-    } 
+  {
+    return $this->nome;
+  }
 
-    public function setNomePerfil(int $nome)
-    {
-        $this->nome = $nome;
-    }
+  public function setNomePerfil(string $nome)
+  {
+    $this->nome = $nome;
+  }
 }
 
 //criacao de funcionalidades padrao
@@ -43,7 +43,4 @@ $excluir_cliente = new Funcionalidade("Cadastrar cliente");
 $alterar_cliente = new Funcionalidade("Alterar cliente");
 
 $entrar = new Funcionalidade("Entrar no sistema"); //se o login do usuario estiver no sistema, fazer login com a classe Login
-$sair = new Funcionalidade ("Sair do sistema"); //usar funcao deslogar de Login
-
-
-?>
+$sair = new Funcionalidade("Sair do sistema"); //usar funcao deslogar de Login

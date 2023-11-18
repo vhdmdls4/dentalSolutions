@@ -1,6 +1,6 @@
 <?php
 
-class Procedimentos extends persist
+class Procedimento extends persist
 {
     private string $nome;
     private string $descricao;
@@ -8,9 +8,9 @@ class Procedimentos extends persist
     private int $tempoEstimado;
     private Especialidade $especialidade;
 
-    public function __construct(string $procedimento, string $descricao, float $valorUnitario, int $tempoEstimado, Especialidade $especialidade)
+    public function __construct(string $nome, string $descricao, float $valorUnitario, int $tempoEstimado, Especialidade $especialidade)
     {
-        $this->nome = $procedimento;
+        $this->nome = $nome;
         $this->descricao = $descricao;
         $this->valorUnitario = $valorUnitario;
         $this->tempoEstimado = $tempoEstimado;
@@ -19,17 +19,17 @@ class Procedimentos extends persist
 
     static public function getFilename()
     {
-        return 'procedimentos.txt';
+        return 'Procedimento.txt';
     }
 
-    public function getNome()
+    public function getNome(): string
     {
         return $this->nome;
     }
 
-    public function setNome(string $procedimento)
+    public function setNome(string $nome)
     {
-        $this->nome = $procedimento;
+        $this->nome = $nome;
     }
 
     public function getDescricao(): string

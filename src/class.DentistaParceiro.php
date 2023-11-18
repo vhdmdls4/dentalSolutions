@@ -1,22 +1,21 @@
 <?php
 
-class dentistaParceiro extends Dentista
+class DentistaParceiro extends Dentista
 {
   private array $renda;
 
-  public function __construct($cro, $nome, $telefone, $email, $CPF, $endereco)
+  public function __construct(string $cro, string $nome, string $telefone, string $email,  string $CPF, Endereco $endereco)
   {
     parent::__construct($cro, $nome, $telefone, $email, $CPF, $endereco);
     $this->renda = array();
   }
 
-  //ver se é necessário
-  // static public function getFilename()
-  // {
-  //   return 'dentistas.txt';
-  // }
+  static public function getFilename()
+  {
+    return 'DentistaParceiro.txt';
+  }
 
-  public function addRenda(Procedimentos $procedimento, DateTime $data): void
+  public function addRenda(Procedimento $procedimento, DateTime $data)
   {
     $participacao = $this->getComissao($procedimento->getEspecialidade());
     if (!isset($this->renda[$data->format('d/m/Y')])) {
@@ -26,7 +25,7 @@ class dentistaParceiro extends Dentista
     }
   }
 
-  public function getRenda(DateTime $dataInicial, DateTime $dataFinal = null): float
+  public function getRenda(DateTime $dataInicial, DateTime|null $dataFinal = null): float
   {
     $renda = 0.0;
     $data = clone $dataInicial;

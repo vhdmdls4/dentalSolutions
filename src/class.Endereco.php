@@ -1,17 +1,16 @@
 <?php
-require_once("persist.php");
 
 class Endereco extends persist
 {
-    private $rua;
-    private $bairro;
-    private $cep;
-    private $complemento;
-    private $numero;
-    private $cidade;
-    private $estado;
+    private string $rua;
+    private string $bairro;
+    private string $cep;
+    private string $complemento;
+    private int $numero;
+    private string $cidade;
+    private string $estado;
 
-    public function __construct($rua, $bairro, $cep, $complemento, $numero, $cidade, $estado)
+    public function __construct(string $rua, string $bairro, string $cep, string $complemento, int $numero, string $cidade, string $estado)
     {
         $this->rua = $rua;
         $this->bairro = $bairro;
@@ -24,42 +23,77 @@ class Endereco extends persist
 
     static public function getFilename()
     {
-        return 'enderecos.txt';
+        return 'Endereco.txt';
     }
 
-    public function getRua()
+    public function getRua(): string
     {
         return $this->rua;
     }
 
-    public function getBairro()
+    public function getBairro(): string
     {
         return $this->bairro;
     }
 
-    public function getCep()
+    public function getCep(): string
     {
         return $this->cep;
     }
 
-    public function getComplemento()
+    public function getComplemento(): string
     {
         return $this->complemento;
     }
 
-    public function getNumero()
+    public function getNumero(): int
     {
         return $this->numero;
     }
 
-    public function getCidade()
+    public function getCidade(): string
     {
         return $this->cidade;
     }
 
-    public function getEstado()
+    public function getEstado(): string
     {
         return $this->estado;
+    }
+
+    public function setRua(string $rua)
+    {
+        $this->rua = $rua;
+    }
+
+    public function setBairro(string $bairro)
+    {
+        $this->bairro = $bairro;
+    }
+
+    public function setCep(string $cep)
+    {
+        $this->cep = $cep;
+    }
+
+    public function setComplemento(string $complemento)
+    {
+        $this->complemento = $complemento;
+    }
+
+    public function setNumero(int $numero)
+    {
+        $this->numero = $numero;
+    }
+
+    public function setCidade(string $cidade)
+    {
+        $this->cidade = $cidade;
+    }
+
+    public function setEstado(string $estado)
+    {
+        $this->estado = $estado;
     }
 
     public function cadastrarEndereco()
@@ -78,7 +112,7 @@ class Endereco extends persist
         $this->complemento = trim(fgets(STDIN));
 
         echo "Número: ";
-        $this->numero = trim(fgets(STDIN));
+        $this->numero = intval(trim(fgets(STDIN)));
 
         echo "Cidade: ";
         $this->cidade = trim(fgets(STDIN));
