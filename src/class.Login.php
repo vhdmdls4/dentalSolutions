@@ -33,4 +33,9 @@ class Login
     {
         $this->logado = null;
     }
+
+    public function getUsuarioLogado(): Usuario
+    {
+        return $this->logado;
+    }
 }

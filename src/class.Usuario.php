@@ -50,4 +50,14 @@ class Usuario extends persist
     {
         $this->email = $email;
     }
+
+    public function getPerfil(): Perfil
+    {
+        return $this->perfil;
+    }
+
+    public function setPerfil(Perfil $perfil)
+    {
+        $this->perfil = $perfil;
+    }
 }

@@ -44,3 +44,5 @@ $alterar_cliente = new Funcionalidade("Alterar cliente");
 
 $entrar = new Funcionalidade("Entrar no sistema"); //se o login do usuario estiver no sistema, fazer login com a classe Login
 $sair = new Funcionalidade("Sair do sistema"); //usar funcao deslogar de Login
+
+$criar_profissional = new Funcionalidade("Cadastrar profissional");
