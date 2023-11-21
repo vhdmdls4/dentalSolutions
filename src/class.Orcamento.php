@@ -52,7 +52,7 @@ class Orcamento extends persist
         $procedimentoMap = [
             'realizado' => $realizado,
             'dataConclusão' => $dataConclusão,
-            'procedimentoRealizado' => $procedimento
+            'procedimentoRealizado' => $procedimento,
         ];
         array_push($this->procedimentos, $procedimentoMap);
     }
@@ -64,7 +64,7 @@ class Orcamento extends persist
             $procedimentoData = [
                 'realizado' => $procedimento['realizado'],
                 'dataConclusao' => $procedimento['dataConclusao'],
-                'procedimentoRealizado' => $procedimento['procedimentoRealizado']->getNome(),
+                'procedimentoRealizado' => $procedimento['procedimentoRealizado'],
             ];
             $procedimentosData[] = $procedimentoData;
         }
