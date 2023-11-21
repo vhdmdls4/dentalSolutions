@@ -1,5 +1,6 @@
 <?php
 
+
 class Orcamento extends persist
 {
     private string $id;
@@ -13,8 +14,17 @@ class Orcamento extends persist
     private string $descricao;
     private array $consultas = array();
 
-    public function __construct(string $id, Paciente $paciente, Dentista $dentistaResponsavel, DateTime $dataOrcamento, array $procedimentos, float $valorTotal, Pagamento $pagamento, string $descricao, array $consultas)
-    {
+    public function __construct(
+        string $id,
+        Paciente $paciente,
+        Dentista $dentistaResponsavel,
+        DateTime $dataOrcamento,
+        array $procedimentos,
+        float $valorTotal,
+        Pagamento $pagamento,
+        string $descricao,
+        array $consultas
+    ) {
         $this->id = $id;
         $this->paciente = $paciente;
         $this->dentistaResponsavel = $dentistaResponsavel;
@@ -37,20 +47,38 @@ class Orcamento extends persist
         $this->pagamento = $pagamento;
     }
 
-    public function addProcedimento(Procedimento $procedimento)
+    public function addProcedimento(Procedimento $procedimento, bool $realizado, DateTime $dataConclusão)
     {
-        $this->valorTotal += ($procedimento->getValorUnitario());
-        array_push($this->procedimentos, $procedimento);
+        $procedimentoMap = [
+            'realizado' => $realizado,
+            'dataConclusão' => $dataConclusão,
+            'procedimentoRealizado' => $procedimento
+        ];
+        array_push($this->procedimentos, $procedimentoMap);
+    }
+
+    public function getProcedimentos(): array
+    {
+        $procedimentosData = [];
+        foreach ($this->procedimentos as $procedimento) {
+            $procedimentoData = [
+                'realizado' => $procedimento['realizado'],
+                'dataConclusao' => $procedimento['dataConclusao'],
+                'procedimentoRealizado' => $procedimento['procedimentoRealizado']->getNome(),
+            ];
+            $procedimentosData[] = $procedimentoData;
+        }
+        return $procedimentosData;
     }
 
     public function delProcedimento(Procedimento $procedimento)
     {
-        $key = array_search($procedimento, $this->procedimentos);
-        if ($key === false) {
-            return;
+        foreach ($this->procedimentos as $key => $procedimentoMap) {
+            if ($procedimentoMap['procedimentoRealizado'] === $procedimento) {
+                unset($this->procedimentos[$key]);
+                break;
+            }
         }
-        $this->valorTotal -= $procedimento->getValorUnitario();
-        unset($this->procedimentos[$key]);
     }
 
     public function valorParcelas(): float
@@ -83,11 +111,6 @@ class Orcamento extends persist
     public function getTratamentoAprovado(): bool
     {
         return $this->tratamentoAprovado;
-    }
-
-    public function getProcedimentos(): array
-    {
-        return $this->procedimentos;
     }
 
     public function getPagamento(): Pagamento
@@ -129,3 +152,131 @@ class Orcamento extends persist
         unset($this->consultas[$key]);
     }
 }
+
+/*
+$procedimentoObjeto1 = new Procedimento('limpeza', 'limpa', 32.3, 32);
+$procedimentoObjeto2 = new Procedimento('clareamento', 'limpa', 37.3, 10);
+$procedimentoObjeto3 = new Procedimento('transplante', 'limpa', 64.3, 50);
+$procedimentoObjeto4 = new Procedimento('remoção de dente', 'limpa', 22.3, 20);
+
+$dataAnterior = (new DateTime())->sub(new DateInterval('P10D'));
+$hoje = new DateTime();
+
+$procedimentos1 = [
+    [
+        'realizado' => true,
+        'dataConclusao' => $hoje,
+        'procedimentoRealizado' => $procedimentoObjeto1,
+    ],
+    [
+        'realizado' => false,
+        'dataConclusao' => $hoje,
+        'procedimentoRealizado' => $procedimentoObjeto2,
+    ],
+];
+
+echo "<pre>";
+echo "<br><hr>";
+
+$procedimentos2 = [
+    [
+        'realizado' => true,
+        'dataConclusao' => $dataAnterior,
+        'procedimentoRealizado' => $procedimentoObjeto3
+    ],
+    [
+        'realizado' => true,
+        'dataConclusao' => $dataAnterior,
+        'procedimentoRealizado' => $procedimentoObjeto4
+    ],
+];
+
+$orcamento1 = new Orcamento($procedimentos1, 345);
+
+$orcamento2 = new Orcamento($procedimentos2, 245);
+
+function contarProcedimentosRealizados(array $procedimentos): int
+{
+    $realizados = array_filter($procedimentos, function ($procedimento) {
+        return $procedimento['realizado'] === true;
+    });
+
+    return count($realizados);
+}
+
+$totalRealizados1 = contarProcedimentosRealizados($procedimentos1);
+$totalRealizados2 = contarProcedimentosRealizados($procedimentos2);
+
+echo "Total de procedimentos realizados no primeiro array: $totalRealizados1\n";
+echo "<br>Total de procedimentos realizados no segundo array: $totalRealizados2\n";
+
+
+function filtrarPorIntervaloDeDatas(array $procedimentos, DateTime $dataInicio, DateTime $dataFim): array
+{
+    return array_filter($procedimentos, function ($procedimento) use ($dataInicio, $dataFim) {
+        $dataConclusao = $procedimento['dataConclusao'];
+        return $dataConclusao >= $dataInicio && $dataConclusao <= $dataFim;
+    });
+}
+
+
+$dataInicio = (new DateTime())->sub(new DateInterval('P7D'));
+$dataFim = new DateTime();
+
+$resultado1 = filtrarPorIntervaloDeDatas($procedimentos1, $dataInicio, $dataFim);
+$resultado2 = filtrarPorIntervaloDeDatas($procedimentos2, $dataInicio, $dataFim);
+
+echo "<br><br>Procedimentos no intervalo para o primeiro array: " . count($resultado1) . "\n";
+echo "<br>Procedimentos no intervalo para o segundo array: " . count($resultado2) . "\n";
+
+
+echo "<br><br>";
+
+echo "<hr>";
+
+?>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Procedimento</th>
+            <th>Realizado</th>
+            <th>Data de Conclusão</th>
+        </tr>
+    </thead>
+    <tbody id="tabelaProcedimentos">
+        <!-- Aqui serão inseridos os procedimentos -->
+    </tbody>
+</table>
+
+<button onclick="filtrarPorData('primeiro')">Filtrar por Primeira Data</button>
+<button onclick="filtrarPorData('segundo')">Filtrar por Segunda Data</button>
+
+<script>
+    function filtrarPorData(arraySelecionado) {
+        const tabela = document.getElementById('tabelaProcedimentos');
+        tabela.innerHTML = '';
+
+        let procedimentos;
+        if (arraySelecionado === 'primeiro') {
+            procedimentos = <?php echo json_encode($orcamento1->getProcedimentos()); ?>;
+        } else if (arraySelecionado === 'segundo') {
+            procedimentos = <?php echo json_encode($orcamento2->getProcedimentos()); ?>;
+        }
+
+        procedimentos.forEach(procedimento => {
+            const tr = document.createElement('tr');
+            const realizado = procedimento['realizado'] ? 'Sim' : 'Não';
+            const dataConclusao = new Date(procedimento['dataConclusao']).toLocaleDateString();
+
+            tr.innerHTML = `
+                <td>${procedimento['procedimentoRealizado']}</td>
+                <td>${realizado}</td>
+                <td>${dataConclusao}</td>
+            `;
+
+            tabela.appendChild(tr);
+        });
+    }
+</script>
+*/
