@@ -1,5 +1,6 @@
 <?php
 
+require_once('persist.php');
 abstract class Pessoa extends persist
 {
     protected string $nome;

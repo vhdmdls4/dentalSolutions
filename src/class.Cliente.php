@@ -1,5 +1,7 @@
 <?php
 
+require_once 'class.Pessoa.php';
+
 class Cliente extends Pessoa
 {
     private string $rg;
@@ -8,7 +10,16 @@ class Cliente extends Pessoa
     public function __construct(string $nome, string $telefone, string $email, string $cpf, string $rg)
     {
         parent::__construct($nome, $telefone, $email, $cpf);
-        $this->rg = $rg;
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            throw new Exception("Formato de email inválido");
+        }
+
+        if (!$this->validaCpf($cpf)) {
+            throw new Exception("CPF Inválido");
+        }
+        //remove todos valores que não são dígitos
+        $this->rg = preg_replace('/[^0-9]/', '', $rg);
     }
 
     static public function getFilename()
@@ -41,3 +52,5 @@ class Cliente extends Pessoa
         unset($this->pacientes[$nome]);
     }
 }
+
+$cliente = new Cliente('Fulano', '12345-6789', 'fulano@email.com', '127.185.870-32', '');
