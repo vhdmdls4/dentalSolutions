@@ -1,0 +1,17 @@
+{
+    "name": "vhdua/dental-solutions",
+    "autoload": {
+        "psr-4": {
+            "Vhdua\\DentalSolutions\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Victor Hugo",
+            "email": "victor.hugo@omnilogic.ai"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^10.4"
+    }
+}

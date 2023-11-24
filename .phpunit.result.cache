@@ -1,0 +1,1 @@
+{"version":1,"defects":{"ClienteTest::testConstruct":8,"ClienteTest::testInvalidParameters":7,"ClienteTest::testInvalidCPF":7},"times":{"ClienteTest::testConstruct":0.017,"ClienteTest::testInvalidParameters":0.006,"ClienteTest::testInvalidCPF":0.003,"ClienteTest::testGetFilename":0.002}}
