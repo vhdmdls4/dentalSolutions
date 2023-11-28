@@ -68,8 +68,3 @@ class Cliente extends Pessoa
         unset($this->pacientes[$nome]);
     }
 }
-
-// $cliente = new Cliente('', '12345-6789', '53232@gmail.com', '664.504.930-70', 'asdsadsa');
-// $cliente->save();
-// echo '<pre>';
-// print_r($cliente->getRecords());

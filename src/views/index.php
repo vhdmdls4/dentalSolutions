@@ -293,7 +293,7 @@
                   <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li><a href="/app/views/cadastrar_cliente.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Cliente</a>
                     </li>
-                    <li><a href="#" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Paciente</a>
+                    <li><a href="/app/views/cadastrar_paciente.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Paciente</a>
                     </li>
                     <li><a href="#" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Profissional</a></li>
                     <li><a href="#" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Returned</a>
