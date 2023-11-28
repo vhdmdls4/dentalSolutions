@@ -36,6 +36,10 @@ class Orcamento extends persist
         $this->consultas = $consultas;
     }
 
+    function __destruct() {
+        print "Destroying " . __CLASS__ . "\n";
+    }
+
     static public function getFilename()
     {
         return 'Orcamento.txt';
