@@ -9,6 +9,22 @@ class Cliente extends Pessoa
 
     public function __construct(string $nome, string $telefone, string $email, string $cpf, string $rg)
     {
+        $todosClientes = $this->getRecords();
+
+        foreach ($todosClientes as $clienteExistente) {
+            if ($clienteExistente->getEmail() === $email) {
+                throw new Exception("Já existe um cliente cadastrado com este email.");
+            }
+
+            if ($clienteExistente->getCpf() === $cpf) {
+                throw new Exception("Já existe um cliente cadastrado com este CPF.");
+            }
+
+            if ($clienteExistente->getRg() === $rg) {
+                throw new Exception("Já existe um cliente cadastrado com este RG.");
+            }
+        }
+
         parent::__construct($nome, $telefone, $email, $cpf);
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -18,8 +34,8 @@ class Cliente extends Pessoa
         if (!$this->validaCpf($cpf)) {
             throw new Exception("CPF Inválido");
         }
-        //remove todos valores que não são dígitos
-        $this->rg = preg_replace('/[^0-9]/', '', $rg);
+
+        $this->rg = $rg;
     }
 
     static public function getFilename()
@@ -53,4 +69,7 @@ class Cliente extends Pessoa
     }
 }
 
-$cliente = new Cliente('Fulano', '12345-6789', 'fulano@email.com', '127.185.870-32', '');
+// $cliente = new Cliente('', '12345-6789', '53232@gmail.com', '664.504.930-70', 'asdsadsa');
+// $cliente->save();
+// echo '<pre>';
+// print_r($cliente->getRecords());

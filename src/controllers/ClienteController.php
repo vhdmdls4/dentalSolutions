@@ -17,13 +17,20 @@ class ClienteController
 
       try {
         $cliente = new Cliente($nome, $telefone, $email, $cpf, $rg);
-        // Aqui você pode salvar o cliente no banco de dados ou fazer o que precisar com ele
+        $cliente->save();
 
-        echo 'Cliente criado com sucesso!';
-        echo "<pre> $cliente </pre>";
+        $clienteDetails = [
+          'nome' => $cliente->getNome(),
+          'telefone' => $cliente->getTelefone(),
+          'email' => $cliente->getEmail(),
+          'cpf' => $cliente->getCpf(),
+          'rg' => $cliente->getRg()
+        ];
+
+        echo json_encode(['titulo' => 'Cliente criado com sucesso', 'conteudo' => $clienteDetails]);
       } catch (Exception $e) {
-        // Aqui você pode lidar com erros na criação do cliente, como email ou CPF inválidos
-        echo 'Erro ao criar cliente: ' . $e->getMessage();
+        http_response_code(500);
+        echo json_encode(['error' => 'Erro ao criar cliente: ' . $e->getMessage()]);
       }
     }
   }
