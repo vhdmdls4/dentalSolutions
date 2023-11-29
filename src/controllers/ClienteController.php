@@ -28,7 +28,6 @@ class ClienteController
 
       echo json_encode(['titulo' => 'Cliente criado com sucesso', 'conteudo' => $clienteDetails]);
     } catch (Exception $e) {
-      http_response_code(500);
       echo json_encode(['error' => 'Erro ao criar cliente: ' . $e->getMessage()]);
     }
   }

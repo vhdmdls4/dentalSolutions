@@ -1,5 +1,7 @@
 <?php
 
+require_once 'class.Pessoa.php';
+
 class Paciente extends Pessoa
 {
   private DateTime $dataNascimento;
