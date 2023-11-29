@@ -64,9 +64,11 @@ export function handleFormSubmit(formId, controllerPath) {
     })
       .then((response) => response.json())
       .then((response) => {
+        console.log(response);
         if (response.error) {
           throw Error(response.error);
         }
+        console.log(response);
         const formattedData = JSON.stringify(response, null, 2);
         alert(`${response.titulo}\n${formattedData}`);
         document.getElementById(formId).reset();

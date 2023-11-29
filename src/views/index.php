@@ -32,6 +32,14 @@
       user-select: none;
     }
 
+    main {
+      overflow: visible !important;
+    }
+
+    #registrarPaciente {
+      padding-bottom: 5rem;
+    }
+
     @media (min-width: 768px) {
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
@@ -254,7 +262,7 @@
           <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="/app/views/index.php">
+                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="index.php">
                   <svg class="bi">
                     <use xlink:href="#house-fill" />
                   </svg>
@@ -291,9 +299,9 @@
                 </button>
                 <div class="collapse" id="orders-collapse">
                   <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="/app/views/cadastrar_cliente.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Cliente</a>
+                    <li><a href="cadastrar_cliente.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Cliente</a>
                     </li>
-                    <li><a href="/app/views/cadastrar_paciente.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Paciente</a>
+                    <li><a href="cadastrar_paciente.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Paciente</a>
                     </li>
                     <li><a href="#" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Profissional</a></li>
                     <li><a href="#" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Returned</a>
