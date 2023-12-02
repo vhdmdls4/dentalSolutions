@@ -22,7 +22,7 @@
     </div>
     <div class="mb-3">
       <label for="telefone" class="form-label">Telefone:</label>
-      <input type="text" class="form-control" id="telefone" name="telefone" title="Telefone" aria-label="Telefone" aria-placeholder="Digite aqui o seu telefone com o DDD e os nove dígitos" placeholder="Digite aqui o seu telefone com o DDD e os nove dígitos..." required>
+      <input type="text" class="form-control" id="telefone" name="telefone" title="Telefone" aria-label="Telefone" aria-placeholder="(Digite aqui o seu telefone com o DDD e os nove dígitos)" placeholder="Digite aqui o seu telefone com o DDD e os nove dígitos..." required>
     </div>
     <div class="mb-3">
       <label for="dataNascimento" class="form-label">Data de Nascimento</label>

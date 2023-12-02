@@ -13,6 +13,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
   </script>
+  <link rel="icon" href="assets/brand/DenteSoft.png" type="png">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
@@ -21,7 +22,7 @@
   <link href="./assets/sidebar.css" rel="stylesheet" />
   <link href="./assets/index.css" rel="stylesheet" />
 
-  <title>DentalSoft</title>
+  <title>DenteSoft</title>
 
   <style>
     .bd-placeholder-img {
@@ -32,15 +33,7 @@
       user-select: none;
     }
 
-    main {
-      overflow: visible !important;
-    }
-
-    #registrarPaciente {
-      padding-bottom: 5rem;
-    }
-
-    @media (min-width: 768px) {
+    @media (min-width: 800px) {
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
       }
@@ -109,6 +102,20 @@
     .bd-mode-toggle .dropdown-menu .active .bi {
       display: block !important;
     }
+
+    .slogan {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-top: auto;
+            font-size: x-small;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+    }
+
   </style>
 
 </head>
@@ -131,7 +138,7 @@
   </svg>
 
   <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+    <button class="btn bg-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
       <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
         <use href="#circle-half"></use>
       </svg>
@@ -225,9 +232,11 @@
   </svg>
 
   <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="#">DentalSoft</a>
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="/src/views/homeUpdt.php">
+        <img src="assets/brand/name.png" alt="Logo DenteSoft" width="auto" height="24">
+    </a>
 
-    <ul class="navbar-nav flex-row d-md-none">
+    <!--<ul class="navbar-nav flex-row d-md-none">
       <li class="nav-item text-nowrap">
         <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle search">
           <svg class="bi">
@@ -242,7 +251,7 @@
           </svg>
         </button>
       </li>
-    </ul>
+    </ul> -->
 
     <div id="navbarSearch" class="navbar-search w-100 collapse">
       <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search" />
@@ -261,28 +270,36 @@
           </div>
           <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
             <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="index.php">
+              <!--<li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="/src/views/home.php">
                   <svg class="bi">
                     <use xlink:href="#house-fill" />
                   </svg>
-                  Dashboard
+                  Menu Principal
                 </a>
-              </li>
+              </li>-->
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="#">
                   <svg class="bi">
                     <use xlink:href="#file-earmark" />
                   </svg>
-                  Orders
+                  Orçamentos
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2" href="simulacao_parcelas.php">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                  <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                </svg>
+                  Simulador de Tarifas
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="#">
                   <svg class="bi">
-                    <use xlink:href="#cart" />
+                    <use xlink:href="#file-earmark-text" />
                   </svg>
-                  Products
+                  Procedimentos
                 </a>
               </li>
               <li class="nav-item">
@@ -290,40 +307,57 @@
                   <svg class="bi">
                     <use xlink:href="#people" />
                   </svg>
-                  Customers
+                  Clientes
                 </a>
-              </li>
-              <li class="nav-item">
-                <button class="nav-link gap-2 btn-toggle-nav-chevron text-primary d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                  Cadastro
-                </button>
-                <div class="collapse" id="orders-collapse">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="cadastrar_cliente.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Cliente</a>
-                    </li>
-                    <li><a href="cadastrar_paciente.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Paciente</a>
-                    </li>
-                    <li><a href="#" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Profissional</a></li>
-                    <li><a href="#" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Returned</a>
-                    </li>
-                  </ul>
-                </div>
               </li>
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="#">
                   <svg class="bi">
                     <use xlink:href="#graph-up" />
                   </svg>
-                  Reports
+                  Relatórios
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="#">
-                  <svg class="bi">
-                    <use xlink:href="#puzzle" />
-                  </svg>
-                  Integrations
-                </a>
+                  <button class="nav-link gap-2 btn-toggle-nav-chevron text-primary d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#agenda-collapse" aria-expanded="false">
+                      <svg class="bi">
+                          <use xlink:href="#calendar3" />
+                      </svg>
+                      Agenda
+                  </button>
+                  <div class="collapse" id="agenda-collapse">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                          <li>
+                              <a href="/src/views/agenda.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Agenda Mensal</a>
+                          </li>
+                          <li>
+                              <a href="/src/views/agenda_dentista.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Agenda do Dentista</a>
+                          </li>
+                      </ul>
+                  </div>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link gap-2 btn-toggle-nav-chevron text-primary d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                </svg>
+                  Cadastro
+                </button>
+                <div class="collapse" id="orders-collapse">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="/src/views/cadastrar_cliente.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Cliente</a>
+                    </li>
+                    <li><a href="/src/views/cadastrar_funcionario.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Funcionário</a>
+                    </li>
+                    <li><a href="/src/views/cadastrar_paciente.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Paciente</a>
+                    </li>
+                    <li><a href="/src/views/cadastrar_procedimento.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Procedimento</a>
+                    </li>
+                    <li><a href="#" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Profissional</a></li>
+                    </li>
+                  </ul>
+                </div>
               </li>
             </ul>
 
@@ -378,18 +412,22 @@
                   <svg class="bi">
                     <use xlink:href="#gear-wide-connected" />
                   </svg>
-                  Settings
+                  Ajustes
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                <a class="nav-link d-flex align-items-center gap-2" href="loginTeste.php">
                   <svg class="bi">
                     <use xlink:href="#door-closed" />
                   </svg>
-                  Sign out
+                  Sair
                 </a>
               </li>
             </ul>
           </div>
         </div>
       </div>
+  
+  <div class="slogan">
+      <p>Transformando Sorrisos com Tecnologia</p>
+  </div>
