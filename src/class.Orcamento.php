@@ -3,16 +3,16 @@
 
 class Orcamento extends persist
 {
-    private string $id;
-    private Paciente $paciente;
-    private Dentista $dentistaResponsavel;
-    private DateTime $dataOrcamento;
-    private array $procedimentos = array();
-    private float $valorTotal = 0;
-    private bool $tratamentoAprovado = false;
-    private Pagamento $pagamento;
-    private string $descricao;
-    private array $consultas = array();
+    protected string $id;
+    protected Paciente $paciente;
+    protected Dentista $dentistaResponsavel;
+    protected DateTime $dataOrcamento;
+    protected array $procedimentos = array();
+    protected float $valorTotal = 0;
+    protected bool $tratamentoAprovado = false;
+    protected Pagamento $pagamento;
+    protected string $descricao;
+    protected array $consultas = array();
 
     public function __construct(
         string $id,
@@ -36,7 +36,8 @@ class Orcamento extends persist
         $this->consultas = $consultas;
     }
 
-    function __destruct() {
+    function __destruct()
+    {
         print "Destroying " . __CLASS__ . "\n";
     }
 

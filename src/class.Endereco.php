@@ -2,13 +2,13 @@
 
 class Endereco extends persist
 {
-    private string $rua;
-    private string $bairro;
-    private string $cep;
-    private string $complemento;
-    private int $numero;
-    private string $cidade;
-    private string $estado;
+    protected string $rua;
+    protected string $bairro;
+    protected string $cep;
+    protected string $complemento;
+    protected int $numero;
+    protected string $cidade;
+    protected string $estado;
 
     public function __construct(string $rua, string $bairro, string $cep, string $complemento, int $numero, string $cidade, string $estado)
     {

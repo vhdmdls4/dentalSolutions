@@ -2,11 +2,11 @@
 
 class DentistaParceiro extends Dentista
 {
-  private array $renda;
+  protected array $renda;
 
-  public function __construct(string $cro, string $nome, string $telefone, string $email,  string $CPF, Endereco $endereco)
+  public function __construct(string $cro, string $nome, string $telefone, string $email,  string $CPF, Endereco $endereco, Agenda $agenda)
   {
-    parent::__construct($cro, $nome, $telefone, $email, $CPF, $endereco);
+    parent::__construct($cro, $nome, $telefone, $email, $CPF, $endereco, $agenda);
     $this->renda = array();
   }
 
@@ -18,10 +18,10 @@ class DentistaParceiro extends Dentista
   public function addRenda(Procedimento $procedimento, DateTime $data)
   {
     $participacao = $this->getComissao($procedimento->getEspecialidade());
-    if (!isset($this->renda[$data->format('d/m/Y')])) {
-      $this->renda[$data->format('d/m/Y')] = $procedimento->getValorUnitario() * $participacao;
+    if (!isset($this->renda[$data->format('d/m/y')])) {
+      $this->renda[$data->format('d/m/y')] = $procedimento->getValorUnitario() * $participacao;
     } else {
-      $this->renda[$data->format('d/m/Y')] += $procedimento->getValorUnitario() * $participacao;
+      $this->renda[$data->format('d/m/y')] += $procedimento->getValorUnitario() * $participacao;
     }
   }
 
@@ -32,7 +32,7 @@ class DentistaParceiro extends Dentista
 
     if ($dataFinal) {
       while ($data <= $dataFinal) {
-        $renda += $this->renda[$data->format('d/m/Y')] ?? 0.0;
+        $renda += $this->renda[$data->format('d/m/y')] ?? 0.0;
         $data->add(new DateInterval('P1D'));
       }
       return $renda;
@@ -42,7 +42,7 @@ class DentistaParceiro extends Dentista
     $dataFinal->add(new DateInterval('P1M'));
 
     while ($data < $dataFinal) {
-      $renda += $this->renda[$data->format('d/m/Y')] ?? 0.0;
+      $renda += $this->renda[$data->format('d/m/y')] ?? 0.0;
       $data->add(new DateInterval('P1D'));
     }
     return $renda;

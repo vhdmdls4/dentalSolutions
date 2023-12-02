@@ -4,9 +4,9 @@ class DentistaFuncionario extends Dentista
 {
   protected float $salario;
 
-  public function __construct(string $cro, string $nome, string $telefone, string $email, string $CPF, Endereco $endereco, float $salario)
+  public function __construct(string $cro, string $nome, string $telefone, string $email, string $CPF, Endereco $endereco, Agenda $agenda, float $salario)
   {
-    parent::__construct($cro, $nome, $telefone, $email, $CPF, $endereco);
+    parent::__construct($cro, $nome, $telefone, $email, $CPF, $endereco, $agenda);
     $this->salario = $salario;
   }
   static public function getFilename()

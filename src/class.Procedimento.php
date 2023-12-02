@@ -2,11 +2,11 @@
 
 class Procedimento extends persist
 {
-    private string $nome;
-    private string $descricao;
-    private float $valorUnitario;
-    private int $tempoEstimado;
-    private Especialidade $especialidade;
+    protected string $nome;
+    protected string $descricao;
+    protected float $valorUnitario;
+    protected int $tempoEstimado;
+    protected Especialidade $especialidade;
 
     public function __construct(string $nome, string $descricao, float $valorUnitario, int $tempoEstimado, Especialidade $especialidade)
     {

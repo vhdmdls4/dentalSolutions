@@ -4,10 +4,10 @@ require_once 'class.Pessoa.php';
 
 class Paciente extends Pessoa
 {
-  private DateTime $dataNascimento;
-  private Cliente $responsavelFinanceiro;
-  private array $tratamentos = array();
-  private string $rg;
+  protected DateTime $dataNascimento;
+  protected Cliente $responsavelFinanceiro;
+  protected array $tratamentos = array();
+  protected string $rg;
 
   static public function getFilename()
   {

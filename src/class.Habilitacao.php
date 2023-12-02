@@ -2,8 +2,8 @@
 
 class Habilitacao
 {
-    private Especialidade $especialidade;
-    private float $comissao;
+    protected Especialidade $especialidade;
+    protected float $comissao;
 
     public function __construct(Especialidade $especialidade, float $comissao = 0.0)
     {

@@ -2,7 +2,7 @@
 
 abstract class Funcionario extends Profissional
 {
-  private float $salario;
+  protected float $salario;
 
   public function __construct(float $salario, string $nome, string $telefone, string $email, string $CPF, Endereco $endereco)
   {

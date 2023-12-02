@@ -89,92 +89,110 @@ $endereco16->save();
 
 /*------------------------------------------------------------AUXILIARES----------------------------------------------------------*/
 
-$auxiliar1 = new Auxiliar(1900.00, "João Silva", "aux1@dentalsolutions.com.br", "12312312312", "123.456.789-01", $endereco1);
+$auxiliar1 = new Auxiliar(1900.00, "João Silva", "aux1@dentalsolutions.com.br", "12312312312", "758.642.900-68", $endereco1);
 $auxiliar1->save();
 
-$auxiliar2 = new Auxiliar(2100.00, "Maria Santos", "aux2@dentalsolutions.com.br", "23423423423", "234.567.890-12", $endereco2);
+$auxiliar2 = new Auxiliar(2100.00, "Maria Santos", "aux2@dentalsolutions.com.br", "23423423423", "116.624.520-98", $endereco2);
 $auxiliar2->save();
 
-$auxiliar3 = new Auxiliar(2300.00, "Paulo Costa", "aux3@dentalsolutions.com.br", "34534534534", "345.678.901-23", $endereco3);
+$auxiliar3 = new Auxiliar(2300.00, "Paulo Costa", "aux3@dentalsolutions.com.br", "34534534534", "778.437.390-25", $endereco3);
 $auxiliar3->save();
 
-$auxiliar4 = new Auxiliar(2000.00, "Ana Pereira", "aux4@dentalsolutions.com.br", "45645645645", "456.789.012-34", $endereco4);
+$auxiliar4 = new Auxiliar(2000.00, "Ana Pereira", "aux4@dentalsolutions.com.br", "45645645645", "582.337.810-61", $endereco4);
 $auxiliar4->save();
 
 /*-----------------------------------------------------------SECRETARIOS----------------------------------------------------------*/
 
-$secretario1 = new Secretario(1500.00, "Lucas Souza", "sec1@dentalsolutions.com.br", "56756756756", "567.890.123-45", $endereco5);
+$secretario1 = new Secretario(1500.00, "Lucas Souza", "sec1@dentalsolutions.com.br", "56756756756", "127.048.120-71", $endereco5);
 $secretario1->save();
 
-$secretario2 = new Secretario(1600.00, "Camila Santos", "sec2@dentalsolutions.com.br", "67867867867", "678.901.234-56", $endereco6);
+$secretario2 = new Secretario(1600.00, "Camila Santos", "sec2@dentalsolutions.com.br", "67867867867", "398.028.840-49", $endereco6);
 $secretario2->save();
 
-$secretario3 = new Secretario(1700.00, "Ricardo Costa", "sec3@dentalsolutions.com.br", "78978978978", "789.012.345-67", $endereco7);
+$secretario3 = new Secretario(1700.00, "Ricardo Costa", "sec3@dentalsolutions.com.br", "78978978978", "105.307.860-95", $endereco7);
 $secretario3->save();
 
-$secretario4 = new Secretario(1650.00, "Patricia Pereira", "sec4@dentalsolutions.com.br", "89089089089", "890.123.456-78", $endereco8);
+$secretario4 = new Secretario(1650.00, "Patricia Pereira", "sec4@dentalsolutions.com.br", "89089089089", "077.898.200-95", $endereco8);
 $secretario4->save();
+
+/*-------------------------------------------------------------AGENDAS-------------------------------------------------------------*/
+
+$agenda1 = new Agenda("9:00-12:00", "13:00-18:00", "9:00-12:00, 13:30-17:00", "9:00-12:00, 13:30-17:00", "9:00-12:00, 13:30-17:00");
+
+$agenda2 = new Agenda("9:00-12:00", "13:00-18:00", "9:00-12:00, 13:30-17:00", "9:00-12:00, 13:30-17:00", "9:00-12:00, 13:30-17:00");
+
+$agenda3 = new Agenda("9:00-12:00", "13:00-18:00", "9:00-12:00, 13:30-17:00", "9:00-12:00, 13:30-17:00", "9:00-12:00, 13:30-17:00");
+
+$agenda4 = new Agenda("9:00-12:00", "13:00-18:00", "9:00-12:00, 13:30-17:00", "9:00-12:00, 13:30-17:00", "9:00-12:00, 13:30-17:00");
+
+$agenda5 = new Agenda("9:00-12:00", "13:00-18:00", "9:00-12:00, 13:30-17:00", "9:00-12:00, 13:30-17:00", "9:00-12:00, 13:30-17:00");
+
+$agenda6 = new Agenda("9:00-12:00", "13:00-18:00", "9:00-12:00, 13:30-17:00", "9:00-12:00, 13:30-17:00", "9:00-12:00, 13:30-17:00");
+
+$agenda7 = new Agenda("9:00-12:00", "13:00-18:00", "9:00-12:00, 13:30-17:00", "9:00-12:00, 13:30-17:00", "9:00-12:00, 13:30-17:00");
+
+$agenda8 = new Agenda("9:00-12:00", "13:00-18:00", "9:00-12:00, 13:30-17:00", "9:00-12:00, 13:30-17:00", "9:00-12:00, 14:00-17:00");
 
 /*------------------------------------------------------DENTISTAS-FUNCIONARIOS-----------------------------------------------------*/
 
-$dentistaFuncionario1 = new DentistaFuncionario("CRO-1234", "Pedro Alves", "31900000000", "dentista1@dentalsolutions.com.br", "123.456.789-01", $endereco9, 5000.00);
+$dentistaFuncionario1 = new DentistaFuncionario("CRO-1234", "Pedro Alves", "31900000000", "dentista1@dentalsolutions.com.br", "058.319.530-09", $endereco9, $agenda1, 5000.00);
 $dentistaFuncionario1->save();
 
-$dentistaFuncionario2 = new DentistaFuncionario("CRO-2345", "Laura Menezes", "31911111111", "dentista2@dentalsolutions.com.br", "234.567.890-12", $endereco10, 5500.00);
+$dentistaFuncionario2 = new DentistaFuncionario("CRO-2345", "Laura Menezes", "31911111111", "dentista2@dentalsolutions.com.br", "058.806.460-25", $endereco10, $agenda2, 5500.00);
 $dentistaFuncionario2->save();
 
-$dentistaFuncionario3 = new DentistaFuncionario("CRO-3456", "Gabriel Souza", "31922222222", "dentista3@dentalsolutions.com.br", "345.678.901-23", $endereco11, 6000.00);
+$dentistaFuncionario3 = new DentistaFuncionario("CRO-3456", "Gabriel Souza", "31922222222", "dentista3@dentalsolutions.com.br", "129.996.390-07", $endereco11, $agenda3, 6000.00);
 $dentistaFuncionario3->save();
 
-$dentistaFuncionario4 = new DentistaFuncionario("CRO-4567", "Beatriz Santos", "31933333333", "dentista4@dentalsolutions.com.br", "456.789.012-34", $endereco12, 6500.00);
+$dentistaFuncionario4 = new DentistaFuncionario("CRO-4567", "Beatriz Santos", "31933333333", "dentista4@dentalsolutions.com.br", "686.459.700-82", $endereco12, $agenda4, 6500.00);
 $dentistaFuncionario4->save();
 
 /*-------------------------------------------------------DENTISTAS-PARCEIROS-------------------------------------------------------*/
 
-$dentistaParceiro1 = new DentistaParceiro("CRO-5678", "Roberto Silva", "31944444444", "dentistap1@dentalsolutions.com.br", "567.890.123-45", $endereco13);
+$dentistaParceiro1 = new DentistaParceiro("CRO-5678", "Roberto Silva", "31944444444", "dentistap1@dentalsolutions.com.br", "202.219.470-51", $endereco13, $agenda5);
 $dentistaParceiro1->save();
 
-$dentistaParceiro2 = new DentistaParceiro("CRO-6789", "Juliana Santos", "31955555555", "dentistap2@dentalsolutions.com.br", "678.901.234-56", $endereco14);
+$dentistaParceiro2 = new DentistaParceiro("CRO-6789", "Juliana Santos", "31955555555", "dentistap2@dentalsolutions.com.br", "690.074.070-74", $endereco14, $agenda6);
 $dentistaParceiro2->save();
 
-$dentistaParceiro3 = new DentistaParceiro("CRO-7890", "Carlos Costa", "31966666666", "dentistap3@dentalsolutions.com.br", "789.012.345-67", $endereco15);
+$dentistaParceiro3 = new DentistaParceiro("CRO-7890", "Carlos Costa", "31966666666", "dentistap3@dentalsolutions.com.br", "824.550.610-94", $endereco15, $agenda7);
 $dentistaParceiro3->save();
 
-$dentistaParceiro4 = new DentistaParceiro("CRO-8901", "Fernanda Pereira", "31977777777", "dentistap4@dentalsolutions.com.br", "890.123.456-78", $endereco16);
+$dentistaParceiro4 = new DentistaParceiro("CRO-8901", "Fernanda Pereira", "31977777777", "dentistap4@dentalsolutions.com.br", "230.175.640-88", $endereco16, $agenda8);
 $dentistaParceiro4->save();
 
 /*-------------------------------------------------------------CLIENTES-----------------------------------------------------------*/
 
-$cliente1 = new Cliente("Carlos Souza", "31900000000", "cliente1@gmail.com", "555.666.777-88", "MG-12.345.678");
+$cliente1 = new Cliente("Carlos Souza", "31900000000", "cliente1@gmail.com", "930.558.500-09", "MG-12.345.678");
 $cliente1->save();
 
-$cliente2 = new Cliente("Julia Menezes", "31911111111", "cliente2@gmail.com", "666.777.888-99", "MG-23.456.789");
+$cliente2 = new Cliente("Julia Menezes", "31911111111", "cliente2@gmail.com", "799.421.650-10", "MG-23.456.789");
 $cliente2->save();
 
-$cliente3 = new Cliente("Roberto Alves", "31922222222", "cliente3@gmail.com", "777.888.999-00", "MG-34.567.890");
+$cliente3 = new Cliente("Roberto Alves", "31922222222", "cliente3@gmail.com", "511.501.450-56", "MG-34.567.890");
 $cliente3->save();
 
-$cliente4 = new Cliente("Fernanda Lima", "31933333333", "cliente4@gmail.com", "888.999.000-11", "MG-45.678.901");
+$cliente4 = new Cliente("Fernanda Lima", "31933333333", "cliente4@gmail.com", "618.962.130-90", "MG-45.678.901");
 $cliente4->save();
 
 /*------------------------------------------------------------PACIENTES-----------------------------------------------------------*/
 
-$paciente1 = new Paciente("Lucas Oliveira", "31944444444", "lucasOliveira@gmail.com", "567.890.123-45", "2007-01-01", $cliente1, "MG-12.345.678");
+$paciente1 = new Paciente("Lucas Oliveira", "31944444444", "lucasOliveira@gmail.com", "492.609.100-30", "2007-01-01", $cliente1, "MG-12.345.678");
 $paciente1->save();
 $cliente1->adicionaPaciente($paciente1);
 $cliente1->save();
 
-$paciente2 = new Paciente("Julia Menezes", "31911111111", "cliente2@gmail.com", "666.777.888-99", "1990-03-03", $cliente2, "MG-23.456.789");
+$paciente2 = new Paciente("Julia Menezes", "31911111111", "cliente2@gmail.com", "259.156.820-06", "1990-03-03", $cliente2, "MG-23.456.789");
 $paciente2->save();
 $cliente2->adicionaPaciente($paciente2);
 $cliente2->save();
 
-$paciente3 = new Paciente("Roberto Alves", "31922222222", "cliente3@gmail.com", "777.888.999-00", "1985-02-02", $cliente3, "MG-34.567.890");
+$paciente3 = new Paciente("Roberto Alves", "31922222222", "cliente3@gmail.com", "002.734.410-00", "1985-02-02", $cliente3, "MG-34.567.890");
 $paciente3->save();
 $cliente3->adicionaPaciente($paciente3);
 $cliente3->save();
 
-$paciente4 = new Paciente("Daniela Costa", "31977777777", "danielaCosta@gmail.com", "890.123.456-78", "2010-04-04", $cliente4, "MG-45.678.901");
+$paciente4 = new Paciente("Daniela Costa", "31977777777", "danielaCosta@gmail.com", "168.337.590-49", "2010-04-04", $cliente4, "MG-45.678.901");
 $paciente4->save();
 $cliente4->adicionaPaciente($paciente4);
 $cliente4->save();

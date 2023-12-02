@@ -10,10 +10,10 @@ enum TipoPagamento
 
 class FormaPagamento
 {
-    private TipoPagamento $tipo;
-    private int $parcelas;
-    private string $operadora;
-    private float $taxa;
+    protected TipoPagamento $tipo;
+    protected int $parcelas;
+    protected string $operadora;
+    protected float $taxa;
 
     public function __construct(TipoPagamento $tipo, int $parcelas = 1, string $operadora = "", float $taxa = 0.0)
     {
