@@ -22,6 +22,7 @@
                 $arquivosOrcamentos = scandir($caminhoOrcamentos);
 
                 // Remove os diretórios . e ..
+                //Aloooo
                 $arquivosOrcamentos = array_diff($arquivosOrcamentos, array('..', '.'));
 
                 // Exibe os orçamentos em uma tabela
