@@ -82,9 +82,11 @@
     </div>
     <div id="cadastro-options" class="cadastro-options">
       <a href="cadastrar_cliente.php">Cliente</a>
+      <a href="cadastrar_especialidade.php">Especialidade</a>
       <a href="cadastrar_funcionario.php">Funcionário</a>
       <a href="cadastrar_paciente.php">Paciente</a>
       <a href="cadastrar_procedimento.php">Procedimento</a>
+      <a href="cadastrar_usuario.php">Usuario</a>
     </div>
   </div>
 

@@ -59,18 +59,24 @@ class Paciente extends Pessoa
 
   public function addOrcamento(Orcamento $orcamento)
   {
-    $this->tratamentos[$orcamento->getId()] = $orcamento;
+    array_push($this->tratamentos, $orcamento);
   }
 
-  public function aprovaOrcamento(string $id, FormaPagamento $forma)
+  public function aprovaOrcamento(Orcamento $orcamento, Pagamento $pagamento)
   {
-    $this->tratamentos[$id]->aprovaTratamento($forma);
+    foreach ($this->tratamentos as $tratamento) {
+      if ($tratamento === $orcamento) {
+        $tratamento->aprovaTratamento($pagamento);
+      }
+    }
   }
 
-  public function delOrcamento(string $id)
+  public function delOrcamento(Orcamento $orcamento)
   {
-    if (isset($this->tratamentos[$id])) {
-      unset($this->tratamentos[$id]);
+    foreach ($this->tratamentos as $tratamento) {
+      if ($tratamento === $orcamento) {
+        unset($tratamento);
+      }
     }
   }
 }

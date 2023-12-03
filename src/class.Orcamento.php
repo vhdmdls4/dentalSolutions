@@ -5,7 +5,6 @@ require_once 'class.Profissional.php';
 
 class Orcamento extends persist
 {
-    protected string $id;
     protected Paciente $paciente;
     protected Dentista $dentistaResponsavel;
     protected DateTime $dataOrcamento;
@@ -16,8 +15,16 @@ class Orcamento extends persist
     protected string $descricao;
     protected array $consultas = array();
 
-    public function __construct(string $id, Paciente $paciente, Dentista $dentistaResponsavel, DateTime $dataOrcamento, array $procedimentos, float $valorTotal, Pagamento $pagamento, string $descricao, array $consultas) {
-        $this->id = $id;
+    public function __construct(
+        Paciente $paciente,
+        Dentista $dentistaResponsavel,
+        DateTime $dataOrcamento,
+        array $procedimentos,
+        float $valorTotal,
+        Pagamento $pagamento,
+        string $descricao,
+        array $consultas
+    ) {
         $this->paciente = $paciente;
         $this->dentistaResponsavel = $dentistaResponsavel;
         $this->dataOrcamento = $dataOrcamento;
@@ -36,11 +43,6 @@ class Orcamento extends persist
     static public function getFilename()
     {
         return 'Orcamento.txt';
-    }
-
-    public function getId(): string
-    {
-        return $this->id;
     }
 
 
@@ -98,14 +100,17 @@ class Orcamento extends persist
     {
         return $this->paciente;
     }
+
     public function getDentistaResponsavel(): Dentista
     {
         return $this->dentistaResponsavel;
     }
+
     public function getDataOrcamento(): DateTime
     {
         return $this->dataOrcamento;
     }
+
     public function getTratamentoAprovado(): bool
     {
         return $this->tratamentoAprovado;

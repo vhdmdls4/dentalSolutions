@@ -10,7 +10,7 @@
         </div>
         <div class="mb-3">
             <label for="senha" class="form-label">Senha:</label>
-            <input type="text" class="form-control" id="senha" name="senha" title="Senha" aria-label="Senha" aria-placeholder="Digite a senha aqui" placeholder="Digite a senha aqui..." required>
+            <input type="password" class="form-control" id="senha" name="senha" title="Senha" aria-label="Senha" aria-placeholder="Digite a senha aqui" placeholder="Digite a senha aqui..." required>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">E-mail:</label>

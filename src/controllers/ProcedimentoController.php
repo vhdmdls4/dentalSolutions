@@ -12,25 +12,25 @@ class ProcedimentoController
         $nome = $_POST['nome'];
         $descricao = $_POST['descricao'];
         $valor = $_POST['valor'];
-        $tempo = $_POST['tempo'];
-        $especialidade = $_POST['especialidade'];
+        $nomeEspecialidade = $_POST['especialidade'];
+        $especialidade = Especialidade::getRecordsByField('nome', $nomeEspecialidade)[0];
+
+        if (empty($descricao)) {
+            $descricao = ' ';
+        }
 
         try {
-
-            $especialidade = Especialidade::getRecordsByField('nome', $especialidade)[0];
-
-            if (empty($descricao)) {
-                $descricao = ' ';
+            if ($especialidade === null) {
+                throw new Exception('Especialidade não encontrada.');
             }
 
-            $procedimento = new Procedimento($nome, $descricao, $valor, $tempo, $especialidade);
+            $procedimento = new Procedimento($nome, $descricao, $valor, $especialidade);
             $procedimento->save();
 
             $procedimentoDetails = [
                 'nome' => $procedimento->getNome(),
                 'descricao' => $procedimento->getDescricao(),
                 'valor' => $procedimento->getValorUnitario(),
-                'tempo' => $procedimento->getTempoEstimado(),
                 'especialidade' => $procedimento->getEspecialidade()
             ];
 

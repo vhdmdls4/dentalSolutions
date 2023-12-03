@@ -2,7 +2,7 @@
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
-  <h2 class="mt-5">Cadastro de Pacientes</h2>
+  <h2 class="mt-5">Cadastro de Paciente</h2>
   <form id="registrarPaciente" action="" aria-label="Formulário de Cadastro de Cliente">
     <div class="mb-3">
       <label for="nome" class="form-label">Nome completo:</label>

@@ -11,11 +11,13 @@ class UsuarioController
         $login = $_POST['login'];
         $senha = $_POST['senha'];
         $email = $_POST['email'];
-        $perfil = $_POST['perfil'];
+        $nomePerfil = $_POST['perfil'];
+        $perfil = Perfil::getRecordsByField('nomePerfil', $nomePerfil)[0];
 
         try {
-
-            $perfil = Perfil::getRecordsByField('nomePerfil', $perfil)[0];
+            if ($perfil === null) {
+                throw new Exception('Perfil não encontrado.');
+            }
 
             $usuario = new Usuario($login, $senha, $email, $perfil);
             $usuario->save();
@@ -24,7 +26,8 @@ class UsuarioController
                 'login' => $usuario->getLogin(),
                 'senha' => '**********',
                 'email' => $usuario->getEmail(),
-                'perfil' => $usuario->getPerfil()->getNomePerfil()
+                'perfil' => $usuario->getPerfil(),
+                'funcionalidades' => $usuario->getPerfil()->getFuncionalidades()
             ];
 
             echo json_encode(['titulo' => 'Usuario criado com sucesso', 'conteudo' => $usuarioDetails]);

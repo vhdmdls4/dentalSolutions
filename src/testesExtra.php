@@ -347,16 +347,16 @@ $pagamento4->save();
 
 /*------------------------------------------------------------ORCAMENTOS----------------------------------------------------------*/
 
-$orcamento1 = new Orcamento("1", $paciente1, $dentistaParceiro1, new DateTime("2023-11-18"), [$procedimento1], 1000.00, $pagamento1, "Orçamento para limpeza dental", [$consulta1]);
+$orcamento1 = new Orcamento($paciente1, $dentistaParceiro1, new DateTime("2023-11-18"), [$procedimento1], 1000.00, $pagamento1, "Orçamento para limpeza dental", [$consulta1]);
 $orcamento1->save();
 
-$orcamento2 = new Orcamento("2", $paciente2, $dentistaParceiro1, new DateTime("2023-11-19"), [$procedimento2], 1500.00, $pagamento2, "Orçamento para extração de dente", [$consulta2]);
+$orcamento2 = new Orcamento($paciente2, $dentistaParceiro1, new DateTime("2023-11-19"), [$procedimento2], 1500.00, $pagamento2, "Orçamento para extração de dente", [$consulta2]);
 $orcamento2->save();
 
-$orcamento3 = new Orcamento("3", $paciente3, $dentistaParceiro2, new DateTime("2023-11-20"), [$procedimento3], 2000.00, $pagamento3, "Orçamento para clareamento dental", [$consulta3]);
+$orcamento3 = new Orcamento($paciente3, $dentistaParceiro2, new DateTime("2023-11-20"), [$procedimento3], 2000.00, $pagamento3, "Orçamento para clareamento dental", [$consulta3]);
 $orcamento3->save();
 
-$orcamento4 = new Orcamento("4", $paciente4, $dentistaParceiro4, new DateTime("2023-11-21"), [$procedimento4], 2500.00, $pagamento4, "Orçamento para implante dentário", [$consulta4]);
+$orcamento4 = new Orcamento($paciente4, $dentistaParceiro4, new DateTime("2023-11-21"), [$procedimento4], 2500.00, $pagamento4, "Orçamento para implante dentário", [$consulta4]);
 $orcamento4->save();
 
 
