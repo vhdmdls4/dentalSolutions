@@ -1,103 +1,127 @@
 <?php
 
-require_once '../class.Orcamento.php';
-require_once '../class.Paciente.php';
-require_once '../class.Dentista.php';
-require_once '../class.Procedimento.php';
-require_once '../class.Pagamento.php';
-require_once '../class.Consulta.php';
-require_once '../container.php';
+require_once '../global.php';
 
 class OrcamentoController
 {
     public function create()
     {
-        // Aqui você pode ajustar o nome do arquivo conforme necessário
-        $orcamentosContainer = Container::getInstance('orcamentos.txt');
-        $pacientesContainer = Container::getInstance('pacientes.txt');
-        $dentistasContainer = Container::getInstance('dentistas.txt');
-        // Adicione outros containers conforme necessário
+        
+        $pacientesDB = Paciente::getRecords();
+        $dentistasDB = DentistaParceiro::getRecords();
 
-        $pacientes = $pacientesContainer->getObjects();
-        $dentistas = $dentistasContainer->getObjects();
-
-        // Recupere os dados do formulário
-        $id = $_POST['id'];
-        $pacienteId = $_POST['paciente'];
-        $dentistaId = $_POST['dentistaResponsavel'];
-        $dataOrcamento = new DateTime($_POST['dataOrcamento']);
-        $procedimentosData = json_decode($_POST['procedimentos'], true);
+        $pacienteCPF = $_POST['pacienteCPF'];
+        $dentistaResponsavelCPF = $_POST['dentistaCPF'];
+        $dataOrcamento = $_POST['dataOrcamento'];
+        $tratamentoAprovado = $_POST['tratamentoAprovado'];
+        $procedimentosData = isset($_POST['procedimentos']) ? filter_input(INPUT_POST, 'procedimentos', FILTER_DEFAULT) : null;
         $valorTotal = $_POST['valorTotal'];
-        $pagamentoId = $_POST['pagamento'];
+        $pagamentoData = $_POST['pagamento'];
         $descricao = $_POST['descricao'];
         $consultasData = $_POST['consultas'];
 
-        // Encontre o paciente e dentista com base nos IDs
-        $paciente = $this->findObjectById($pacientes, $pacienteId);
-        $dentista = $this->findObjectById($dentistas, $dentistaId);
+        if ($procedimentosData === null) {
+            echo json_encode(['error' => 'O campo "procedimentos" não foi enviado ou está vazio.']);
+            exit;
+        }
+
+        if ($dentistaResponsavelCPF === null) {
+            echo json_encode(['error' => 'O campo "dentistaResponsavel" não foi enviado ou está vazio.']);
+            exit;
+        }
+
+        if (
+            $pacienteCPF === null ||
+            $dentistaResponsavelCPF === null ||
+            $dataOrcamento === null ||
+            $tratamentoAprovado === null ||
+            $procedimentosData === null ||
+            $valorTotal === null ||
+            $pagamentoData === null ||
+            $descricao === null ||
+            $consultasData === null
+        ) {
+            echo json_encode(['error' => 'Dados do formulário estão incompletos ou inválidos.']);
+            exit;
+        }
+
+        $pacienteEncontrado = null;
+
+        foreach ($pacientesDB as $pacienteLocal) {
+            if ($pacienteLocal->getCpf() == $pacienteCPF) {
+            $pacienteEncontrado = $pacienteLocal;
+              break;
+            }
+        }
+
+        $dentistaResponsavelEncontrado = null;
+
+        foreach ($dentistasDB as $dentistaLocal) {
+            if ($dentistaLocal->getCpf() == $dentistaResponsavelCPF) {
+                $dentistaResponsavelEncontrado = $dentistaLocal;
+                  break;
+                }
+        }
 
         try {
-            if ($paciente === null || $dentista === null) {
-                throw new Exception('Paciente ou Dentista não encontrado.');
+
+            if ($pacienteEncontrado === null) {
+                throw new Exception('Paciente não encontrado.');
             }
 
-            // Crie objetos Procedimento, Pagamento, Consulta conforme necessário
-            // Exemplo para procedimentos
-            $procedimentos = [];
-            foreach ($procedimentosData as $procedimentoData) {
-                $procedimento = new Procedimento($procedimentoData['nome'], $procedimentoData['descricao'], $procedimentoData['valor'], $procedimentoData['duracao'], $procedimentoData['especialidade']);
-                $realizado = $procedimentoData['realizado'];
-                $dataConclusao = new DateTime($procedimentoData['dataConclusao']);
-                $procedimentos[] = ['procedimento' => $procedimento, 'realizado' => $realizado, 'dataConclusao' => $dataConclusao];
+            if ($dentistaResponsavelEncontrado === null) {
+                throw new Exception('Dentista Responsável não encontrado.');
             }
 
-            // Crie o objeto Pagamento (você precisa implementar a classe Pagamento))
-            $pagamento = new Pagamento($_POST['formaPagamento'], $_POST['pago'], new DateTime($_POST['data']), $_POST['valorFaturado']);
+            $tipoPagamento = TipoPagamento::Dinheiro;
 
-            // Crie o objeto Consulta (você precisa implementar a classe Consulta)
-            $consulta = new Consulta($_POST['procedimento'], $_POST['paciente'], $_POST['dentistaExecutor'], new DateTime($_POST['data']), new DateTime($_POST['horario']), $_POST['duracao']);
+            $formaPagamento = new FormaPagamento(
+                $tipoPagamento,
+                $pagamentoData['parcelas'],
+                $pagamentoData['operadora'],
+                $pagamentoData['taxa']
+            );
 
-            // Crie o objeto Orcamento
-            $orcamento = new Orcamento($id, $paciente, $dentista, $dataOrcamento, $procedimentos, $valorTotal, $pagamento, $descricao, $consultasData);
+            $pagamento = new Pagamento(
+                $formaPagamento,
+                $pagamentoData['pago'],
+                new DateTime($pagamentoData['data']),
+                $pagamentoData['valorFaturado']
+            );
 
-            // Realize outras operações necessárias, como adicionar o Orcamento a algum container
-            // ...
-
-            // Salve o Orcamento e outros objetos relacionados
+            $orcamento = new Orcamento(
+                $pacienteCPF,
+                $dentistaResponsavelCPF,
+                $dataOrcamento,
+                $tratamentoAprovado,
+                $procedimentosData,
+                $valorTotal,
+                $pagamento,
+                $descricao,
+                $consultasData
+            );
+            $orcamento->save();
 
             $orcamentoDetails = [
-                'id' => $orcamento->getId(),
-                'paciente' => $orcamento->getPaciente()->getNome(),
-                'dentistaResponsavel' => $orcamento->getDentistaResponsavel()->getNome(),
-                'dataOrcamento' => $orcamento->getDataOrcamento()->format('Y-m-d'),
-                'procedimentos' => $orcamento->getProcedimentos(),
+                'paciente' => (string)$orcamento->getPaciente(),
+                'dentistaResponsavel' => (string)$orcamento->getDentistaResponsavel(),
+                'dataOrcamento' => $orcamento->getDataOrcamento()->format('Y-m-d H:i:s'),
+                'tratamentoAprovado' => $orcamento->getTratamentoAprovado(),
+                'procedimentos' => $procedimentosData,
                 'valorTotal' => $orcamento->getValorTotal(),
-                'pagamento' => $orcamento->getPagamento()->getForma(), // Implemente o método getDetalhes na classe Pagamento
+                'pagamento' => (string)$orcamento->getPagamento(),
                 'descricao' => $orcamento->getDescricao(),
                 'consultas' => $orcamento->getConsultas(),
             ];
-
-            $orcamento->save();
-
-            echo json_encode(['titulo' => 'Orçamento criado com sucesso', 'conteudo' => $orcamentoDetails]);
+            
+            echo json_encode(['titulo' => 'Orçamento criado com sucesso', 'conteudo' => htmlspecialchars(json_encode($orcamentoDetails))]);
         } catch (Exception $e) {
-            echo json_encode(['error' => 'Erro ao criar Orçamento: ' . $e->getMessage()]);
+            echo json_encode(['error' => 'Erro ao criar orçamento: ' . $e->getMessage()]);
         }
-    }
-
-    // Função auxiliar para encontrar um objeto por ID em um array
-    private function findObjectById($objects, $id)
-    {
-        foreach ($objects as $object) {
-            if ($object->getId() === $id) {
-                return $object;
-            }
-        }
-        return null;
     }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $orcamentoController = new OrcamentoController();
-    $orcamentoController->create();
+    $controller = new OrcamentoController();
+    $controller->create();
 }
