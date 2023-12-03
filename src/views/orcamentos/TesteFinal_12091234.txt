@@ -1,8 +1,0 @@
-
-Nome do Paciente: TesteFinal
-Dentista: Dr. Victor Hugo
-Data de Realização do Orçamento: 12/09/1234
-Status do Orçamento: (P) Para Aprovação
-Procedimentos Selecionados:
-Procedimento 2 - R$ 100,00 - Quantidade: 2, Valor Unitário: R$ 100,00, Observações: 
-Valor Total: R$ 200,00

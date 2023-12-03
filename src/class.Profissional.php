@@ -1,5 +1,7 @@
 <?php
 
+require_once 'class.Pessoa.php';
+
 abstract class Profissional extends Pessoa
 {
   protected Endereco $endereco;

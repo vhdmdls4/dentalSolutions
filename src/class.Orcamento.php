@@ -1,5 +1,7 @@
 <?php
 
+require_once 'persist.php';
+require_once 'class.Profissional.php';
 
 class Orcamento extends persist
 {
@@ -42,6 +44,7 @@ class Orcamento extends persist
     {
         return 'Orcamento.txt';
     }
+
 
     public function aprovaTratamento(Pagamento $pagamento)
     {
@@ -152,6 +155,7 @@ class Orcamento extends persist
         unset($this->consultas[$key]);
     }
 }
+
 
 /*
 $procedimentoObjeto1 = new Procedimento('limpeza', 'limpa', 32.3, 32);

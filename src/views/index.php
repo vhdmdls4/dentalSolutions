@@ -231,7 +231,7 @@
   </svg>
 
   <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="/src/views/homeUpdt.php">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="home.php">
       <img src="assets/brand/name.png" alt="Logo DenteSoft" width="auto" height="24">
     </a>
 
@@ -270,7 +270,7 @@
           <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
             <ul class="nav flex-column">
               <!--<li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="/src/views/home.php">
+                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="home.php">
                   <svg class="bi">
                     <use xlink:href="#house-fill" />
                   </svg>
@@ -327,10 +327,10 @@
                 <div class="collapse" id="agenda-collapse">
                   <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li>
-                      <a href="/src/views/agenda.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Agenda Mensal</a>
+                      <a href="agenda.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Agenda Mensal</a>
                     </li>
                     <li>
-                      <a href="/src/views/agenda_dentista.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Agenda do Dentista</a>
+                      <a href="agenda_dentista.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Agenda do Dentista</a>
                     </li>
                   </ul>
                 </div>
@@ -345,18 +345,18 @@
                 </button>
                 <div class="collapse" id="orders-collapse">
                   <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="/src/views/cadastrar_cliente.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Cliente</a>
+                    <li><a href="cadastrar_cliente.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Cliente</a>
                     </li>
-                    <li><a href="/src/views/cadastrar_especialidade.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Especialidade</a>
+                    <li><a href="cadastrar_especialidade.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Especialidade</a>
                     </li>
-                    <li><a href="/src/views/cadastrar_funcionario.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Funcionário</a>
+                    <li><a href="cadastrar_funcionario.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Funcionário</a>
                     </li>
-                    <li><a href="/src/views/cadastrar_paciente.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Paciente</a>
+                    <li><a href="cadastrar_paciente.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Paciente</a>
                     </li>
-                    <li><a href="/src/views/cadastrar_procedimento.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Procedimento</a>
+                    <li><a href="cadastrar_procedimento.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Procedimento</a>
                     </li>
                     <li><a href="#" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Profissional</a></li>
-                    <li><a href="/src/views/cadastrar_usuario.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Usuario</a>
+                    <li><a href="cadastrar_usuario.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Usuario</a>
                     </li>
               </li>
             </ul>
@@ -419,7 +419,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="loginTeste.php">
+              <a class="nav-link d-flex align-items-center gap-2" href="login.php">
                 <svg class="bi">
                   <use xlink:href="#door-closed" />
                 </svg>

@@ -1,5 +1,3 @@
-<!-- novaPagina.php -->
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -38,9 +36,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         // Recuperando os parâmetros da URL
         $nomePaciente = $_GET['nome'] ?? '';
-        $dentistaSelecionado = $_GET['dentista'] ?? '';
-        $dataRealizacao = $_GET['data'] ?? '';
-        $dataFormatada = date('d/m/Y', strtotime($dataRealizacao));
+        $dataFormatada = date('d/m/Y H:i:s'); // Obtendo a data e hora atual
         $statusOrcamento = $_GET['status'] ?? '';
         $valorTotal = $_GET['valorTotal'] ?? 0;
 
@@ -56,7 +52,6 @@
 
         // Exibindo os detalhes do orçamento
         echo "<p><strong>Nome do Paciente:</strong> $nomePaciente</p>";
-        echo "<p><strong>Dentista:</strong> $dentistaSelecionado</p>";
         echo "<p><strong>Data de Realização do Orçamento:</strong> $dataFormatada</p>";
         echo "<p><strong>Status do Orçamento:</strong> $statusCompleto</p>";
 
@@ -78,13 +73,11 @@
 
         echo "<p><strong>Valor Total:</strong> R$ $valorTotal,00</p>";
 
-        // Criar um nome de arquivo único com base na data e hora
-        $nomeArquivo = 'orcamentos/' . str_replace(' ', '', $nomePaciente) . '_' . date('dmY', strtotime($dataRealizacao)) . '.txt';
+        // Criar um nome de arquivo único com base no nome do paciente e na data
+        $nomeArquivo = 'orcamentos/' . str_replace(' ', '', $nomePaciente) . '_' . date('dmYHis') . '.txt';
 
         // Criar o conteúdo a ser salvo no arquivo
-        $conteudoArquivo = "\n";
-        $conteudoArquivo .= "Nome do Paciente: $nomePaciente\n";
-        $conteudoArquivo .= "Dentista: $dentistaSelecionado\n";
+        $conteudoArquivo = "Nome do Paciente: $nomePaciente\n";
         $conteudoArquivo .= "Data de Realização do Orçamento: $dataFormatada\n";
         $conteudoArquivo .= "Status do Orçamento: $statusCompleto\n";
 

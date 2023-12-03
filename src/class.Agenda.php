@@ -1,6 +1,8 @@
 <?php
 
-class Agenda
+require_once 'global.php';
+
+class Agenda extends persist
 {
     protected string $segunda;
     protected string $terca;
@@ -13,6 +15,12 @@ class Agenda
     /**
      * @param string $segunda 9:00-12:00,14:00-18:00
      */
+
+     static public function getFilename()
+     {
+         return 'agenda.txt';
+     }
+
     public function __construct(string $segunda, string $terca, string $quarta, string $quinta, string $sexta, string $sabado = "")
     {
         $this->segunda = $segunda;
@@ -243,4 +251,5 @@ class Agenda
             $funcionario->save();
         }
     }
+    
 }
