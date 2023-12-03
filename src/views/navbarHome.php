@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet" />
-  
+
   <link href="./assets/index.css" rel="stylesheet" />
 
   <title>DenteSoft</title>
@@ -103,18 +103,17 @@
     }
 
     .slogan {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            margin-top: auto;
-            font-size: x-small;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      margin-top: auto;
+      font-size: x-small;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      box-sizing: border-box;
     }
-
   </style>
 
 </head>
@@ -181,8 +180,8 @@
   </div>
 
   <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="/src/views/homeUpdt.php">
-        <img src="assets/brand/name.png" alt="Logo DenteSoft" width="auto" height="24">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-white" href="home.php">
+      <img src="assets/brand/name.png" alt="Logo DenteSoft" width="auto" height="24">
     </a>
 
     <div id="navbarSearch" class="navbar-search w-100 collapse">
@@ -191,5 +190,5 @@
   </header>
 
   <div class="slogan">
-      <p>Transformando Sorrisos com Tecnologia</p>
+    <p>Transformando Sorrisos com Tecnologia</p>
   </div>
