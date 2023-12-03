@@ -2,12 +2,12 @@
 
 class Consulta extends persist
 {
-    private Procedimento $procedimento;
-    private Paciente $paciente;
-    private Dentista $dentistaExecutor;
-    private DateTime $data;
-    private DateTime $horario;
-    private int $duracao;
+    protected Procedimento $procedimento;
+    protected Paciente $paciente;
+    protected Dentista $dentistaExecutor;
+    protected DateTime $data;
+    protected DateTime $horario;
+    protected int $duracao;
 
     public function __construct(Procedimento $procedimento, Paciente $paciente, Dentista $dentistaExecutor, DateTime $data, DateTime $horario, int $duracao)
     {

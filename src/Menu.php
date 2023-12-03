@@ -64,7 +64,7 @@ while (true) {
     } else if ($opcao == 4) {
         include_once("class.Procedimentos.php");
         $especialidade = new Especialidade("");
-        $procedimento = new Procedimento("", "", "", "", $especialidade);
+        $procedimento = new Procedimento("", "", "", $especialidade);
         $procedimento->cadastrarProcedimento();
         $procedimento->salvarProcedimento("dataFiles/procedimento.txt");
     } else {

@@ -1,8 +1,6 @@
 <?php
 
-require_once '../class.Paciente.php';
-require_once '../class.Cliente.php';
-require_once '../container.php';
+require_once('../global.php');
 
 class PacienteController
 {

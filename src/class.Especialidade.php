@@ -2,7 +2,7 @@
 
 class Especialidade extends persist
 {
-    private string $nome;
+    protected string $nome;
 
     public function __construct(string $nome)
     {

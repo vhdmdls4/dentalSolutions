@@ -3,8 +3,8 @@
 class Perfil extends persist
 {
 
-    private string $nomePerfil;
-    private array $funcionalidades;
+    protected string $nomePerfil;
+    protected array $funcionalidades;
 
     public function __construct(string $nomePerfil, array $funcionalidades)
     {

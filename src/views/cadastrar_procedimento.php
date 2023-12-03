@@ -36,7 +36,7 @@
       handleFormSubmit
     } from './js/index.js';
 
-    //handleFormSubmit('registrarCliente', '../controllers/ClienteController.php');
+    handleFormSubmit('registrarCliente', '../controllers/ProcedimentoController.php');
   </script>
 
 </main>

@@ -18,7 +18,7 @@
         <div class="mb-3">
             <label for="perfil" class="form-label">Função:</label>
             <select class="form-select" id="perfil" name="perfil" aria-label="Perfil" required>
-                <option value="Admin">Administrador</option>
+                <option value="admin">Administrador</option>
                 <option value="Secretário">Auxiliar</option>
                 <option value="Dentista">Dentista Contratado</option>
                 <option value="DentistaParceiro">Dentista Parceiro</option>
@@ -70,7 +70,7 @@
         // Inicia o valor do campo de e-mail com @dentesoft.com
         emailInput.value = '@dentesoft.com';
 
-        document.getElementById('perfil').addEventListener('change', function () {
+        document.getElementById('perfil').addEventListener('change', function() {
             var infoDentista = document.getElementById('infoDentista');
             if (this.value === 'Dentista' || this.value === 'DentistaParceiro') {
                 infoDentista.style.display = 'block';

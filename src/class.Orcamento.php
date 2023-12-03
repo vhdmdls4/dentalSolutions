@@ -28,7 +28,8 @@ class Orcamento extends persist
         $this->consultas = $consultas;
     }
 
-    function __destruct() {
+    function __destruct()
+    {
         print "Destroying " . __CLASS__ . "\n";
     }
 

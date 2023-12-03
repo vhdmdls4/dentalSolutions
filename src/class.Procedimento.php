@@ -2,18 +2,16 @@
 
 class Procedimento extends persist
 {
-    private string $nome;
-    private string $descricao;
-    private float $valorUnitario;
-    private int $tempoEstimado;
-    private Especialidade $especialidade;
+    protected string $nome;
+    protected string $descricao;
+    protected float $valorUnitario;
+    protected Especialidade $especialidade;
 
-    public function __construct(string $nome, string $descricao, float $valorUnitario, int $tempoEstimado, Especialidade $especialidade)
+    public function __construct(string $nome, string $descricao, float $valorUnitario, Especialidade $especialidade)
     {
         $this->nome = $nome;
         $this->descricao = $descricao;
         $this->valorUnitario = $valorUnitario;
-        $this->tempoEstimado = $tempoEstimado;
         $this->especialidade = $especialidade;
     }
 
@@ -52,15 +50,6 @@ class Procedimento extends persist
         $this->valorUnitario = $valorUnitario;
     }
 
-    public function getTempoEstimado(): int
-    {
-        return $this->tempoEstimado;
-    }
-
-    public function setTempoEstimado(int $tempoEstimado)
-    {
-        $this->tempoEstimado = $tempoEstimado;
-    }
     public function getEspecialidade(): Especialidade
     {
         return $this->especialidade;
@@ -89,18 +78,6 @@ class Procedimento extends persist
                 echo "Por favor, insira apenas números para o valor unitário.\n";
             }
         }
-
-        while (true) {
-            echo "Tempo Estimado (em minutos): ";
-            $tempoEstimado = trim(fgets(STDIN));
-
-            if (is_numeric($tempoEstimado)) {
-                $this->tempoEstimado = $tempoEstimado;
-                break;
-            } else {
-                echo "Por favor, insira apenas números para o tempo estimado.\n";
-            }
-        }
     }
 
     public function salvarProcedimento($filename)
@@ -108,7 +85,6 @@ class Procedimento extends persist
         $data = "Procedimento: " . $this->nome . "\n";
         $data .= "Descrição: " . $this->descricao . "\n";
         $data .= "Valor Unitário: " . $this->valorUnitario . "\n";
-        $data .= "Tempo Estimado: " . $this->tempoEstimado . "\n";
         $data .= "\n";
 
         $file = fopen($filename, "a");
@@ -131,6 +107,5 @@ class Procedimento extends persist
         echo "Procedimento: " . $this->nome . "\n";
         echo "Descrição: " . $this->descricao . "\n";
         echo "Valor Unitário: R$" . $this->valorUnitario . "\n";
-        echo "Tempo Estimado: " . $this->tempoEstimado . "min.\n";
     }
 }

@@ -3,12 +3,15 @@
 abstract class Dentista extends Profissional
 {
   protected string $cro;
+  protected Agenda $agenda;
   protected array $habilitacoes = array();
 
-  public function __construct(string $cro, string $nome, string $telefone, string $email, string $CPF, Endereco $endereco)
+  public function __construct(string $cro, string $nome, string $telefone, string $email, string $CPF, Endereco $endereco,  $habilitacoes, Agenda $agenda)
   {
     parent::__construct($nome, $telefone, $email, $CPF, $endereco);
     $this->cro = $cro;
+    $this->habilitacoes = $habilitacoes;
+    $this->agenda = $agenda;
   }
 
   abstract static public function getFilename();
@@ -21,6 +24,16 @@ abstract class Dentista extends Profissional
   public function getCro(): string
   {
     return $this->cro;
+  }
+
+  public function setAgenda(Agenda $agenda)
+  {
+    $this->agenda = $agenda;
+  }
+
+  public function getAgenda(): Agenda
+  {
+    return $this->agenda;
   }
 
   public function getHabilitacoes(): array

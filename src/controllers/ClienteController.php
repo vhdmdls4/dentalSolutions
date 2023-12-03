@@ -2,7 +2,7 @@
 // FILEPATH: /c:/Users/vhdua/Desktop/dev/dentalSolutions/controllers/ClienteController.php
 
 // Inclua a classe Cliente para poder utilizá-la
-require_once '../class.Cliente.php';
+require_once('../global.php');
 
 class ClienteController
 {

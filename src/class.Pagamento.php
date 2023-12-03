@@ -2,11 +2,11 @@
 
 class Pagamento extends persist
 {
-    private FormaPagamento $forma;
-    private bool $pago;
-    private DateTime $data;
-    private float $valorFaturado;
-    private static float $impostos = 0.2;
+    protected FormaPagamento $forma;
+    protected bool $pago;
+    protected DateTime $data;
+    protected float $valorFaturado;
+    protected static float $impostos = 0.2;
 
     public function __construct(FormaPagamento $forma, bool $pago, DateTime $data, float $valorFaturado)
     {

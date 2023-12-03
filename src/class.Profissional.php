@@ -4,7 +4,7 @@ require_once 'class.Pessoa.php';
 
 abstract class Profissional extends Pessoa
 {
-  private Endereco $endereco;
+  protected Endereco $endereco;
 
   public function __construct(string $nome, string $telefone, string $email, string $CPF, Endereco $endereco)
   {

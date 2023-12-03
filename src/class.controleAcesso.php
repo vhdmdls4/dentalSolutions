@@ -16,42 +16,21 @@ $UsuarioDentista = new Usuario('dentistateste','123','123@gmail.com', $Dentista_
 $UsuarioSecretario = new Usuario('secretarioteste', '123', '321@gmail.com', $Secretario_teste);
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-//----------------------------------FUNCOES DE EXECUCAO DA FUNCIONALIDADE---------------------------------------------------------
-function cadastraUsuario($nomeUsuario, $nomelogin, $senha, $email, $perfildele){
-        echo("Cadastrando Usuario...\n");
-        $$nomeUsuario = new Usuario($nomelogin,$senha,$email,$perfildele);
-        echo("Usuario Cadastrado com sucesso!\n");
-        var_dump($$nomeUsuario);
-}
-
-function cadastraOrcamento(string $nome_orcamento, string $id, Paciente $paciente, Dentista $dentistaResponsavel, DateTime $dataOrcamento, array $procedimentos, float $valorTotal, Pagamento $pagamento, string $descricao, array $consultas){
-        $$nome_orcamento = new Orcamento($id,$paciente,$dentistaResponsavel,$dataOrcamento,$procedimentos,$valorTotal,$pagamento,$descricao,$consultas);       
-}
-
-function excluiOrcamento(Orcamento $orcamento) {
-        $orcamento->__destruct();
-}
-
-function alteraOrcamento(Orcamento $orcamento,string $id, Paciente $paciente, Dentista $dentistaResponsavel, DateTime $dataOrcamento, array $procedimentos, float $valorTotal, Pagamento $pagamento, string $descricao, array $consultas){
-       echo "faltam todos os sets necessarios"; //criar sets necessarios
-}
-
-//------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
 //----------------------------------FUNCOES DE VERIFICACAO DA PERMISSAO---------------------------------------------------------------------------
 
-function verificaPermissao(Perfil $perfil, Funcionalidade $funcionalidade){
-        if(!in_Array($funcionalidade, $perfil->getFuncionalidades())){
-                throw new Exception("Unauthorized");
+function verificaPermissao(Usuario $usuario, Funcionalidade $funcionalidade){
+        $perfil_usuario_logado = $usuario->getPerfil();
+        if(!in_Array($funcionalidade, $perfil_usuario_logado->getFuncionalidades())){
+                echo "\nAcesso negado\n";
+                return False;
         }
-    return in_Array($funcionalidade, $perfil->getFuncionalidades()); 
+        else{
+                echo "\nAcesso permitido!\n";
+                return True;
+        }
 }
 
-
+/*
 function permissionCall(Usuario $logado, Funcionalidade $funcionalidade){ //so chamar o getUsuarioLogado() da classe login pra saber quem e o usuario que esta solicitando
        
        try{
@@ -148,13 +127,13 @@ function permissionCall(Usuario $logado, Funcionalidade $funcionalidade){ //so c
       }
     
 }
-
+*/
 //----------------------------------TESTANDO SE A PERMISSAO FUNCIONOU --------------------------------------------------------------------
 
 echo("testando usuario dentista\n");
-permissionCall($UsuarioDentista, $funcionalidade2);
+verificaPermissao($UsuarioDentista, $funcionalidade2);
 echo("\ntestando usuario secretario\n");
-permissionCall($UsuarioSecretario, $funcionalidade2);
+verificaPermissao($UsuarioSecretario, $funcionalidade2);
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 

@@ -4,8 +4,8 @@ require_once 'class.Pessoa.php';
 
 class Cliente extends Pessoa
 {
-    private string $rg;
-    private array $pacientes = array();
+    protected string $rg;
+    protected array $pacientes = array();
 
     public function __construct(string $nome, string $telefone, string $email, string $cpf, string $rg)
     {

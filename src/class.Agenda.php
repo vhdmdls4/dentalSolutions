@@ -2,13 +2,13 @@
 
 class Agenda
 {
-    private string $segunda;
-    private string $terca;
-    private string $quarta;
-    private string $quinta;
-    private string $sexta;
-    private string $sabado;
-    private array $dias = array();
+    protected string $segunda;
+    protected string $terca;
+    protected string $quarta;
+    protected string $quinta;
+    protected string $sexta;
+    protected string $sabado;
+    protected array $dias = array();
 
     /**
      * @param string $segunda 9:00-12:00,14:00-18:00
