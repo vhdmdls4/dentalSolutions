@@ -135,30 +135,30 @@ $agenda8 = new Agenda("9:00-12:00", "13:00-18:00", "9:00-12:00, 13:30-17:00", "9
 
 /*------------------------------------------------------DENTISTAS-FUNCIONARIOS-----------------------------------------------------*/
 
-$dentistaFuncionario1 = new DentistaFuncionario("CRO-1234", "Pedro Alves", "31900000000", "dentista1@dentalsolutions.com.br", "058.319.530-09", $endereco9, $agenda1, 5000.00);
+$dentistaFuncionario1 = new DentistaFuncionario("CRO-1234", "Pedro Alves", "31900000000", "dentista1@dentalsolutions.com.br", "058.319.530-09", $endereco9, $agenda1, 5000.00, []);
 $dentistaFuncionario1->save();
 
-$dentistaFuncionario2 = new DentistaFuncionario("CRO-2345", "Laura Menezes", "31911111111", "dentista2@dentalsolutions.com.br", "058.806.460-25", $endereco10, $agenda2, 5500.00);
+$dentistaFuncionario2 = new DentistaFuncionario("CRO-2345", "Laura Menezes", "31911111111", "dentista2@dentalsolutions.com.br", "058.806.460-25", $endereco10, $agenda2, 5500.00, []);
 $dentistaFuncionario2->save();
 
-$dentistaFuncionario3 = new DentistaFuncionario("CRO-3456", "Gabriel Souza", "31922222222", "dentista3@dentalsolutions.com.br", "129.996.390-07", $endereco11, $agenda3, 6000.00);
+$dentistaFuncionario3 = new DentistaFuncionario("CRO-3456", "Gabriel Souza", "31922222222", "dentista3@dentalsolutions.com.br", "129.996.390-07", $endereco11, $agenda3, 6000.00, []);
 $dentistaFuncionario3->save();
 
-$dentistaFuncionario4 = new DentistaFuncionario("CRO-4567", "Beatriz Santos", "31933333333", "dentista4@dentalsolutions.com.br", "686.459.700-82", $endereco12, $agenda4, 6500.00);
+$dentistaFuncionario4 = new DentistaFuncionario("CRO-4567", "Beatriz Santos", "31933333333", "dentista4@dentalsolutions.com.br", "686.459.700-82", $endereco12, $agenda4, 6500.00, []);
 $dentistaFuncionario4->save();
 
 /*-------------------------------------------------------DENTISTAS-PARCEIROS-------------------------------------------------------*/
 
-$dentistaParceiro1 = new DentistaParceiro("CRO-5678", "Roberto Silva", "31944444444", "dentistap1@dentalsolutions.com.br", "202.219.470-51", $endereco13, $agenda5);
+$dentistaParceiro1 = new DentistaParceiro("CRO-5678", "Roberto Silva", "31944444444", "dentistap1@dentalsolutions.com.br", "202.219.470-51", $endereco13, [], $agenda5);
 $dentistaParceiro1->save();
 
-$dentistaParceiro2 = new DentistaParceiro("CRO-6789", "Juliana Santos", "31955555555", "dentistap2@dentalsolutions.com.br", "690.074.070-74", $endereco14, $agenda6);
+$dentistaParceiro2 = new DentistaParceiro("CRO-6789", "Juliana Santos", "31955555555", "dentistap2@dentalsolutions.com.br", "690.074.070-74", $endereco14, [], $agenda6);
 $dentistaParceiro2->save();
 
-$dentistaParceiro3 = new DentistaParceiro("CRO-7890", "Carlos Costa", "31966666666", "dentistap3@dentalsolutions.com.br", "824.550.610-94", $endereco15, $agenda7);
+$dentistaParceiro3 = new DentistaParceiro("CRO-7890", "Carlos Costa", "31966666666", "dentistap3@dentalsolutions.com.br", "824.550.610-94", $endereco15, [], $agenda7);
 $dentistaParceiro3->save();
 
-$dentistaParceiro4 = new DentistaParceiro("CRO-8901", "Fernanda Pereira", "31977777777", "dentistap4@dentalsolutions.com.br", "230.175.640-88", $endereco16, $agenda8);
+$dentistaParceiro4 = new DentistaParceiro("CRO-8901", "Fernanda Pereira", "31977777777", "dentistap4@dentalsolutions.com.br", "230.175.640-88", $endereco16, [], $agenda8 );
 $dentistaParceiro4->save();
 
 /*-------------------------------------------------------------CLIENTES-----------------------------------------------------------*/
@@ -242,16 +242,16 @@ $especialidade4->save();
 
 /*----------------------------------------------------------PROCEDIMENTOS---------------------------------------------------------*/
 
-$procedimento1 = new Procedimento("Limpeza Dental", "Limpeza profunda dos dentes", 100.00, 30, $especialidade1);
+$procedimento1 = new Procedimento("Limpeza Dental", "Limpeza profunda dos dentes", 100.00, $especialidade1);
 $procedimento1->save();
 
-$procedimento2 = new Procedimento("Extração de Dente", "Remoção de dente", 200.00, 60, $especialidade2);
+$procedimento2 = new Procedimento("Extração de Dente", "Remoção de dente", 200.00, $especialidade2);
 $procedimento2->save();
 
-$procedimento3 = new Procedimento("Clareamento Dental", "Procedimento para clarear os dentes", 300.00, 45, $especialidade3);
+$procedimento3 = new Procedimento("Clareamento Dental", "Procedimento para clarear os dentes", 300.00, $especialidade3);
 $procedimento3->save();
 
-$procedimento4 = new Procedimento("Implante Dentário", "Procedimento para implantar dentes", 400.00, 120, $especialidade4);
+$procedimento4 = new Procedimento("Implante Dentário", "Procedimento para implantar dentes", 400.00, $especialidade4);
 $procedimento4->save();
 
 /*-----------------------------------------------------------HABILITACOES---------------------------------------------------------*/
@@ -358,3 +358,114 @@ $orcamento3->save();
 
 $orcamento4 = new Orcamento("4", $paciente4, $dentistaParceiro4, new DateTime("2023-11-21"), [$procedimento4], 2500.00, $pagamento4, "Orçamento para implante dentário", [$consulta4]);
 $orcamento4->save();
+
+
+/*---------------------------------------------------ROTERIO DE TESTES------------------------------------------------------------*/
+//TESTE1
+//tentar fazer algo sem estar logado
+
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+//TESTE2
+$perfil_teste = new Perfil('Teste', [$alterar_procedimento, $cadastrar_consulta, $alterar_consulta, $cadastrar_cliente, $alterar_cliente, $cadastrar_usuario, $alterar_usuario, $cadastrar_orcamento, $alterar_orcamento, $cadastrar_paciente, $alterar_paciente, $cadastrar_especialidade, $alterar_especialidade, $cadastrar_profissional, $alterar_profissional, $cadastrar_funcionario, $alterar_funcionario, $entrar, $sair]);
+$usuario_teste = new Usuario('teste', 'teste123', 'teste@dentalsolutions.com', $perfil_teste);
+
+$login_teste = Login::getInstance();
+$login_teste->logar($usuario_teste);
+
+// Pelo fato de termos Front, os dados que sao passados na criacao do procedimento sao puxados do input do proprio usuario, portanto, serao usado valores ja criados neste arquivo anteriormente
+
+if(verificaPermissao($login_teste->getUsuarioLogado(), $cadastrar_procedimento)){
+    $procedimento_teste = new Procedimento('Retirada de dentes', 'Cirurgia para retirada de todos os dentes superiores para implante', 200, $especialidade1);
+}
+
+$login_teste->deslogar();
+
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+//TESTE3
+$usuario_teste2 = new Usuario('teste2', 'teste123', 'teste123@dentalsolutions.com', $perfil4);
+
+$login_teste2= Login::getInstance();
+$login_teste2->logar($usuario_teste2);
+
+//essa verificacao existe nos controllers de cada classe (so possivel ser utilizado caso tenha importacao de dados do front)
+if(verificaPermissao($login_teste->getUsuarioLogado(), $cadastrar_especialidade)){
+    $especialidade_teste_clinicoGeral = new Especialidade('Clinico Geral');
+    $especialidade_teste_endodontia = new Especialidade('Endodontia');
+    $especialidade_teste_cirurgia = new Especialidade('Cirurgia');
+    $especialidade_teste_estetica = new Especialidade('Estetica');
+}
+
+//essa verificacao existe nos controllers de cada classe (so possivel ser utilizado caso tenha importacao de dados do front)
+if(verificaPermissao($login_teste->getUsuarioLogado(), $cadastrar_procedimento)){
+
+    //procedimentos Clinico Geral
+    $procedimento_teste_limpeza = new Procedimento('Limpeza','', 200, $especialidade_teste_clinicoGeral);
+    $procedimento_teste_restauracao = new Procedimento('Restauracao', '', 185, $especialidade_teste_clinicoGeral);
+    $procedimento_teste_extracao = new Procedimento('Extracao Comum', '', 280, $especialidade_teste_clinicoGeral);
+
+    //procedimentos Edodontia
+    $procedimento_teste_canal = new Procedimento('Canal', '', 800, $especialidade_teste_endodontia);
+
+    //procedimentos Cirurgia
+    $procedimento_teste_siso = new Procedimento('Extracao de Siso', 'Valor pode dente', 400, $especialidade_teste_cirurgia);
+
+    //procedimentos Estetica
+    $procedimento_teste_clareamentoLaser = new Procedimento('Clareamento a laser', '', 1700, $especialidade_teste_estetica);
+    $procedimento_teste_clareamentoMoldeira = new Procedimento('Clareamento de moldeira','', 900, $especialidade_teste_estetica);
+}
+
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+//TESTE 4
+$formaPagamento_teste_dinheiro = new FormaPagamento(TipoPagamento::Dinheiro, 1, "", 0);
+$formaPagamento_teste_pix = new FormaPagamento(TipoPagamento::Pix, 1, "", 0);
+$formaPagamento_teste_debito = new FormaPagamento(TipoPagamento::Debito, 1, "", 0.03);
+$formaPagamento_teste_credito_1x = new FormaPagamento(TipoPagamento::Credito, 1, "", 0.04);
+$formaPagamento_teste_credito_2x = new FormaPagamento(TipoPagamento::Credito, 2, "", 0.04);
+$formaPagamento_teste_credito_3x = new FormaPagamento(TipoPagamento::Credito, 3, "", 0.04);
+$formaPagamento_teste_credito_4x = new FormaPagamento(TipoPagamento::Credito, 4, "", 0.07);
+$formaPagamento_teste_credito_5x = new FormaPagamento(TipoPagamento::Credito, 5, "", 0.07);
+$formaPagamento_teste_credito_6x = new FormaPagamento(TipoPagamento::Credito, 6, "", 0.07);
+$aliquota = 0.2;
+
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+//TESTE 5
+$agenda1_teste = new Agenda('','','','','',''); //IMPLEMENTAR
+//Agenda padrao novembro/2023
+
+$dentista_teste_funcionario = new DentistaFuncionario('123123123', 'Michael Jordan', '(31)991919191', 'jordan@dentalsolutions.com', '78945612301',$endereco1, $agenda1_teste ,5000.00, []);
+$habilitacao1_teste_dentistaFuncionario = new Habilitacao($especialidade_teste_clinicoGeral);
+$habilitacao2_teste_dentistaFuncionario = new Habilitacao($especialidade_teste_endodontia);
+$habilitacao3_teste_dentistaFuncionario = new Habilitacao($especialidade_teste_cirurgia);
+$dentista_teste_funcionario->addHabilitacao($habilitacao1_teste_dentistaFuncionario);
+$dentista_teste_funcionario->addHabilitacao($habilitacao2_teste_dentistaFuncionario);
+$dentista_teste_funcionario->addHabilitacao($habilitacao3_teste_dentistaFuncionario);
+
+
+$agenda2_teste = new Agenda('','','','','',''); // IMPLEMENTAR
+//Agenda padrao novembro/2023
+
+$dentista_teste_parceiro = new DentistaParceiro('321321321', 'Shaquile Oneal', '(31)990909090', 'shaq@dentalsolutions.com', '32165498778', $endereco15, [], $agenda2_teste);
+$habilitacao1_teste_dentistaParceiro = new Habilitacao($especialidade_teste_clinicoGeral, 0.4);
+$habilitacao2_teste_dentistaParceiro = new Habilitacao($especialidade_teste_estetica, 0.4);
+$dentista_teste_parceiro->addHabilitacao($habilitacao1_teste_dentistaParceiro);
+$dentista_teste_parceiro->addHabilitacao($habilitacao2_teste_dentistaParceiro);
+//Agenda padrao novembro/2023
+
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+//TESTE 6
+$cliente_teste = new Cliente('Lebron James', '(31)999999999', 'king@dentalsolutions.com', '121.198.873-98', '78540258');
+$paciente_teste = new Paciente('Wilt Chamberlain', '(31)987654562', 'wilt@dentalsolutions.com', '444.333.222-11', '12/12/1999', $cliente_teste, '35759515');
+
+/*
+agendamento de uma consulta de avaliação com o dentista
+parceiro para o dia 06/11 às 14h. Caso não seja possível, 
+a consulta deve ser agendada com o dentista funcionário.
+*/
+
+$procedimento_teste_restauracao2 = new Procedimento('Restauracao', '', 185, $especialidade_teste_clinicoGeral);
+//FALTA TERMINAR $orcamento_teste = new Orcamento('1', $paciente_teste, $dentista_teste_parceiro, '2023/11/06', [$procedimento_teste_limpeza, $procedimento_teste_clareamentoLaser, $procedimento_teste_restauracao, $procedimento_teste_restauracao2]);

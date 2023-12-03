@@ -6,10 +6,11 @@ abstract class Dentista extends Profissional
   protected Agenda $agenda;
   protected array $habilitacoes = array();
 
-  public function __construct(string $cro, string $nome, string $telefone, string $email, string $CPF, Endereco $endereco, Agenda $agenda)
+  public function __construct(string $cro, string $nome, string $telefone, string $email, string $CPF, Endereco $endereco,  $habilitacoes, Agenda $agenda)
   {
     parent::__construct($nome, $telefone, $email, $CPF, $endereco);
     $this->cro = $cro;
+    $this->habilitacoes = $habilitacoes;
     $this->agenda = $agenda;
   }
 

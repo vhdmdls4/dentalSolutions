@@ -3,39 +3,6 @@
 require_once('global.php');
 // Criação das classes
 
-$end = new Endereco("Antonio Carlos", "Sao Luiz", "12312123", "Portaria 1", 123, "BH", "MG");
-
-echo ($end->getRua());
-
-$auxiliar = new Auxiliar(1.1, "31912341234", "aux@dentalsolutions.com.br", "12312312312", "123123", $end);
-
-$cliente = new Cliente("KAJ", "31900000000", "cliente@gmail.com", "11111111111", "MG11111111");
-
-/*
-$consulta = new Consulta();
-
-$dentista = new Dentista("21212121", "limpeza dentaria", "DENTISTAPAI", "31922222222", "dentistaABSTRATO@dentalsolutions.com.br",   );
-
-$dent_func = new dentistaFuncionario();
-
-$dent_parceiro = new dentistaParceiro();
-
-$func = new Funcionario();
-
-$orcamento = new Orcamento();
-
-$paciente = new Paciente();
-
-$pagamento = new Pagamento ();
-
-$procedimento = new Procedimentos();
-
-$profissional = new Profissional();
-
-$secretario = new Secretario("Henrique", "31999999999", "secrt@dentalsolutions.com.br", "32132132132", $end, 4321,43);
-
-*/
-
 $funcionalidade1 = new Funcionalidade("Alterar Orcamento");
 $Dentista_teste = new Perfil("Dentista", []);
 var_dump($Dentista_teste);
@@ -84,3 +51,10 @@ if ($login === $login2) { // se $login for EXATAMENTE igual a $login2 (isso incl
 $login2->deslogar();
 
 var_dump($login); // necessário retornar Null, após $login2 ter sido deslogado
+
+
+
+echo "||||||||||||||||||||||||||||||||||\n";
+
+$formaPagamento_teste_credito_3x = new FormaPagamento(TipoPagamento::Credito, 3, "", 0.04);
+var_dump($formaPagamento_teste_credito_3x);

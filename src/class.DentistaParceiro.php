@@ -4,9 +4,9 @@ class DentistaParceiro extends Dentista
 {
   protected array $renda;
 
-  public function __construct(string $cro, string $nome, string $telefone, string $email,  string $CPF, Endereco $endereco, Agenda $agenda)
+  public function __construct(string $cro, string $nome, string $telefone, string $email,  string $CPF, Endereco $endereco, $habilitacoes, Agenda $agenda)
   {
-    parent::__construct($cro, $nome, $telefone, $email, $CPF, $endereco, $agenda);
+    parent::__construct($cro, $nome, $telefone, $email, $CPF, $endereco, $habilitacoes, $agenda);
     $this->renda = array();
   }
 
