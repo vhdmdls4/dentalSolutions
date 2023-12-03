@@ -104,13 +104,12 @@ class Agenda
         }
     }
 
-    public function agendaConsulta(Procedimento $procedimento, DateTime $dataHora): bool
+    public function disponibilidade(DateTime $data, DateTime $hora, int $duracao): bool
     {
         $disponivel = false;
-        $horarios = $this->dias[$dataHora->format('d/m/y')];
-        $duracao = $procedimento->getTempoEstimado();
+        $horarios = $this->dias[$data->format('d/m/y')];
 
-        $inicio = clone $dataHora;
+        $inicio = clone $hora;
         if ($inicio->format('i') >= "30") {
             $inicio->setTime($inicio->format('H'), 30, 0);
         } else {
@@ -118,7 +117,7 @@ class Agenda
         }
         $inicio = $inicio->format('H:i');
 
-        $fim = clone $dataHora;
+        $fim = clone $hora;
         $fim->add(new DateInterval('PT' . $duracao . 'M'));
         if ($fim->format('i') > "30") {
             $fim->setTime($fim->format('H'), 30);
@@ -141,19 +140,40 @@ class Agenda
             }
         }
 
-        if ($disponivel) {
-            foreach ($horarios as $hora => $disponibilidade) {
-                if ($hora < $inicio) {
-                    continue;
-                }
-                $this->dias[$dataHora->format('d/m/y')][$hora] = false;
-                if ($hora == $fim) {
-                    break;
-                }
+        return $disponivel;
+    }
+
+    public function marcarConsulta(Consulta $consulta)
+    {
+        $horarios = $this->dias[$consulta->getData()->format('d/m/y')];
+        $duracao = $consulta->getDuracao();
+
+        $inicio = clone $consulta->getHorario();
+        if ($inicio->format('i') >= "30") {
+            $inicio->setTime($inicio->format('H'), 30, 0);
+        } else {
+            $inicio->setTime($inicio->format('H'), 0, 0);
+        }
+        $inicio = $inicio->format('H:i');
+
+        $fim = clone $consulta->getHorario();
+        $fim->add(new DateInterval('PT' . $duracao . 'M'));
+        if ($fim->format('i') > "30") {
+            $fim->setTime($fim->format('H'), 30);
+        } else {
+            $fim->setTime($fim->format('H'), 0);
+        }
+        $fim = $fim->format('H:i');
+
+        foreach ($horarios as $hora => $_) {
+            if ($hora < $inicio) {
+                continue;
+            }
+            $this->dias[$consulta->getData()->format('d/m/y')][$hora] = false;
+            if ($hora == $fim) {
+                break;
             }
         }
-
-        return $disponivel;
     }
 
     public function abrirAgenda(DateTime $data, string $horario)

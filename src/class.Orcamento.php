@@ -3,7 +3,6 @@
 
 class Orcamento extends persist
 {
-    protected string $id;
     protected Paciente $paciente;
     protected Dentista $dentistaResponsavel;
     protected DateTime $dataOrcamento;
@@ -15,7 +14,6 @@ class Orcamento extends persist
     protected array $consultas = array();
 
     public function __construct(
-        string $id,
         Paciente $paciente,
         Dentista $dentistaResponsavel,
         DateTime $dataOrcamento,
@@ -25,7 +23,6 @@ class Orcamento extends persist
         string $descricao,
         array $consultas
     ) {
-        $this->id = $id;
         $this->paciente = $paciente;
         $this->dentistaResponsavel = $dentistaResponsavel;
         $this->dataOrcamento = $dataOrcamento;
@@ -91,11 +88,6 @@ class Orcamento extends persist
         return $this->valorTotal / $this->pagamento->getForma()->getParcelas();
     }
 
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
     public function getValorTotal(): float
     {
         return $this->valorTotal;
@@ -105,14 +97,17 @@ class Orcamento extends persist
     {
         return $this->paciente;
     }
+
     public function getDentistaResponsavel(): Dentista
     {
         return $this->dentistaResponsavel;
     }
+
     public function getDataOrcamento(): DateTime
     {
         return $this->dataOrcamento;
     }
+
     public function getTratamentoAprovado(): bool
     {
         return $this->tratamentoAprovado;
