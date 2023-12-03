@@ -1,30 +1,22 @@
 <?php
 
+require_once 'persist.php';
+require_once 'class.Profissional.php';
 
 class Orcamento extends persist
 {
-    private string $id;
-    private Paciente $paciente;
-    private Dentista $dentistaResponsavel;
-    private DateTime $dataOrcamento;
-    private array $procedimentos = array();
-    private float $valorTotal = 0;
-    private bool $tratamentoAprovado = false;
-    private Pagamento $pagamento;
-    private string $descricao;
-    private array $consultas = array();
+    protected string $id;
+    protected Paciente $paciente;
+    protected Dentista $dentistaResponsavel;
+    protected DateTime $dataOrcamento;
+    protected array $procedimentos = array();
+    protected float $valorTotal = 0;
+    protected bool $tratamentoAprovado = false;
+    protected Pagamento $pagamento;
+    protected string $descricao;
+    protected array $consultas = array();
 
-    public function __construct(
-        string $id,
-        Paciente $paciente,
-        Dentista $dentistaResponsavel,
-        DateTime $dataOrcamento,
-        array $procedimentos,
-        float $valorTotal,
-        Pagamento $pagamento,
-        string $descricao,
-        array $consultas
-    ) {
+    public function __construct(string $id, Paciente $paciente, Dentista $dentistaResponsavel, DateTime $dataOrcamento, array $procedimentos, float $valorTotal, Pagamento $pagamento, string $descricao, array $consultas) {
         $this->id = $id;
         $this->paciente = $paciente;
         $this->dentistaResponsavel = $dentistaResponsavel;
@@ -44,6 +36,12 @@ class Orcamento extends persist
     {
         return 'Orcamento.txt';
     }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
 
     public function aprovaTratamento(Pagamento $pagamento)
     {
@@ -88,11 +86,6 @@ class Orcamento extends persist
     public function valorParcelas(): float
     {
         return $this->valorTotal / $this->pagamento->getForma()->getParcelas();
-    }
-
-    public function getId(): string
-    {
-        return $this->id;
     }
 
     public function getValorTotal(): float
@@ -156,6 +149,7 @@ class Orcamento extends persist
         unset($this->consultas[$key]);
     }
 }
+
 
 /*
 $procedimentoObjeto1 = new Procedimento('limpeza', 'limpa', 32.3, 32);

@@ -27,16 +27,15 @@
 
                 // Exibe os orçamentos em uma tabela
                 foreach ($arquivosOrcamentos as $arquivo) {
-                    // Ignora o arquivo .DS_Store
                     if ($arquivo != ".DS_Store") {
                         $caminhoCompleto = $caminhoOrcamentos . $arquivo;
                         echo "<tr>";
                         echo "<td>$arquivo</td>";
                         echo "<td>";
                         echo "<a href=\"visualizar_orcamentos.php?arquivo=$arquivo\" target=\"_blank\"><i class=\"bi bi-eye\"></i></a> | ";
-                        echo "<a href=\"aprovaOrcamento.php?arquivo=$arquivo\" target=\"_blank\"><i class=\"bi bi-check\"></i></a> | ";
-                        echo "<a href=\"reprovar_orcamento.php?arquivo=$arquivo\"><i class=\"bi bi-x\"></i></a>";
-                    
+                        echo "<a href=\"editar_orcamentos.php?arquivo=$arquivo\" target=\"_blank\"><i class=\"bi bi-pencil\"></i></a> | ";
+                        echo "<a href=\"aprova_orcamento.php?arquivo=$arquivo\" target=\"_blank\"><i class=\"bi bi-check\"></i></a> | ";
+                        echo "<a href=\"reprova_orcamento.php?arquivo=$arquivo\" target=\"_blank\"><i class=\"bi bi-x\"></i></a> | ";
                         echo "</td>";
                         echo "</tr>";
                     }

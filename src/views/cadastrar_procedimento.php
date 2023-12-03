@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="mb-3">
-      <label for="duracao" class="form-label">Duração do Procedimento:</label>
+      <label for="duracao" class="form-label">Duração do Procedimento (em minutos):</label>
       <input type="text" class="form-control" id="duracao" name="duracao" aria-label="Duracao" required>
     </div>
     <div class="mb-3">
@@ -38,7 +38,6 @@
 
     //handleFormSubmit('registrarCliente', '../controllers/ClienteController.php');
   </script>
-
 
 </main>
 
