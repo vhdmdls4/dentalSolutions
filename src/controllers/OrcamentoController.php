@@ -2,6 +2,34 @@
 
 require_once '../global.php';
 
+$formaPagamento1 = new FormaPagamento(TipoPagamento::Credito, 10, 0.05);
+$pagamento1 = new Pagamento($formaPagamento1, false, new DateTime("2023-11-18"), 1000.00);
+var_dump ($formaPagamento1->getTipo());
+echo '<hr>';
+echo $pagamento1->getForma();
+echo '<hr>';
+
+$formaPagamento2 = new FormaPagamento(TipoPagamento::Dinheiro, 1, 0.0);
+$pagamento2 = new Pagamento($formaPagamento2, false, new DateTime("2023-11-18"), 1000.00);
+var_dump ($formaPagamento2->getTipo());
+echo '<hr>';
+echo $pagamento2->getForma();
+echo '<hr>';
+
+$formaPagamento3 = new FormaPagamento(TipoPagamento::Pix, 1, 0.0);
+$pagamento3 = new Pagamento($formaPagamento3, false, new DateTime("2023-11-18"), 500.00);
+var_dump ($formaPagamento3->getTipo());
+echo '<hr>';
+echo $pagamento3->getForma();
+echo '<hr>';
+
+$formaPagamento3 = new FormaPagamento(TipoPagamento::Debito, 1, 0.01);
+$pagamento3 = new Pagamento($formaPagamento3, false, new DateTime("2023-11-18"), 500.00);
+var_dump ($formaPagamento3->getTipo());
+echo '<hr>';
+echo $pagamento3->getForma();
+echo '<hr>';
+
 class OrcamentoController
 {
     public function create()
@@ -9,6 +37,7 @@ class OrcamentoController
         
         $pacientesDB = Paciente::getRecords();
         $dentistasDB = DentistaParceiro::getRecords();
+        $formasPagamentoDB = FormaPagamento::getRecords();
 
         $pacienteCPF = $_POST['pacienteCPF'];
         $dentistaResponsavelCPF = $_POST['dentistaCPF'];
@@ -16,7 +45,7 @@ class OrcamentoController
         $tratamentoAprovado = $_POST['tratamentoAprovado'];
         $procedimentosData = isset($_POST['procedimentos']) ? filter_input(INPUT_POST, 'procedimentos', FILTER_DEFAULT) : null;
         $valorTotal = $_POST['valorTotal'];
-        $pagamentoData = $_POST['pagamento'];
+        $forma_Pagamento = $_POST['pagamento'];
         $descricao = $_POST['descricao'];
         $consultasData = $_POST['consultas'];
 
@@ -30,6 +59,11 @@ class OrcamentoController
             exit;
         }
 
+        if ($forma_Pagamento === null) {
+            echo json_encode(['error' => 'O campo "formaPagamento" não foi enviado ou está vazio.']);
+            exit;
+        }
+
         if (
             $pacienteCPF === null ||
             $dentistaResponsavelCPF === null ||
@@ -37,7 +71,7 @@ class OrcamentoController
             $tratamentoAprovado === null ||
             $procedimentosData === null ||
             $valorTotal === null ||
-            $pagamentoData === null ||
+            $forma_Pagamento === null ||
             $descricao === null ||
             $consultasData === null
         ) {
@@ -63,6 +97,15 @@ class OrcamentoController
                 }
         }
 
+        $formaPagamentoEncontrada = null;
+
+        foreach ($formasPagamentoDB as $formaPagamentoLocal) {
+            if ($formaPagamentoLocal->getForma() == $forma_Pagamento) {
+                $formaPagamentoEncontrada = $formaPagamentoLocal;
+                  break;
+                }
+        }
+
         try {
 
             if ($pacienteEncontrado === null) {
@@ -73,21 +116,16 @@ class OrcamentoController
                 throw new Exception('Dentista Responsável não encontrado.');
             }
 
-            $tipoPagamento = TipoPagamento::Dinheiro;
+            if ($formaPagamentoEncontrada === null) {
+                throw new Exception('Forma de Pagamento não encontrada.');
+            }
 
-            $formaPagamento = new FormaPagamento(
-                $tipoPagamento,
-                $pagamentoData['parcelas'],
-                $pagamentoData['operadora'],
-                $pagamentoData['taxa']
-            );
-
-            $pagamento = new Pagamento(
+            /*$pagamento = new Pagamento(
                 $formaPagamento,
                 $pagamentoData['pago'],
                 new DateTime($pagamentoData['data']),
                 $pagamentoData['valorFaturado']
-            );
+            );*/
 
             $orcamento = new Orcamento(
                 $pacienteCPF,
@@ -96,7 +134,7 @@ class OrcamentoController
                 $tratamentoAprovado,
                 $procedimentosData,
                 $valorTotal,
-                $pagamento,
+                $forma_Pagamento,
                 $descricao,
                 $consultasData
             );

@@ -4,20 +4,13 @@
 
   <h2 class="mt-5" aria-label="Criação de Orçamentos">Criação de Orçamentos</h2>
   <form id="criarOrcamento" action="" aria-label="Formulário de Criação de Orçamentos" title="Formulário de Criação de Orçamentos">
-  <div class="mb-3">
-    <label for="id" class="form-label" aria-label="id" title="id">Nº Orçamento:</label>
-    <?php
-        $id = sprintf("%04d", rand(1000, 9999));
-    ?>
-    <input type="number" class="form-control" id="id" name="id" aria-required="true" aria-label="id" title="id do orcamento" placeholder="" value="<?php echo $id; ?>" required>
-</div>
    <div class="mb-3">
       <label for="pacienteCPF" class="form-label" aria-label="Paciente" title="Paciente do cliente">CPF do Cliente:</label>
       <input type="text" class="form-control" id="pacienteCPF" name="pacienteCPF" aria-required="true" aria-label="pacienteCPF" title="CPF do Paciente" placeholder="" required>
     </div>
     <div class="mb-3">
       <label for="dentistaCPF" class="form-label" aria-label="Dentista Responsável" title="Dentista Responsável">CPF do Dentista:</label>
-      <input type="text" class="form-control" id="dentistaCPF" name="dentistaCPF" aria-required="true" aria-label="Dentista Responsável" title="Dentista Responsável" placeholder="Selecione o Dentista Responsável" required>
+      <input type="text" class="form-control" id="dentistaCPF" name="dentistaCPF" aria-required="true" aria-label="Dentista Responsável" title="Dentista Responsável" placeholder="" required>
     </div>
     <div class="mb-3">
         <label for="dataOrcamento" class="form-label" aria-label="dataOrcamento" title="Data do Orçamento">Data do Orçamento:</label>
