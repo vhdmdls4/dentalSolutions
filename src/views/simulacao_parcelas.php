@@ -14,19 +14,13 @@
         <div class="mb-3">
             <label for="parcelas" class="form-label">Parcelamento:</label>
             <select class="form-select" id="parcelas" aria-label="Selecione o número de parcelas" title="Selecione o número de parcelas">
-                <option value="1">Débito</option>
-                <option value="2">À vista</option>
+                <option value="1">Dinheiro ou Pix</option>
+                <option value="2">Débito</option>
                 <option value="3">2x</option>
                 <option value="4">3x</option>
                 <option value="5">4x</option>
                 <option value="6">5x</option>
                 <option value="7">6x</option>
-                <!--<option value="8">7x</option>
-                <option value="9">8x</option>
-                <option value="10">9x</option>
-                <option value="11">10x</option>
-                <option value="12">11x</option>
-                <option value="13">12x</option>-->
             </select>
         </div>
 
@@ -43,7 +37,7 @@
             const valorProcedimento = parseFloat(document.getElementById('valor').value.replace(',', '.'));
 
             // Define as porcentagens das taxas de débito para cada parcela
-            const taxasDebito = [1.38, 3.16, 5.40, 6.13, 6.86, 7.58, 8.29, 9.00, 9.70, 10.39, 11.07, 11.75, 12.41];
+            const taxasDebito = [0, 1.38, 3.16, 5.40, 6.13, 6.86, 7.58];
 
             // Obtem o número de parcelas selecionado pelo usuário
             const numParcelas = parseInt(document.getElementById('parcelas').value);

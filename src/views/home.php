@@ -71,14 +71,14 @@
       Agenda <span class="bi bi-calendar3"></span>
     </div>
     <div id="agenda-options" class="agenda-options">
-      <a href="agenda.php">Mensal</a>
+      <a href="agenda.php"> Calendário Mensal</a>
       <a href="agenda_dentista.php">Dentista</a>
     </div>
   </div>
 
   <div class="btn btn-primary btn-lg" id="cadastro-btn">
     <div class="text-container">
-      Cadastrar <span class="bi bi-person"></span>
+      Cadastrar <span class="bi bi-person-plus"></span>
     </div>
     <div id="cadastro-options" class="cadastro-options">
       <a href="cadastrar_cliente.php">Cliente</a>
@@ -88,7 +88,7 @@
       <a href="cadastrar_funcionario.php">Funcionário</a>
       <a href="cadastrar_paciente.php">Paciente</a>
       <a href="cadastrar_procedimento.php">Procedimento</a>
-      <a href="cadastrar_usuario.php">Usuario</a>
+      <a href="cadastrar_usuario.php">Usuário</a>
     </div>
   </div>
 
@@ -98,23 +98,24 @@
     </div>
   </a>
 
-  <div class="btn btn-primary btn-lg" id="visualizar-btn">
+  <a href="simulacao_parcelas.php" class="btn btn-primary btn-lg">
+    <div class="text-container">
+      Simulador de Tarifas <span class="bi bi-percent"></span>
+    </div>
+  </a>
+
+  <!--<div class="btn btn-primary btn-lg" id="visualizar-btn">
     <div class="text-container">
       Visualizar <span class="bi bi-eye"></span>
     </div>
     <div id="visualizar-options" class="visualizar-options">
-      <a href="visualizar_clientes.php">Clientes</a>
-      <a href="orcamentos.php">Orçamentos</a>
-      <a href="visualizar_procedimentos.php">Procedimentos</a>
       <a href="simulacao_parcelas.php">Simulador de Tarifas</a>
-      <a href="visualizar_usuarios.php">Usuários</a>
-
     </div>
-  </div>
+  </div>-->
 
-  <a href="ajustes.php" class="btn btn-primary btn-lg">
+  <a href="informacoes_usuario.php" class="btn btn-primary btn-lg">
     <div class="text-container">
-      Ajustes <span class="bi bi-gear"></span>
+      Meus Dados <span class="bi bi-person-vcard"></span>
     </div>
   </a>
 </div>

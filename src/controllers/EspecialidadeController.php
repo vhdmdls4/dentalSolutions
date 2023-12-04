@@ -11,7 +11,13 @@ class EspecialidadeController
         $nomeEntrada = $_POST['nome'];
         $nome = trim($nomeEntrada);
         $nome = strtolower($nome);
-        $procuraEspecialidade = Especialidade::getRecordsByField('nome', $nome)[0];
+        $procuraEspecialidade = Especialidade::getRecordsByField('nome', $nome);
+
+        if (!empty($procuraEspecialidade)) {
+            $procuraEspecialidade = $procuraEspecialidade[0];
+        } else {
+            $procuraEspecialidade = null;
+        }
 
         try {
             if ($procuraEspecialidade !== null) {
