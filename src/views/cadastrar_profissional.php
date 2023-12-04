@@ -35,23 +35,6 @@
                 <input type="number" class="form-control" id="salarioFixo" name="salarioFixo" aria-label="Salário Fixo" required>
             </div>
         </div>
-        <div id="infoDentista" style="display: none;">
-            <div class="mb-3">
-                <label for="cro" class="form-label">CRO (Conselho Regional de Odontologia):</label>
-                <input type="text" class="form-control" id="cro" name="cro" aria-label="CRO">
-            </div>
-            <div class="mb-3">
-                <label for="especialidades" class="form-label">Especialidades:</label>
-                <input type="text" class="form-control" id="especialidades" name="especialidades" aria-label="Especialidades">
-            </div>
-            <div class="mb-3">
-                <label for="percentualParticipacao" class="form-label">Percentual de Participação:</label>
-                <div class="input-group">
-                    <input type="number" class="form-control" id="percentualParticipacao" name="percentualParticipacao" aria-label="Percentual de Participação" min="0" max="100">
-                    <span class="input-group-text">%</span>
-                </div>
-            </div>
-        </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-primary" aria-label="Cadastrar">Cadastrar</button>
             <div id="mt-5 mensagem"></div>
