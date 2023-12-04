@@ -82,6 +82,8 @@
     </div>
     <div id="cadastro-options" class="cadastro-options">
       <a href="cadastrar_cliente.php">Cliente</a>
+      <a href="cadastrar_dentista.php">Dentista Funcionário</a>
+      <a href="cadastrar_dentistaParceiro.php">Dentista Parceiro</a>
       <a href="cadastrar_especialidade.php">Especialidade</a>
       <a href="cadastrar_funcionario.php">Funcionário</a>
       <a href="cadastrar_paciente.php">Paciente</a>
