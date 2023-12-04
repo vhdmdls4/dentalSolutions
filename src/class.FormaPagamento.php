@@ -1,5 +1,7 @@
 <?php
 
+require_once 'persist.php';
+
 enum TipoPagamento
 {
     case Dinheiro;
@@ -8,18 +10,21 @@ enum TipoPagamento
     case Debito;
 }
 
-class FormaPagamento
+class FormaPagamento extends persist
 {
     protected TipoPagamento $tipo;
     protected int $parcelas;
-    protected string $operadora;
     protected float $taxa;
 
-    public function __construct(TipoPagamento $tipo, int $parcelas = 1, string $operadora = "", float $taxa = 0.0)
+    static public function getFilename()
+    {
+        return 'formaPagamento.txt';
+    }
+
+    public function __construct(TipoPagamento $tipo, int $parcelas = 1, float $taxa = 0.0)
     {
         $this->tipo = $tipo;
         $this->parcelas = $parcelas;
-        $this->operadora = $operadora;
         $this->taxa = $taxa;
     }
 
@@ -30,10 +35,6 @@ class FormaPagamento
     public function getParcelas(): int
     {
         return $this->parcelas;
-    }
-    public function getOperadora(): string
-    {
-        return $this->operadora;
     }
     public function getTaxa(): float
     {
@@ -46,10 +47,6 @@ class FormaPagamento
     public function setParcelas(int $parcelas)
     {
         $this->parcelas = $parcelas;
-    }
-    public function setOperadora(string $operadora)
-    {
-        $this->operadora = $operadora;
     }
     public function setTaxa(float $taxa)
     {
