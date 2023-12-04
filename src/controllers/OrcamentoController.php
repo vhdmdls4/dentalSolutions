@@ -6,7 +6,7 @@ class OrcamentoController
 {
     public function create()
     {
-        
+
         $pacientesDB = Paciente::getRecords();
         $dentistasDB = DentistaParceiro::getRecords();
 
@@ -49,8 +49,8 @@ class OrcamentoController
 
         foreach ($pacientesDB as $pacienteLocal) {
             if ($pacienteLocal->getCpf() == $pacienteCPF) {
-            $pacienteEncontrado = $pacienteLocal;
-              break;
+                $pacienteEncontrado = $pacienteLocal;
+                break;
             }
         }
 
@@ -59,8 +59,18 @@ class OrcamentoController
         foreach ($dentistasDB as $dentistaLocal) {
             if ($dentistaLocal->getCpf() == $dentistaResponsavelCPF) {
                 $dentistaResponsavelEncontrado = $dentistaLocal;
-                  break;
+                break;
+            }
+        }
+
+        if ($dentistaResponsavelEncontrado === null) {
+            $dentistasDB = DentistaFuncionario::getRecords();
+            foreach ($dentistasDB as $dentistaLocal) {
+                if ($dentistaLocal->getCpf() == $dentistaResponsavelCPF) {
+                    $dentistaResponsavelEncontrado = $dentistaLocal;
+                    break;
                 }
+            }
         }
 
         try {
@@ -113,7 +123,7 @@ class OrcamentoController
                 'descricao' => $orcamento->getDescricao(),
                 'consultas' => $orcamento->getConsultas(),
             ];
-            
+
             echo json_encode(['titulo' => 'Orçamento criado com sucesso', 'conteudo' => htmlspecialchars(json_encode($orcamentoDetails))]);
         } catch (Exception $e) {
             echo json_encode(['error' => 'Erro ao criar orçamento: ' . $e->getMessage()]);

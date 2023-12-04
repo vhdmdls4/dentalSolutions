@@ -8,6 +8,7 @@ class ConsultaController
 {
     public function create()
     {
+
         $nomeProcedimento = $_POST['procedimento'];
         $cpfPaciente = $_POST['paciente'];
         $cpfDentista = $_POST['dentista'];
@@ -99,7 +100,51 @@ class ConsultaController
                 'duracao' => strval($consulta->getDuracao()),
             ];
 
-            echo json_encode(['titulo' => 'Consulta criado com sucesso', 'conteudo' => $consultaDetails]);
+            echo json_encode(['titulo' => 'Consulta criada com sucesso', 'conteudo' => $consultaDetails]);
+        } catch (Exception $e) {
+            echo json_encode(['error' => 'Erro ao criar consulta: ' . $e->getMessage()]);
+        }
+    }
+
+    public function createAgenda()
+    {
+        $cpfDentista = $_POST['cpfDentista'];
+        $stringData = $_POST['diaAgenda'];
+
+        $dentistaEncontrado = null;
+        $data = DateTime::createFromFormat('Y-m-d', $stringData);
+
+        foreach (DentistaFuncionario::getRecords() as $dentistaLocal) {
+            if ($dentistaLocal->getCPF() == $cpfDentista) {
+                $dentistaEncontrado = $dentistaLocal;
+                break;
+            }
+        }
+
+        if ($dentistaEncontrado === null) {
+            foreach (DentistaParceiro::getRecords() as $dentistaLocal) {
+                if ($dentistaLocal->getCPF() == $cpfDentista) {
+                    $dentistaEncontrado = $dentistaLocal;
+                    break;
+                }
+            }
+        }
+
+        try {
+
+            if ($dentistaEncontrado === null) {
+                throw new Exception('Dentista não encontrado.');
+            }
+
+            $agenda = $dentistaEncontrado->getAgenda()->getAgendaDia($data);
+
+            $agendaDetails = [];
+
+            foreach ($agenda as $hora => $disponibilidade) {
+                $agendaDetails[$hora] = $disponibilidade ? 'Disponível' : 'Indisponível';
+            }
+
+            echo json_encode(['titulo' => 'Agenda do dentista', 'conteudo' => $agendaDetails]);
         } catch (Exception $e) {
             echo json_encode(['error' => 'Erro ao criar consulta: ' . $e->getMessage()]);
         }
@@ -108,5 +153,9 @@ class ConsultaController
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $controller = new ConsultaController();
-    $controller->create();
+    if (isset($_POST['procedimento']) && $_POST['procedimento'] !== '') {
+        $controller->create();
+    } else {
+        $controller->createAgenda();
+    }
 }
