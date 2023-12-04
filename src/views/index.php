@@ -353,13 +353,12 @@
                     </li>
                     <li><a href="cadastrar_especialidade.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Especialidade</a>
                     </li>
-                    <li><a href="cadastrar_funcionario.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Funcionário</a>
-                    </li>
                     <li><a href="cadastrar_paciente.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Paciente</a>
                     </li>
                     <li><a href="cadastrar_procedimento.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Procedimento</a>
                     </li>
-                    <li><a href="#" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Profissional</a></li>
+                    <li><a href="cadastrar_profissional.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Profissional</a>
+                    </li>
                     <li><a href="cadastrar_usuario.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Usuario</a>
                     </li>
               </li>

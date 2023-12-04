@@ -1,13 +1,14 @@
 <?php require_once('./index.php'); ?>
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <h2 class="mt-4">Cadastro de Funcionário</h2>
+    <h2 class="mt-4">Cadastro de Profissional</h2>
     <form id="cadastroFuncionario" action="" aria-label="Formulário de Cadastro de Funcionário">
+        
         <div class="mb-3">
             <label for="nome" class="form-label">Nome:</label>
             <input type="text" class="form-control" id="nome" name="nome" aria-label="Funcionário" required>
         </div>
-                <div class="mb-3">
+        <div class="mb-3">
             <label for="username" class="form-label">Nome de Usuário:</label>
             <input type="text" class="form-control" id="username" name="username" aria-label="Nome de Usuário" required>
         </div>
@@ -58,14 +59,17 @@
     </form>
     <script type="module">
         // Captura o elemento de nome de usuário
+        const usernameInput = document.getElementById('username');
+        // Captura o elemento de nome
         const nomeInput = document.getElementById('nome');
         // Captura o elemento de e-mail
         const emailInput = document.getElementById('email');
 
         // Adiciona um ouvinte de evento para reagir a mudanças no nome de usuário
-        nomeInput.addEventListener('input', () => {
-            // Inicia o valor do campo de e-mail com o valor do nome de usuário + @dentesoft.com
-            emailInput.value = `${nomeInput.value}@dentesoft.com`;
+        usernameInput.addEventListener('input', () => {
+            // Atualiza o valor do campo de e-mail com o nome de usuário + @dentesoft.com
+            const username = usernameInput.value.trim();
+            emailInput.value = `${username}@dentesoft.com`;
         });
 
         // Inicia o valor do campo de e-mail com @dentesoft.com

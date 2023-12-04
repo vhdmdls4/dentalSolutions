@@ -28,7 +28,7 @@ $especialidades = "Especialidade 1, Especialidade 2";
 
     <script>
         document.getElementById('editarIcon').addEventListener('click', function() {
-            alert('Funcionalidade em fase de implementação.');
+            alert('Funcionalidade em implementação.');
         });
     </script>
 

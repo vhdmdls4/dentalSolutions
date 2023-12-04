@@ -85,9 +85,9 @@
       <a href="cadastrar_dentista.php">Dentista Funcionário</a>
       <a href="cadastrar_dentistaParceiro.php">Dentista Parceiro</a>
       <a href="cadastrar_especialidade.php">Especialidade</a>
-      <a href="cadastrar_funcionario.php">Funcionário</a>
       <a href="cadastrar_paciente.php">Paciente</a>
       <a href="cadastrar_procedimento.php">Procedimento</a>
+      <a href="cadastrar_profissional.php">Profissional</a>
       <a href="cadastrar_usuario.php">Usuário</a>
     </div>
   </div>
