@@ -34,7 +34,7 @@ class OrcamentoController
 {
     public function create()
     {
-        
+
         $pacientesDB = Paciente::getRecords();
         $dentistasDB = DentistaParceiro::getRecords();
         $formasPagamentoDB = FormaPagamento::getRecords();
@@ -84,8 +84,8 @@ class OrcamentoController
 
         foreach ($pacientesDB as $pacienteLocal) {
             if ($pacienteLocal->getCpf() == $pacienteCPF) {
-            $pacienteEncontrado = $pacienteLocal;
-              break;
+                $pacienteEncontrado = $pacienteLocal;
+                break;
             }
         }
 
@@ -94,8 +94,18 @@ class OrcamentoController
         foreach ($dentistasDB as $dentistaLocal) {
             if ($dentistaLocal->getCpf() == $dentistaResponsavelCPF) {
                 $dentistaResponsavelEncontrado = $dentistaLocal;
-                  break;
+                break;
+            }
+        }
+
+        if ($dentistaResponsavelEncontrado === null) {
+            $dentistasDB = DentistaFuncionario::getRecords();
+            foreach ($dentistasDB as $dentistaLocal) {
+                if ($dentistaLocal->getCpf() == $dentistaResponsavelCPF) {
+                    $dentistaResponsavelEncontrado = $dentistaLocal;
+                    break;
                 }
+            }
         }
 
         $formaPagamentoEncontrada = null;
@@ -103,17 +113,17 @@ class OrcamentoController
         foreach ($formasPagamentoDB as $formaPagamentoLocal) {
             if ($formaPagamentoLocal->getTipo() == $forma_Pagamento) {
                 $formaPagamentoEncontrada = $formaPagamentoLocal;
-                  break;
-                }
+                break;
+            }
         }
 
-        $procedimentoEncontrado = null ;
+        $procedimentoEncontrado = null;
 
         foreach ($procedimentosDB as $procedimentoLocal) {
             if ($procedimentoLocal->getNome() == $procedimentos) {
                 $procedimentoEncontrado = $procedimentoLocal;
-                  break;
-                }
+                break;
+            }
         }
 
         /*echo $pacienteCPF ."\n";
@@ -137,7 +147,7 @@ class OrcamentoController
             }
 
             if ($formaPagamentoLocal === null) {
-                throw new Exception('Forma de Pagamento '. $formaPagamentoEncontrada . ' não encontrada.');
+                throw new Exception('Forma de Pagamento ' . $formaPagamentoEncontrada . ' não encontrada.');
             }
 
             if ($procedimentoLocal === null) {
@@ -156,7 +166,7 @@ class OrcamentoController
             $orcamento = new Orcamento(
                 $pacienteEncontrado,
                 $dentistaResponsavelEncontrado,
-            new DateTime($dataOrcamento),
+                new DateTime($dataOrcamento),
                 $tratamentoAprovado,
                 $procedimentos,
                 $valorTotal,

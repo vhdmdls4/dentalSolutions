@@ -12,7 +12,7 @@ class ProcedimentoController
         $nome = $_POST['nome'];
         $descricao = $_POST['descricao'];
         $valor = $_POST['valor'];
-        $nomeEspecialidade = $_POST['especialidade'];
+        $nomeEspecialidade = strtolower($_POST['especialidade']);
         $especialidade = Especialidade::getRecordsByField('nome', $nomeEspecialidade)[0];
 
         if (empty($descricao)) {

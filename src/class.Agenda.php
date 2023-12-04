@@ -16,10 +16,10 @@ class Agenda extends persist
      * @param string $segunda 9:00-12:00,14:00-18:00
      */
 
-     static public function getFilename()
-     {
-         return 'agenda.txt';
-     }
+    static public function getFilename()
+    {
+        return 'agenda.txt';
+    }
 
     public function __construct(string $segunda, string $terca, string $quarta, string $quinta, string $sexta, string $sabado = "")
     {
@@ -112,9 +112,17 @@ class Agenda extends persist
         }
     }
 
+    public function getAgendaDia(DateTime $data): array
+    {
+        return (isset($this->dias[$data->format('d/m/y')]) ? $this->dias[$data->format('d/m/y')] : array());
+    }
+
     public function disponibilidade(DateTime $data, DateTime $hora, int $duracao): bool
     {
         $disponivel = false;
+        if (!isset($this->dias[$data->format('d/m/y')])) {
+            return false;
+        }
         $horarios = $this->dias[$data->format('d/m/y')];
 
         $inicio = clone $hora;
@@ -153,6 +161,9 @@ class Agenda extends persist
 
     public function marcarConsulta(Consulta $consulta)
     {
+        if (!isset($this->dias[$consulta->getData()->format('d/m/y')])) {
+            throw new Exception('Data não encontrada na agenda.');
+        }
         $horarios = $this->dias[$consulta->getData()->format('d/m/y')];
         $duracao = $consulta->getDuracao();
 
@@ -162,6 +173,11 @@ class Agenda extends persist
         } else {
             $inicio->setTime($inicio->format('H'), 0, 0);
         }
+
+        if (!isset($horarios[$inicio->format('H:i')])) {
+            throw new Exception('Horário não encontrado na agenda.');
+        }
+
         $inicio = $inicio->format('H:i');
 
         $fim = clone $consulta->getHorario();
@@ -251,5 +267,4 @@ class Agenda extends persist
             $funcionario->save();
         }
     }
-    
 }

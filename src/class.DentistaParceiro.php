@@ -12,7 +12,7 @@ class DentistaParceiro extends Dentista
 
   static public function getFilename()
   {
-    return 'dentista.txt';
+    return 'DentistaParceiro.txt';
   }
 
   public function addRenda(Procedimento $procedimento, DateTime $data)
