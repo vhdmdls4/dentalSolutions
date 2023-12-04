@@ -92,7 +92,7 @@
     </div>
   </div>
 
-  <a href="criar_orcamento.php" class="btn btn-primary btn-lg">
+  <a href="criarOrcamento.php" class="btn btn-primary btn-lg">
     <div class="text-container">
       Criar Orçamento <span class="bi bi-cash"></span>
     </div>
@@ -104,7 +104,7 @@
     </div>
     <div id="visualizar-options" class="visualizar-options">
       <a href="visualizar_clientes.php">Clientes</a>
-      <a href="orcamentos.php">Orçamentos</a>
+      <a href="visualizar_orcamentos.php">Orçamentos</a>
       <a href="visualizar_procedimentos.php">Procedimentos</a>
       <a href="simulacao_parcelas.php">Simulador de Tarifas</a>
       <a href="visualizar_usuarios.php">Usuários</a>

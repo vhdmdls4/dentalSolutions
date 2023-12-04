@@ -37,18 +37,15 @@ class OrcamentoController
 
         $pacientesDB = Paciente::getRecords();
         $dentistasDB = DentistaParceiro::getRecords();
-        $formasPagamentoDB = FormaPagamento::getRecords();
         $procedimentosDB = Procedimento::getRecords();
 
         $pacienteCPF = $_POST['pacienteCPF'];
         $dentistaResponsavelCPF = $_POST['dentistaCPF'];
         $dataOrcamento = $_POST['dataOrcamento'];
-        $tratamentoAprovado = $_POST['tratamentoAprovado'];
         $procedimentos = $_POST['procedimentos'];
         $valorTotal = $_POST['valorTotal'];
-        $forma_Pagamento = $_POST['formaPagamento'];
         $descricao = $_POST['descricao'];
-        $consultasData = $_POST['consultas'];
+        $consultas = $_POST['consultas'];
 
         if ($procedimentos === null) {
             echo json_encode(['error' => 'O campo "procedimentos" não foi enviado ou está vazio.']);
@@ -60,21 +57,14 @@ class OrcamentoController
             exit;
         }
 
-        if ($forma_Pagamento === null) {
-            echo json_encode(['error' => 'O campo "formaPagamento" não foi enviado ou está vazio.']);
-            exit;
-        }
-
         if (
             $pacienteCPF === null ||
             $dentistaResponsavelCPF === null ||
             $dataOrcamento === null ||
-            $tratamentoAprovado === null ||
             $procedimentos === null ||
             $valorTotal === null ||
-            $forma_Pagamento === null ||
             $descricao === null ||
-            $consultasData === null
+            $consultas === null
         ) {
             echo json_encode(['error' => 'Dados do formulário estão incompletos ou inválidos.']);
             exit;
@@ -108,15 +98,6 @@ class OrcamentoController
             }
         }
 
-        $formaPagamentoEncontrada = null;
-
-        foreach ($formasPagamentoDB as $formaPagamentoLocal) {
-            if ($formaPagamentoLocal->getTipo() == $forma_Pagamento) {
-                $formaPagamentoEncontrada = $formaPagamentoLocal;
-                break;
-            }
-        }
-
         $procedimentoEncontrado = null;
 
         foreach ($procedimentosDB as $procedimentoLocal) {
@@ -126,16 +107,6 @@ class OrcamentoController
             }
         }
 
-        /*echo $pacienteCPF ."\n";
-        echo $dentistaResponsavelCPF ."\n";
-        echo $dataOrcamento ."\n";
-        echo $tratamentoAprovado ."\n";
-        echo $procedimentos ."\n"; 
-        echo $valorTotal ."\n";
-        echo $forma_Pagamento."\n";
-        echo $descricao."\n";
-        echo $consultasData."\n";*/
-
         try {
 
             if ($pacienteEncontrado === null) {
@@ -144,10 +115,6 @@ class OrcamentoController
 
             if ($dentistaResponsavelEncontrado === null) {
                 throw new Exception('Dentista Responsável não encontrado.');
-            }
-
-            if ($formaPagamentoLocal === null) {
-                throw new Exception('Forma de Pagamento ' . $formaPagamentoEncontrada . ' não encontrada.');
             }
 
             if ($procedimentoLocal === null) {
@@ -163,16 +130,16 @@ class OrcamentoController
 
             var_dump($procedimentos);
 
+            $arrayConsultas = array_fill(0, $consultas, 'consulta');
+
             $orcamento = new Orcamento(
                 $pacienteEncontrado,
                 $dentistaResponsavelEncontrado,
                 new DateTime($dataOrcamento),
-                $tratamentoAprovado,
                 $procedimentos,
                 $valorTotal,
-                $formaPagamentoLocal,
                 $descricao,
-                $consultasData
+                $arrayConsultas,
             );
             $orcamento->save();
 
@@ -180,7 +147,6 @@ class OrcamentoController
                 'paciente' => (string)$orcamento->getPaciente(),
                 'dentistaResponsavel' => (string)$orcamento->getDentistaResponsavel(),
                 'dataOrcamento' => $orcamento->getDataOrcamento()->format('Y-m-d H:i:s'),
-                'tratamentoAprovado' => $orcamento->getTratamentoAprovado(),
                 'procedimentos' => $procedimentos,
                 'valorTotal' => $orcamento->getValorTotal(),
                 'pagamento' => (string)$orcamento->getPagamento(),
