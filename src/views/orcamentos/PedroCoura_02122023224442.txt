@@ -1,6 +1,0 @@
-Nome do Paciente: Pedro Coura
-Data de Realização do Orçamento: 02/12/2023 22:44:42
-Status do Orçamento: (R) Reprovado
-Procedimentos Selecionados:
-Procedimento 1 - R$ 50,00 - Quantidade: 2, Valor Unitário: R$ 50,00, Observações: 
-Valor Total: R$ 100,00
