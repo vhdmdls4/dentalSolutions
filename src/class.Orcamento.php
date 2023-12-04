@@ -20,7 +20,6 @@ class Orcamento extends persist
         Dentista $dentistaResponsavel,
         DateTime $dataOrcamento,
         array $procedimentos,
-        float $valorTotal,
         Pagamento $pagamento,
         string $descricao,
         array $consultas
@@ -29,7 +28,6 @@ class Orcamento extends persist
         $this->dentistaResponsavel = $dentistaResponsavel;
         $this->dataOrcamento = $dataOrcamento;
         $this->procedimentos = $procedimentos;
-        $this->valorTotal = $valorTotal;
         $this->pagamento = $pagamento;
         $this->descricao = $descricao;
         $this->consultas = $consultas;
@@ -83,6 +81,13 @@ class Orcamento extends persist
                 unset($this->procedimentos[$key]);
                 break;
             }
+        }
+    }
+
+    public function calculaValorTotal(){
+        $this->valorTotal = 0;
+        foreach($this->procedimentos as $procedimento){
+            $this->valorTotal += $procedimento->getValorTotal();
         }
     }
 

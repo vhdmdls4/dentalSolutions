@@ -13,7 +13,20 @@ class Consulta extends persist
     {
         $this->procedimento = $procedimento;
         $this->paciente = $paciente;
-        $this->dentistaExecutor = $dentistaExecutor;
+
+       //verificacao se o dentistaExecutor escolhido tem a especialidade para realizara consulta
+       $possui_especialidade = False;
+       foreach($dentistaExecutor->getHabilitacoes() as $habilitacao){
+           if($habilitacao->getEspecialidade() == $procedimento->getEspecialidade()){
+               $this->dentistaExecutor = $dentistaExecutor;
+               $possui_especialidade = True;
+               break;
+           }
+           if($possui_especialidade != True){
+                   throw new Exception("O dentista Executor não possui especialidade pra esta consulta");
+           }
+       }
+       
         $this->data = $data;
         $this->horario = $horario;
         $this->duracao = $duracao;

@@ -1,5 +1,7 @@
 <?php
 
+require_once 'class.controleAcesso.php';
+require_once 'class.Funcionalidade.php';
 require_once('global.php');
 // Criação das classes
 
@@ -163,201 +165,201 @@ $dentistaParceiro4->save();
 
 /*-------------------------------------------------------------CLIENTES-----------------------------------------------------------*/
 
-$cliente1 = new Cliente("Carlos Souza", "31900000000", "cliente1@gmail.com", "930.558.500-09", "MG-12.345.678");
-$cliente1->save();
+$cliente1 = new Cliente("Carlos Souza", "31900000000", "cliente1@dentalsolutions.com", "129.421.650-10", "MG-15.345.678");
+//$cliente1->save();
 
 $cliente2 = new Cliente("Julia Menezes", "31911111111", "cliente2@gmail.com", "799.421.650-10", "MG-23.456.789");
-$cliente2->save();
+//$cliente2->save();
 
 $cliente3 = new Cliente("Roberto Alves", "31922222222", "cliente3@gmail.com", "511.501.450-56", "MG-34.567.890");
-$cliente3->save();
+//$cliente3->save();
 
 $cliente4 = new Cliente("Fernanda Lima", "31933333333", "cliente4@gmail.com", "618.962.130-90", "MG-45.678.901");
-$cliente4->save();
+//$cliente4->save();
 
 /*------------------------------------------------------------PACIENTES-----------------------------------------------------------*/
 
 $paciente1 = new Paciente("Lucas Oliveira", "31944444444", "lucasOliveira@gmail.com", "492.609.100-30", "2007-01-01", $cliente1, "MG-12.345.678");
-$paciente1->save();
+//$paciente1->save();
 $cliente1->adicionaPaciente($paciente1);
-$cliente1->save();
+//$cliente1->save();
 
 $paciente2 = new Paciente("Julia Menezes", "31911111111", "cliente2@gmail.com", "259.156.820-06", "1990-03-03", $cliente2, "MG-23.456.789");
-$paciente2->save();
+//$paciente2->save();
 $cliente2->adicionaPaciente($paciente2);
-$cliente2->save();
+//$cliente2->save();
 
 $paciente3 = new Paciente("Roberto Alves", "31922222222", "cliente3@gmail.com", "002.734.410-00", "1985-02-02", $cliente3, "MG-34.567.890");
-$paciente3->save();
+//$paciente3->save();
 $cliente3->adicionaPaciente($paciente3);
-$cliente3->save();
+//$cliente3->save();
 
 $paciente4 = new Paciente("Daniela Costa", "31977777777", "danielaCosta@gmail.com", "168.337.590-49", "2010-04-04", $cliente4, "MG-45.678.901");
-$paciente4->save();
+//$paciente4->save();
 $cliente4->adicionaPaciente($paciente4);
-$cliente4->save();
+//$cliente4->save();
 
 
 /*--------------------------------------------------------------PERFIL------------------------------------------------------------*/
 
 $perfil1 = new Perfil("Dentista", [$cadastrar_procedimento, $alterar_procedimento, $excluir_procedimento, $cadastrar_consulta, $alterar_consulta, $excluir_consulta]);
-$perfil1->save();
+//$perfil1->save();
 
 $perfil2 = new Perfil("Secretario", [$cadastrar_cliente, $alterar_cliente, $excluir_cliente, $cadastrar_usuario, $alterar_usuario, $excluir_usuario]);
-$perfil2->save();
+//$perfil2->save();
 
 $perfil3 = new Perfil("Auxiliar", [$cadastrar_orcamento, $alterar_orcamento, $excluir_orcamento]);
-$perfil3->save();
+//$perfil3->save();
 
 $perfil4 = new Perfil("Administrador", [$cadastrar_procedimento, $alterar_procedimento, $excluir_procedimento, $cadastrar_consulta, $alterar_consulta, $excluir_consulta, $cadastrar_cliente, $alterar_cliente, $excluir_cliente, $cadastrar_usuario, $alterar_usuario, $excluir_usuario, $cadastrar_orcamento, $alterar_orcamento, $excluir_orcamento]);
-$perfil4->save();
+//$perfil4->save();
 
 /*-------------------------------------------------------------USUARIOS-----------------------------------------------------------*/
 
 $usuario1 = new Usuario("Eduardo", "123", "eduardo@dentalsoutions.com", $perfil1);
-$usuario1->save();
+//$usuario1->save();
 
 $usuario2 = new Usuario("Pedro", "456", "pedro@dentalsoutions.com", $perfil2);
-$usuario2->save();
+//$usuario2->save();
 
 $usuario3 = new Usuario("Victor", "789", "victor@dentalsoutions.com", $perfil3);
-$usuario3->save();
+//$usuario3->save();
 
 $usuario4 = new Usuario("Henrique", "321", "henrique@dentalsoutions.com", $perfil4);
-$usuario4->save();
+//$usuario4->save();
 
 /*----------------------------------------------------------ESPECIALIDADES--------------------------------------------------------*/
 
 $especialidade1 = new Especialidade("Ortodontia");
-$especialidade1->save();
+//$especialidade1->save();
 
 $especialidade2 = new Especialidade("Odontopediatria");
-$especialidade2->save();
+//$especialidade2->save();
 
 $especialidade3 = new Especialidade("Periodontia");
-$especialidade3->save();
+//$especialidade3->save();
 
 $especialidade4 = new Especialidade("Implantodontia");
-$especialidade4->save();
+//$especialidade4->save();
 
 /*----------------------------------------------------------PROCEDIMENTOS---------------------------------------------------------*/
 
 $procedimento1 = new Procedimento("Limpeza Dental", "Limpeza profunda dos dentes", 100.00, $especialidade1);
-$procedimento1->save();
+//$procedimento1->save();
 
 $procedimento2 = new Procedimento("Extração de Dente", "Remoção de dente", 200.00, $especialidade2);
-$procedimento2->save();
+//$procedimento2->save();
 
 $procedimento3 = new Procedimento("Clareamento Dental", "Procedimento para clarear os dentes", 300.00, $especialidade3);
-$procedimento3->save();
+//$procedimento3->save();
 
 $procedimento4 = new Procedimento("Implante Dentário", "Procedimento para implantar dentes", 400.00, $especialidade4);
-$procedimento4->save();
+//$procedimento4->save();
 
 /*-----------------------------------------------------------HABILITACOES---------------------------------------------------------*/
 
 $habilitacao1 = new Habilitacao($especialidade1, 0.40);
 $dentistaParceiro1->addHabilitacao($habilitacao1);
-$dentistaParceiro1->save();
+//$dentistaParceiro1->save();
 
 $habilitacao2 = new Habilitacao($especialidade2, 0.70);
 $dentistaParceiro1->addHabilitacao($habilitacao2);
-$dentistaParceiro1->save();
+//$dentistaParceiro1->save();
 
 $habilitacao3 = new Habilitacao($especialidade3, 0.75);
 $dentistaParceiro2->addHabilitacao($habilitacao3);
-$dentistaParceiro2->save();
+//$dentistaParceiro2->save();
 
 $habilitacao4 = new Habilitacao($especialidade4, 0.55);
 $dentistaParceiro2->addHabilitacao($habilitacao4);
-$dentistaParceiro2->save();
+//$dentistaParceiro2->save();
 
 $habilitacao5 = new Habilitacao($especialidade3, 0.65);
 $dentistaParceiro3->addHabilitacao($habilitacao5);
-$dentistaParceiro3->save();
+//$dentistaParceiro3->save();
 
 $habilitacao6 = new Habilitacao($especialidade4, 0.70);
 $dentistaParceiro4->addHabilitacao($habilitacao6);
-$dentistaParceiro4->save();
+//$dentistaParceiro4->save();
 
 $habilitacao7 = new Habilitacao($especialidade1, 0.50);
 $dentistaParceiro4->addHabilitacao($habilitacao7);
-$dentistaParceiro4->save();
+//$dentistaParceiro4->save();
 
 $habilitacao8 = new Habilitacao($especialidade2, 0.80);
 $dentistaParceiro4->addHabilitacao($habilitacao8);
-$dentistaParceiro4->save();
+//$dentistaParceiro4->save();
 
 $habilitacao9 = new Habilitacao($especialidade1);
 $dentistaFuncionario1->addHabilitacao($habilitacao9);
-$dentistaFuncionario1->save();
+//$dentistaFuncionario1->save();
 
 $habilitacao10 = new Habilitacao($especialidade2);
 $dentistaFuncionario2->addHabilitacao($habilitacao10);
-$dentistaFuncionario2->save();
+//$dentistaFuncionario2->save();
 
 $habilitacao11 = new Habilitacao($especialidade3);
 $dentistaFuncionario3->addHabilitacao($habilitacao11);
-$dentistaFuncionario3->save();
+//$dentistaFuncionario3->save();
 
 $habilitacao12 = new Habilitacao($especialidade4);
 $dentistaFuncionario4->addHabilitacao($habilitacao12);
-$dentistaFuncionario4->save();
+//$dentistaFuncionario4->save();
 
 /*------------------------------------------------------------CONSULTAS-----------------------------------------------------------*/
 
 $consulta1 = new Consulta($procedimento1, $paciente1, $dentistaParceiro1, new DateTime("2023-11-18"), new DateTime("10:00"), 35);
-$consulta1->save();
+//$consulta1->save();
 $dentistaParceiro1->addRenda($consulta1->getProcedimento(), $consulta1->getData());
-$dentistaParceiro1->save();
+//$dentistaParceiro1->save();
 
 $consulta2 = new Consulta($procedimento2, $paciente2, $dentistaParceiro1, new DateTime("2023-11-18"), new DateTime("11:00"), 70);
-$consulta2->save();
+//$consulta2->save();
 $dentistaParceiro2->addRenda($consulta2->getProcedimento(), $consulta2->getData());
-$dentistaParceiro2->save();
+//$dentistaParceiro2->save();
 
 $consulta3 = new Consulta($procedimento3, $paciente3, $dentistaParceiro2, new DateTime("2023-11-18"), new DateTime("11:00"), 50);
-$consulta3->save();
+//$consulta3->save();
 $dentistaParceiro3->addRenda($consulta3->getProcedimento(), $consulta3->getData());
-$dentistaParceiro3->save();
+//$dentistaParceiro3->save();
 
 $consulta4 = new Consulta($procedimento4, $paciente4, $dentistaParceiro4, new DateTime("2023-11-18"), new DateTime("09:00"), 135);
-$consulta4->save();
+//$consulta4->save();
 $dentistaParceiro4->addRenda($consulta4->getProcedimento(), $consulta4->getData());
-$dentistaParceiro4->save();
+//$dentistaParceiro4->save();
 
 /*------------------------------------------------------------PAGAMENTOS----------------------------------------------------------*/
 
 $formaPagamento1 = new FormaPagamento(TipoPagamento::Credito, 0.05);
 $pagamento1 = new Pagamento($formaPagamento1, false, new DateTime("2023-11-18"), 1000.00);
-$pagamento1->save();
+//$pagamento1->save();
 
 $formaPagamento2 = new FormaPagamento(TipoPagamento::Dinheiro);
 $pagamento2 = new Pagamento($formaPagamento2, true, new DateTime("2023-11-19"), 1500.00);
-$pagamento2->save();
+//$pagamento2->save();
 
 $formaPagamento3 = new FormaPagamento(TipoPagamento::Debito, 0.10);
 $pagamento3 = new Pagamento($formaPagamento3, false, new DateTime("2023-11-20"), 2000.00);
-$pagamento3->save();
+//$pagamento3->save();
 
 $formaPagamento4 = new FormaPagamento(TipoPagamento::Pix);
 $pagamento4 = new Pagamento($formaPagamento4, true, new DateTime("2023-11-21"), 2500.00);
-$pagamento4->save();
+//$pagamento4->save();
 
 
 /*------------------------------------------------------------ORCAMENTOS----------------------------------------------------------*/
 
-$orcamento1 = new Orcamento($paciente1, $dentistaParceiro1, new DateTime("2023-11-18"), [$procedimento1], 1000.00, $pagamento1, "Orçamento para limpeza dental", [$consulta1]);
-$orcamento1->save();
+$orcamento1 = new Orcamento($paciente1, $dentistaParceiro1, new DateTime("2023-11-18"), [$procedimento1], $pagamento1, "Orçamento para limpeza dental", [$consulta1]);
+//$orcamento1->save();
 
-$orcamento2 = new Orcamento($paciente2, $dentistaParceiro1, new DateTime("2023-11-19"), [$procedimento2], 1500.00, $pagamento2, "Orçamento para extração de dente", [$consulta2]);
-$orcamento2->save();
+$orcamento2 = new Orcamento($paciente2, $dentistaParceiro1, new DateTime("2023-11-19"), [$procedimento2], $pagamento2, "Orçamento para extração de dente", [$consulta2]);
+//$orcamento2->save();
 
-$orcamento3 = new Orcamento($paciente3, $dentistaParceiro2, new DateTime("2023-11-20"), [$procedimento3], 2000.00, $pagamento3, "Orçamento para clareamento dental", [$consulta3]);
-$orcamento3->save();
+$orcamento3 = new Orcamento($paciente3, $dentistaParceiro2, new DateTime("2023-11-20"), [$procedimento3], $pagamento3, "Orçamento para clareamento dental", [$consulta3]);
+//$orcamento3->save();
 
-$orcamento4 = new Orcamento($paciente4, $dentistaParceiro4, new DateTime("2023-11-21"), [$procedimento4], 2500.00, $pagamento4, "Orçamento para implante dentário", [$consulta4]);
-$orcamento4->save();
+$orcamento4 = new Orcamento($paciente4, $dentistaParceiro4, new DateTime("2023-11-21"), [$procedimento4], $pagamento4, "Orçamento para implante dentário", [$consulta4]);
+//$orcamento4->save();
 
 
 /*---------------------------------------------------ROTERIO DE TESTES------------------------------------------------------------*/
@@ -468,4 +470,22 @@ a consulta deve ser agendada com o dentista funcionário.
 */
 
 $procedimento_teste_restauracao2 = new Procedimento('Restauracao', '', 185, $especialidade_teste_clinicoGeral);
-//FALTA TERMINAR $orcamento_teste = new Orcamento('1', $paciente_teste, $dentista_teste_parceiro, '2023/11/06', [$procedimento_teste_limpeza, $procedimento_teste_clareamentoLaser, $procedimento_teste_restauracao, $procedimento_teste_restauracao2]);
+$pagamento_pix_teste = new Pagamento($formaPagamento_teste_pix, False, new Datetime("2023-11-06"), 2070/2);
+$pagamento_cartao_teste = new Pagamento($formaPagamento_teste_credito_3x, False, new Datetime("2023-11-06"), 2070/2);
+$orcamento_teste = new Orcamento($paciente_teste, $dentista_teste_parceiro, new Datetime("2023-11-06"), [$procedimento_teste_limpeza, $procedimento_teste_clareamentoLaser, $procedimento_teste_restauracao, $procedimento_teste_restauracao2], $pagamento_teste, 'Orcamento de duas restauracoes e um clareamento', []);
+$orcamento_teste->calculaValorTotal();
+
+//Esta verificação é feita no ConsultaController ao tentar criar uma nova consulta
+$orcamento_Teste->aprovaTratamento();
+if($orcamento_teste->getTratamentoAprovado() == True){
+
+//Caso o dentista não tenha a especialidade para realizar a consulta, a criacao da consulta será negada.
+$consulta1_teste = new Consulta($procedimento_teste_restauracao, $paciente_teste, $dentista_teste_funcionario, new DateTime("2023-11-07"), new DateTime("16"), 30);
+$consulta2_teste = new Consulta($procedimento_teste_restauracao2, $paciente_teste, $dentista_teste_funcionario, new DateTime("2023-11-08"), new DateTime("16"), 30);
+$consulta2_teste = new Consulta($procedimento_teste_clareamentoLaser, $paciente_teste, $dentista_teste_parceiro, new DateTime("2023-11-08"), new DateTime("16"), 30);
+
+$financeiro_teste = new Financeiro();
+$mes_novembro = new DateTime('2023-11');
+$financeiro_teste->calculaResultadoMensal($mes_novembro);
+}
+
