@@ -4,7 +4,7 @@
 
   <h2 class="mt-5" aria-label="Criação de Orçamentos">Criação de Orçamentos</h2>
   <form id="criarOrcamento" action="" aria-label="Formulário de Criação de Orçamentos" title="Formulário de Criação de Orçamentos">
-   <div class="mb-3">
+    <div class="mb-3">
       <label for="pacienteCPF" class="form-label" aria-label="Paciente" title="Paciente do cliente">CPF do Paciente:</label>
       <input type="text" class="form-control" id="pacienteCPF" name="pacienteCPF" aria-required="true" aria-label="pacienteCPF" title="CPF do Paciente" placeholder="" required>
     </div>
@@ -13,50 +13,45 @@
       <input type="text" class="form-control" id="dentistaCPF" name="dentistaCPF" aria-required="true" aria-label="Dentista Responsável" title="Dentista Responsável" placeholder="" required>
     </div>
     <div class="mb-3">
-        <label for="dataOrcamento" class="form-label" aria-label="dataOrcamento" title="Data do Orçamento">Data do Orçamento:</label>
-        <?php
-            date_default_timezone_set('America/Sao_Paulo');
-            $dataAtual = date('Y-m-d');
-        ?>
-        <input type="date" class="form-control" id="dataOrcamento" name="dataOrcamento" aria-required="true" aria-label="dataOrcamento" title="Data do Orçamento" placeholder="Data do Orçamento" value="<?php echo $dataAtual; ?>" required>
+      <label for="dataOrcamento" class="form-label" aria-label="dataOrcamento" title="Data do Orçamento">Data do Orçamento:</label>
+      <?php
+      date_default_timezone_set('America/Sao_Paulo');
+      $dataAtual = date('Y-m-d');
+      ?>
+      <input type="date" class="form-control" id="dataOrcamento" name="dataOrcamento" aria-required="true" aria-label="dataOrcamento" title="Data do Orçamento" placeholder="Data do Orçamento" value="<?php echo $dataAtual; ?>" required>
     </div>
+
     <div class="mb-3">
-        <label for="tratamentoAprovado" class="form-label" aria-label="E-mail" title="Status do Orçamento">Status do Orçamento</label>
-        <select class="form-select" id="tratamentoAprovado" name="tratamentoAprovado" aria-required="true" aria-label="Status de Aprovação do Orçamento" title="Status de Aprovação do Orçamento" required>
-            <option value="0">Pendente</option>
-            <option value="1" disabled>Aprovado</option>
-        </select>
+      <label for="procedimentos" class="form-label" aria-label="procedimento" title="Número de procedimento do cliente">Procedimentos:</label>
+      <div id="procedimentos-container">
+        <div class="input-group mb-3 procedimento-item">
+          <select class="form-select procedimento-select" aria-label="Procedimento" required name="procedimentos[]">
+            <option value="" disabled selected>Selecione um Procedimento</option>
+            <?php
+            require_once '../global.php';
+            $procedimentos = Procedimento::getRecords();
+
+            foreach ($procedimentos as $procedimentoLocal) {
+              $nomeProcedimento = $procedimentoLocal->getNome();
+              $value = $procedimentoLocal->getValorUnitario();
+
+              echo "<option value=\"$nomeProcedimento\" data-value=\"$value\">$nomeProcedimento - R$ $value</option>";
+            }
+            ?>
+          </select>
+
+          <span class="input-group-text">Quantidade:</span>
+          <input type="number" class="form-control quantidade" aria-label="Quantidade" placeholder="Quantidade" required min="1">
+          <button class="btn btn-danger remove-procedimento" type="button" style="display:none;" disabled>Remover</button>
+        </div>
+      </div>
+      <button class="btn btn-success" type="button" id="add-procedimento">Adicionar Procedimento</button>
     </div>
 
-<div class="mb-3">
-  <label for="procedimentos" class="form-label" aria-label="procedimento" title="Número de procedimento do cliente">Procedimentos:</label>
-  <div id="procedimentos-container">
-    <div class="input-group mb-3 procedimento-item">
-      <select class="form-select procedimento-select" aria-label="Procedimento" required name="procedimentos">
-        <option value="" disabled selected>Selecione um Procedimento</option>
-        <?php
-          $procedures = [
-            'Limpeza Geral' => 50.00,
-            'Extração' => 80.00 
-          ];
-
-          foreach ($procedures as $procedure => $value) {
-            echo "<option value=\"$procedure\" data-value=\"$value\">$procedure - R$ $value</option>";
-          }
-        ?>
-      </select>
-      <span class="input-group-text">Quantidade:</span>
-      <input type="number" class="form-control quantidade" aria-label="Quantidade" placeholder="Quantidade" required min="1">
-      <button class="btn btn-danger remove-procedimento" type="button" style="display:none;" disabled>Remover</button>
+    <div class="mb-3">
+      <label for="valorTotal" class="form-label" aria-label="valorTotal" title="Valor Total do Orçamento">Valor Total do Orçamento:</label>
+      <input type="number" class="form-control" id="valorTotal" name="valorTotal" aria-required="true" aria-label="valorTotal" title="Valor Total do Orçamento" placeholder="R$" required step="any" pattern="\d+(\.\d+)?" title="Insira um número decimal válido" readonly>
     </div>
-  </div>
-  <button class="btn btn-success" type="button" id="add-procedimento">Adicionar Procedimento</button>
-</div>
-
-<div class="mb-3">
-  <label for="valorTotal" class="form-label" aria-label="valorTotal" title="Valor Total do Orçamento">Valor Total do Orçamento:</label>
-  <input type="number" class="form-control" id="valorTotal" name="valorTotal" aria-required="true" aria-label="valorTotal" title="Valor Total do Orçamento" placeholder="R$" required step="any" pattern="\d+(\.\d+)?" title="Insira um número decimal válido" readonly>
-</div>
 
 
     <div class="mb-3">
@@ -89,41 +84,41 @@
 
     handleFormSubmit('criarOrcamento', '../controllers/OrcamentoController.php');
 
-  $(document).ready(function () {
-    // Adicionar procedimento
-    $('#add-procedimento').on('click', function () {
-      var procedimentoClone = $('.procedimento-item:first').clone();
-      procedimentoClone.find('.procedimento-select').val('');
-      procedimentoClone.find('.quantidade').val('');
-      procedimentoClone.find('.remove-procedimento').show().prop('disabled', false);
-      $('#procedimentos-container').append(procedimentoClone);
-    });
-
-    // Remover procedimento
-    $('#procedimentos-container').on('click', '.remove-procedimento', function () {
-      if ($(this).closest('.procedimento-item').index() !== 0) {
-        $(this).closest('.procedimento-item').remove();
-        calcularTotal();
-      }
-    });
-
-    // Atualizar o valor total quando há mudanças
-    $('#procedimentos-container').on('change', '.procedimento-select, .quantidade', function () {
-      calcularTotal();
-    });
-
-    function calcularTotal() {
-      var totalValue = 0;
-
-      $('.procedimento-item').each(function () {
-        var procedureValue = $('option:selected', $(this).find('.procedimento-select')).data('value');
-        var quantity = $(this).find('.quantidade').val();
-        totalValue += procedureValue * quantity;
+    $(document).ready(function() {
+      // Adicionar procedimento
+      $('#add-procedimento').on('click', function() {
+        var procedimentoClone = $('.procedimento-item:first').clone();
+        procedimentoClone.find('.procedimento-select').val('');
+        procedimentoClone.find('.quantidade').val('');
+        procedimentoClone.find('.remove-procedimento').show().prop('disabled', false);
+        $('#procedimentos-container').append(procedimentoClone);
       });
 
-      $('#valorTotal').val(totalValue.toFixed(2));
-    }
-  });
+      // Remover procedimento
+      $('#procedimentos-container').on('click', '.remove-procedimento', function() {
+        if ($(this).closest('.procedimento-item').index() !== 0) {
+          $(this).closest('.procedimento-item').remove();
+          calcularTotal();
+        }
+      });
+
+      // Atualizar o valor total quando há mudanças
+      $('#procedimentos-container').on('change', '.procedimento-select, .quantidade', function() {
+        calcularTotal();
+      });
+
+      function calcularTotal() {
+        var totalValue = 0;
+
+        $('.procedimento-item').each(function() {
+          var procedureValue = $('option:selected', $(this).find('.procedimento-select')).data('value');
+          var quantity = $(this).find('.quantidade').val();
+          totalValue += procedureValue * quantity;
+        });
+
+        $('#valorTotal').val(totalValue.toFixed(2));
+      }
+    });
   </script>
 </main>
 
