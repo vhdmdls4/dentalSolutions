@@ -347,6 +347,10 @@
                   <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li><a href="cadastrar_cliente.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Cliente</a>
                     </li>
+                    <li><a href="cadastrar_dentista.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Dentista Funcionário</a>
+                    </li>
+                    <li><a href="cadastrar_dentistaParceiro.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Dentista Parceiro</a>
+                    </li>
                     <li><a href="cadastrar_especialidade.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Especialidade</a>
                     </li>
                     <li><a href="cadastrar_funcionario.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Funcionário</a>

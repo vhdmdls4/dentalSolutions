@@ -20,10 +20,7 @@
             <select class="form-select" id="perfil" name="perfil" aria-label="Perfil" required>
                 <option value="admin">Administrador</option>
                 <option value="Secretário">Auxiliar</option>
-                <option value="Dentista">Dentista Contratado</option>
-                <option value="DentistaParceiro">Dentista Parceiro</option>
                 <option value="Secretário">Secretário</option>
-                <!-- Adicionar mais opções conforme necessário ou receber da classe Perfil -->
             </select>
         </div>
         <div class="mb-3">
