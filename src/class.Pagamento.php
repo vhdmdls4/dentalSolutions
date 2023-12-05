@@ -3,22 +3,28 @@
 class Pagamento extends persist
 {
     protected FormaPagamento $forma;
-    protected bool $pago;
+    protected bool $pago = False;
     protected DateTime $data;
     protected float $valorFaturado;
+    protected Orcamento $orcamento;
     protected static float $impostos = 0.2;
 
-    public function __construct(FormaPagamento $forma, bool $pago, DateTime $data, float $valorFaturado)
+    public function __construct(FormaPagamento $forma, DateTime $data, float $valorFaturado, Orcamento $orcamento)
     {
         $this->forma = $forma;
-        $this->pago = $pago;
         $this->data = $data;
         $this->valorFaturado = $valorFaturado;
+        $this-> orcamento = $orcamento;
     }
 
     static public function getFilename()
     {
         return 'Pagamento.txt';
+    }
+
+    public function valorParcelas(): float
+    {
+        return $this->valorFaturado / $this->forma->getParcelas();
     }
 
     public function calculaImposto(): float
@@ -66,9 +72,14 @@ class Pagamento extends persist
         $this->forma = $forma;
     }
 
-    public function setPago(bool $pago)
+    public function Pago()
     {
-        $this->pago = $pago;
+        if(($this->orcamento)->getTratamentoAprovado() == True){
+            $this->pago = true;
+        }
+        else{
+            throw new Exception("Não é possível realizar o pagamento sem a aprovação do Orcamento!");
+        }
     }
 
     public function setData(DateTime $data)

@@ -6,13 +6,15 @@ class Procedimento extends persist
     protected string $descricao;
     protected float $valorUnitario;
     protected Especialidade $especialidade;
+    protected $consultas = array();
 
-    public function __construct(string $nome, string $descricao, float $valorUnitario, Especialidade $especialidade)
+    public function __construct(string $nome, string $descricao, float $valorUnitario, Especialidade $especialidade, array $consultas)
     {
         $this->nome = $nome;
         $this->descricao = $descricao;
         $this->valorUnitario = $valorUnitario;
         $this->especialidade = $especialidade;
+        $this->consultas = $consultas;
     }
 
     static public function getFilename()
@@ -108,4 +110,24 @@ class Procedimento extends persist
         echo "Descrição: " . $this->descricao . "\n";
         echo "Valor Unitário: R$" . $this->valorUnitario . "\n";
     }
+
+    public function getConsultas(): array
+    {
+        return $this->consultas;
+    }
+
+    public function addConsulta(Consulta $consulta)
+    {
+        array_push($this->consultas, $consulta);
+    }
+
+    public function delConsulta(Consulta $consulta)
+    {
+        $key = array_search($consulta, $this->consultas);
+        if ($key === false) {
+            return;
+        }
+        unset($this->consultas[$key]);
+    }
+    
 }
