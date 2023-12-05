@@ -1,15 +1,37 @@
 <?php
 
+require_once 'global.php';
+
 class Perfil extends persist
 {
 
     protected string $nomePerfil;
-    protected array $funcionalidades;
+    protected array $funcionalidades = [];
 
     public function __construct(string $nomePerfil, array $funcionalidades)
     {
+        if ($nomePerfil == "admin") {
+            $this->setTodasFuncionalidades();
+        }
+
         $this->nomePerfil = $nomePerfil;
-        $this->funcionalidades = $funcionalidades;
+        $funcionalidadesDB = Funcionalidade::getRecords();
+
+        foreach ($funcionalidadesDB as $funcionalidadeLocal) {
+            foreach ($funcionalidades as $funcionalidade) {
+                if ($funcionalidadeLocal->getNome() == $funcionalidade) {
+                    $this->addFuncionalidade($funcionalidadeLocal);
+                }
+            }
+        }
+    }
+
+    public function setTodasFuncionalidades()
+    {
+        $funcionalidades = Funcionalidade::getRecords();
+        foreach ($funcionalidades as $funcionalidade) {
+            $this->addFuncionalidade($funcionalidade);
+        }
     }
 
     static public function getFilename()
@@ -46,3 +68,5 @@ class Perfil extends persist
         unset($this->funcionalidades[$key]);
     }
 }
+
+$newPerfil = new Perfil("admin", [""]);

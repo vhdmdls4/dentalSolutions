@@ -19,7 +19,7 @@ class Orcamento extends persist
         Paciente $paciente,
         Dentista $dentistaResponsavel,
         DateTime $dataOrcamento,
-        array $procedimentos, 
+        array $procedimentos,
         //Pagamento $pagamento,
         string $descricao,
         //array $consultas
@@ -73,6 +73,15 @@ class Orcamento extends persist
         return $procedimentosData;
     }
 
+    public function getProcedimentosName(): array
+    {
+        $procedimentosData = [];
+        foreach ($this->procedimentos as $procedimento) {
+            $procedimentosData[] = $procedimento;
+        }
+        return $procedimentosData;
+    }
+
     public function delProcedimento(Procedimento $procedimento)
     {
         foreach ($this->procedimentos as $key => $procedimentoMap) {
@@ -83,9 +92,10 @@ class Orcamento extends persist
         }
     }
 
-    public function calculaValorTotal(){
+    public function calculaValorTotal()
+    {
         $this->valorTotal = 0;
-        foreach($this->procedimentos as $procedimento){
+        foreach ($this->procedimentos as $procedimento) {
             $this->valorTotal += $procedimento->getValorTotal();
         }
     }
@@ -114,7 +124,7 @@ class Orcamento extends persist
     {
         return $this->tratamentoAprovado;
     }
-/*
+    /*
     public function getPagamento(): Pagamento
     {
         return $this->pagamento;

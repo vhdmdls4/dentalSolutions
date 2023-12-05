@@ -65,9 +65,9 @@
   }
 </style>
 
-      <div class="alert alert-warning mt-3" role="alert">
-        Em desenvolvimento. Algumas funcionalidades podem não estar disponíveis.
-      </div>
+<div class="alert alert-warning mt-3" role="alert">
+  Em desenvolvimento. Algumas funcionalidades podem não estar disponíveis.
+</div>
 
 <div class="centered-buttons">
   <div class="btn btn-primary btn-lg" id="agenda-btn">
@@ -99,6 +99,12 @@
   <a href="criarOrcamento.php" class="btn btn-primary btn-lg">
     <div class="text-container">
       Criar Orçamento <span class="bi bi-cash"></span>
+    </div>
+  </a>
+
+  <a href="listarOrcamento.php" class="btn btn-primary btn-lg">
+    <div class="text-container">
+      Listar Orçamentos<span class="bi bi-cash"></span>
     </div>
   </a>
 

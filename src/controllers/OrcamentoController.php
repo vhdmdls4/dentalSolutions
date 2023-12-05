@@ -43,9 +43,7 @@ class OrcamentoController
         $dentistaResponsavelCPF = $_POST['dentistaCPF'];
         $dataOrcamento = $_POST['dataOrcamento'];
         $procedimentos = $_POST['procedimentos'];
-        $valorTotal = $_POST['valorTotal'];
         $descricao = $_POST['descricao'];
-        $consultas = $_POST['consultas'];
 
         if ($procedimentos === null) {
             echo json_encode(['error' => 'O campo "procedimentos" não foi enviado ou está vazio.']);
@@ -62,9 +60,7 @@ class OrcamentoController
             $dentistaResponsavelCPF === null ||
             $dataOrcamento === null ||
             $procedimentos === null ||
-            $valorTotal === null ||
-            $descricao === null ||
-            $consultas === null
+            $descricao === null
         ) {
             echo json_encode(['error' => 'Dados do formulário estão incompletos ou inválidos.']);
             exit;
@@ -121,47 +117,53 @@ class OrcamentoController
                 throw new Exception('Procedimento não encontrado.');
             }
 
-            /*$pagamento = new Pagamento(
-                $formaPagamento,
-                $pagamentoData['pago'],
-                new DateTime($pagamentoData['data']),
-                $pagamentoData['valorFaturado']
-            )*/
-
-            var_dump($procedimentos);
-
-            $arrayConsultas = array_fill(0, $consultas, 'consulta');
-
             $orcamento = new Orcamento(
                 $pacienteEncontrado,
                 $dentistaResponsavelEncontrado,
                 new DateTime($dataOrcamento),
                 $procedimentos,
-                $valorTotal,
                 $descricao,
-                $arrayConsultas,
             );
             $orcamento->save();
 
-            /*$orcamentoDetails = [
-                'paciente' => (string)$orcamento->getPaciente(),
-                'dentistaResponsavel' => (string)$orcamento->getDentistaResponsavel(),
+            $orcamentoDetails = [
+                'paciente' => $orcamento->getPaciente()->getNome(),
+                'dentistaResponsavel' => $orcamento->getDentistaResponsavel()->getNome(),
                 'dataOrcamento' => $orcamento->getDataOrcamento()->format('Y-m-d H:i:s'),
                 'procedimentos' => $procedimentos,
-                'valorTotal' => $orcamento->getValorTotal(),
-                'pagamento' => (string)$orcamento->getPagamento(),
                 'descricao' => $orcamento->getDescricao(),
-                'consultas' => $orcamento->getConsultas(),
             ];
-            
-            echo json_encode(['titulo' => 'Orçamento criado com sucesso', 'conteudo' => htmlspecialchars(json_encode($orcamentoDetails))]);*/
+
+            echo json_encode(['titulo' => 'Orçamento criado com sucesso', 'conteudo' => $orcamentoDetails]);
         } catch (Exception $e) {
             echo json_encode(['error' => 'Erro ao criar orçamento: ' . $e->getMessage()]);
         }
     }
+
+    public function list()
+    {
+        $orcamentosDB = Orcamento::getRecords();
+        $orcamentos = [];
+
+        foreach ($orcamentosDB as $orcamento) {
+            $orcamentos[] = [
+                'paciente' => $orcamento->getPaciente()->getNome(),
+                'dentistaResponsavel' => $orcamento->getDentistaResponsavel()->getNome(),
+                'dataOrcamento' => $orcamento->getDataOrcamento()->format('Y-m-d H:i:s'),
+                'procedimentos' => $orcamento->getProcedimentos(),
+                'descricao' => $orcamento->getDescricao(),
+            ];
+        }
+
+        echo json_encode($orcamentos);
+    }
 }
 
+$controller = new OrcamentoController();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $controller = new OrcamentoController();
     $controller->create();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $controller->list();
 }

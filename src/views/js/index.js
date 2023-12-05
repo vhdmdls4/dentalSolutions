@@ -79,3 +79,28 @@ export function handleFormSubmit(formId, controllerPath) {
       });
   });
 }
+
+export function handleFormGetSubmit(formId, controllerPath) {
+  document.querySelector(`#${formId}`).addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    fetch(controllerPath, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        if (response.error) {
+          throw Error(response.error);
+        }
+        console.log(response);
+        const formattedData = JSON.stringify(response, null, 2);
+        alert(`${response.titulo}\n${formattedData}`);
+        document.getElementById(formId).reset();
+      })
+      .catch((response) => {
+        alert(response);
+        console.log(response);
+      });
+  });
+}

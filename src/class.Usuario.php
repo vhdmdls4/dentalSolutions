@@ -18,7 +18,7 @@ class Usuario extends persist
 
     static public function getFilename()
     {
-        return 'Usuario.txt';
+        return 'usuario.txt';
     }
 
     public function getLogin(): string
