@@ -53,7 +53,6 @@
       <input type="number" class="form-control" id="valorTotal" name="valorTotal" aria-required="true" aria-label="valorTotal" title="Valor Total do Orçamento" placeholder="R$" required step="any" pattern="\d+(\.\d+)?" title="Insira um número decimal válido" readonly>
     </div>
 
-    </div>
     <div class="mb-3">
       <label for="descricao" class="form-label" aria-label="descricao" title="Descrição do Orçamento">Descrição do Orçamento:</label>
       <input type="text" class="form-control" id="descricao" name="descricao" aria-required="true" aria-label="descricao" title="Descrição do Orçamento" placeholder="Descrição do Orçamento" required>
