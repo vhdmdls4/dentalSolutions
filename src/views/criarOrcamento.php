@@ -53,24 +53,10 @@
       <input type="number" class="form-control" id="valorTotal" name="valorTotal" aria-required="true" aria-label="valorTotal" title="Valor Total do Orçamento" placeholder="R$" required step="any" pattern="\d+(\.\d+)?" title="Insira um número decimal válido" readonly>
     </div>
 
-
-    <div class="mb-3">
-      <label for="formaPagamento" class="form-label" aria-label="formaPagamento" title="Forma de Pagamento">Forma de Pagamento:</label>
-      <select class="form-select" id="formaPagamento" name="formaPagamento" aria-required="true" aria-label="formaPagamento" title="Forma de Pagamento" required>
-        <option value="" disabled selected>Selecione a Forma de Pagamento</option>
-        <option value="Debito">Débito</option>
-        <option value="Dinheiro">Dinheiro</option>
-        <option value="Credito">Crédito</option>
-        <option value="Pix">Pix</option>
-      </select>
     </div>
     <div class="mb-3">
       <label for="descricao" class="form-label" aria-label="descricao" title="Descrição do Orçamento">Descrição do Orçamento:</label>
       <input type="text" class="form-control" id="descricao" name="descricao" aria-required="true" aria-label="descricao" title="Descrição do Orçamento" placeholder="Descrição do Orçamento" required>
-    </div>
-    <div class="mb-3">
-      <label for="consultas" class="form-label" aria-label="consultas" title="Consultas do Orçamento">Consultas Necessárias:</label>
-      <input type="number" class="form-control" id="consultas" name="consultas" aria-required="true" aria-label="consultas" title="Consultas do Orçamento" placeholder="Consultas do Orçamento" required>
     </div>
     <button type="submit" class="btn btn-primary" aria-label="Gerar Orçamento" title="Enviar formulário">Gerar Orçamento</button>
     <div id="mt-5 mensagem"></div>

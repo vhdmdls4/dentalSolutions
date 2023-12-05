@@ -20,6 +20,10 @@
             <label for="especialidade" class="form-label" aria-label="Especialidade" title="Especialidade relacionada ao procedimento">Especialidade:</label>
             <input type="text" class="form-control" id="especialidade" name="especialidade" aria-required="true" aria-label="Especialidade" title="Especialidade relacionada ao procedimento" placeholder="Digite a especialidade relacionada ao procedimento aqui..." required>
         </div>
+        <div class="mb-3">
+            <label for="consultas" class="form-label" aria-label="consultas" title="Consultas do Orçamento">Consultas Necessárias:</label>
+            <input type="number" class="form-control" id="consultas" name="consultas" aria-required="true" aria-label="consultas" title="Consultas do Orçamento" placeholder="Consultas do Orçamento" required>
+        </div>
         <button type="submit" class="btn btn-primary" aria-label="Cadastrar" title="Enviar formulário">Cadastrar</button>
         <div id="mt-5 mensagem"></div>
     </form>

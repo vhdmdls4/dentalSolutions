@@ -19,7 +19,7 @@ class Orcamento extends persist
         Paciente $paciente,
         Dentista $dentistaResponsavel,
         DateTime $dataOrcamento,
-        array $procedimentos,
+        array $procedimentos, 
         //Pagamento $pagamento,
         string $descricao,
         //array $consultas
