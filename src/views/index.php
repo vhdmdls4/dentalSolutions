@@ -327,7 +327,7 @@
                 <div class="collapse" id="agenda-collapse">
                   <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li>
-                      <a href="agenda.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Calendário</a>
+                      <a href="calendario_mensal.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Calendário</a>
                     </li>
                     <li>
                       <a href="agenda_dentista.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Visualizar Agenda da Clínica</a>

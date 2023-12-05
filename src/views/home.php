@@ -65,13 +65,17 @@
   }
 </style>
 
+      <div class="alert alert-warning mt-3" role="alert">
+        Em desenvolvimento. Algumas funcionalidades podem não estar disponíveis.
+      </div>
+
 <div class="centered-buttons">
   <div class="btn btn-primary btn-lg" id="agenda-btn">
     <div class="text-container">
       Agenda <span class="bi bi-calendar3"></span>
     </div>
     <div id="agenda-options" class="agenda-options">
-      <a href="agenda.php"> Calendário Mensal</a>
+      <a href="calendario_mensal.php"> Calendário Mensal</a>
       <a href="agenda_dentista.php">Visualizar Agenda da Clínica</a>
     </div>
   </div>

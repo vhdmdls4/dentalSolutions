@@ -1,6 +1,6 @@
 <?php require('./index.php'); ?>
 
-<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="min-height: 755px;">
     <h1>Calendário</h1>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
