@@ -1,6 +1,6 @@
 <?php require_once('./index.php'); ?>
 
-<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="min-height: 2000px;">
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="min-height: 760px;">
 
   <h2 class="mt-5" aria-label="Criação de Orçamentos">Criação de Orçamentos</h2>
   <form id="criarOrcamento" action="" aria-label="Formulário de Criação de Orçamentos" title="Formulário de Criação de Orçamentos">
