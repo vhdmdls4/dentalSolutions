@@ -282,7 +282,7 @@
                   <svg class="bi">
                     <use xlink:href="#file-earmark" />
                   </svg>
-                  Orçamentos
+                  Criar Orçamento
                 </a>
               </li>
               <li class="nav-item">
@@ -293,7 +293,7 @@
                   Simulador de Tarifas
                 </a>
               </li>
-              <li class="nav-item">
+              <!--<li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="#">
                   <svg class="bi">
                     <use xlink:href="#file-earmark-text" />
@@ -316,7 +316,7 @@
                   </svg>
                   Relatórios
                 </a>
-              </li>
+              </li>-->
               <li class="nav-item">
                 <button class="nav-link gap-2 btn-toggle-nav-chevron text-primary d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#agenda-collapse" aria-expanded="false">
                   <svg class="bi">
@@ -330,7 +330,7 @@
                       <a href="agenda.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Calendário</a>
                     </li>
                     <li>
-                      <a href="agenda_dentista.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Agenda do Dentista</a>
+                      <a href="agenda_dentista.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Visualizar Agenda da Clínica</a>
                     </li>
                   </ul>
                 </div>
@@ -359,7 +359,7 @@
                     </li>
                     <li><a href="cadastrar_profissional.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Profissional</a>
                     </li>
-                    <li><a href="cadastrar_usuario.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Usuario</a>
+                    <li><a href="cadastrar_usuario.php" class="nav-link d-inline-flex text-decoration-none rounded fw-normal">Usuário</a>
                     </li>
               </li>
             </ul>
@@ -367,7 +367,7 @@
           </li>
           </ul>
 
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
+          <!--<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
             <span>Saved reports</span>
             <a class="link-secondary" href="#" aria-label="Add a new report">
               <svg class="bi">
@@ -408,19 +408,19 @@
                 Year-end sale
               </a>
             </li>
-          </ul>
+          </ul>-->
 
           <hr class="my-3" />
 
           <ul class="nav flex-column mb-auto">
-            <li class="nav-item">
+            <!--<li class="nav-item">
               <a class="nav-link d-flex align-items-center gap-2" href="#">
                 <svg class="bi">
                   <use xlink:href="#gear-wide-connected" />
                 </svg>
                 Ajustes
               </a>
-            </li>
+            </li>-->
             <li class="nav-item">
               <a class="nav-link d-flex align-items-center gap-2" href="login.php">
                 <svg class="bi">

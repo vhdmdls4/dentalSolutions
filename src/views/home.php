@@ -72,7 +72,7 @@
     </div>
     <div id="agenda-options" class="agenda-options">
       <a href="agenda.php"> Calendário Mensal</a>
-      <a href="agenda_dentista.php">Dentista</a>
+      <a href="agenda_dentista.php">Visualizar Agenda da Clínica</a>
     </div>
   </div>
 

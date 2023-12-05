@@ -1,7 +1,8 @@
 <?php require_once('./index.php'); ?>
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <h2 class="mt-5" aria-label="Cadastro de cliente">Simulador de Tarifas</h2>
+    <h2 class="mt-5" aria-label="Simulador de Tarifas">Simulador de Tarifas</h2>
+    <h6 class="mt-3" aria-label="Simuladores de Tarifas">Simule o valor das tarifas para cada forma de pagamento</h6>
     <form id="registrarCliente" action="" aria-label="Formulário de Cadastro de Cliente" title="Formulário de cadastro de cliente">
         <div class="mb-3">
             <label for="rg" class="form-label">Valor Cobrado:</label>
